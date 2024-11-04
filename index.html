@@ -32,6 +32,7 @@
     <link rel="manifest" href="/site.webmanifest">
     
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/sidebar.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -51,9 +52,15 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#json-tool" class="nav-item">
+                            <img src="/images/icons/json.svg" alt="" width="20" height="20">
+                            JSON Formatter
+                        </a>
+                    </li>
+                    <li>
                         <a href="#days-tool" class="nav-item">
                             <img src="/images/icons/back-in-time.svg" alt="" width="20" height="20">
-                            Unix Days
+                            Unix Time
                         </a>
                     </li>
                     <li>
@@ -62,14 +69,12 @@
                             IP Checker
                         </a>
                     </li>
-                    <li>
-                        <a href="#json-tool" class="nav-item">
-                            <img src="/images/icons/json.svg" alt="" width="20" height="20">
-                            JSON Formatter
-                        </a>
-                    </li>
                 </ul>
             </nav>
+            <!-- Thêm nút toggle -->
+            <button class="sidebar-toggle">
+                <i class="fas fa-bars"></i>  <!-- Nếu dùng Font Awesome -->
+            </button>
         </aside>
 
         <!-- Main Content -->
@@ -187,5 +192,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="components/Sidebar.js"></script>
 </body>
 </html>
