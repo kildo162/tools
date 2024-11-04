@@ -6,12 +6,25 @@
     <meta name="description" content="Essential Developer Tools: JWT Parser, Unix Timestamp Calculator, IP Checker">
     <meta name="keywords" content="jwt parser, unix timestamp, ip checker, developer tools, programming tools">
     <meta name="author" content="KhanhND">
-    <meta property="og:title" content="DevTools - Essential Tools for Developers">
-    <meta property="og:description" content="Collection of useful tools for developers including JWT Parser, Unix Timestamp Calculator, and IP Checker">
+
+    
+    <title>Developer Tools: JWT Parser, JSON Formatter & Unix Time Calculator | DevTools</title>
+    
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Developer Tools - Essential Tools for Developers">
+    <meta property="og:description" content="Free online developer tools: JWT Parser, JSON Formatter, Unix Time Calculator and IP Checker">
     <meta property="og:image" content="/images/og-image.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
     
-    <title>DevTools - Essential Tools for Developers</title>
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Developer Tools - Essential Tools for Developers">
+    <meta name="twitter:description" content="Free online developer tools for developers">
+    <meta name="twitter:image" content="/images/og-image.png">
     
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
@@ -49,6 +62,12 @@
                             IP Checker
                         </a>
                     </li>
+                    <li>
+                        <a href="#json-tool" class="nav-item">
+                            <img src="/images/icons/json.svg" alt="" width="20" height="20">
+                            JSON Formatter
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </aside>
@@ -58,9 +77,36 @@
             <div id="jwt-tool" class="tool">
                 <h2>JWT Parser</h2>
                 <div class="tool-content">
-                    <textarea id="jwt-input" placeholder="Enter your JWT token here..."></textarea>
-                    <button id="parse-jwt" class="btn">Parse Token</button>
-                    <div id="jwt-output"></div>
+                    <div class="jwt-input-section">
+                        <textarea id="jwt-input" placeholder="Enter your JWT token here..."></textarea>
+                        <button id="parse-jwt" class="btn">Decode Token</button>
+                    </div>
+
+                    <div class="jwt-result">
+                        <div class="jwt-parts">
+                            <div class="jwt-part header">
+                                <div class="part-label">
+                                    <span class="dot"></span>
+                                    HEADER
+                                </div>
+                                <div class="part-content"></div>
+                            </div>
+                            <div class="jwt-part payload">
+                                <div class="part-label">
+                                    <span class="dot"></span>
+                                    PAYLOAD
+                                </div>
+                                <div class="part-content"></div>
+                            </div>
+                            <div class="jwt-part signature">
+                                <div class="part-label">
+                                    <span class="dot"></span>
+                                    SIGNATURE
+                                </div>
+                                <div class="part-content"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -82,6 +128,59 @@
                         <div id="ip-address" class="value"></div>
                     </div>
                     <button id="refresh-ip" class="btn">Refresh</button>
+                </div>
+            </div>
+
+            <div id="json-tool" class="tool">
+                <h2>JSON Formatter</h2>
+                <div class="tool-content">
+                    <div class="format-options">
+                        <select id="indent-size" class="select-style">
+                            <option value="2">2 spaces</option>
+                            <option value="4">4 spaces</option>
+                            <option value="tab">Tab</option>
+                        </select>
+                        <div class="format-switches">
+                            <label class="switch">
+                                <input type="checkbox" id="sort-keys">
+                                <span class="slider"></span>
+                                <span class="label">Sort Keys</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="json-editor-container">
+                        <!-- Input Panel -->
+                        <div class="json-panel">
+                            <div class="panel-header">
+                                <span>Input JSON</span>
+                                <button class="btn-small" id="clear-json">Clear</button>
+                            </div>
+                            <div class="panel-content">
+                                <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="json-actions">
+                            <button class="btn" id="format-json">Format →</button>
+                            <button class="btn btn-secondary" id="minify-json">Minify →</button>
+                        </div>
+
+                        <!-- Output Panel -->
+                        <div class="json-panel">
+                            <div class="panel-header">
+                                <div class="panel-header-left">
+                                    <span>Formatted Output</span>
+                                    <div class="validation-status" id="validation-status"></div>
+                                </div>
+                                <button class="btn-small" id="copy-json">Copy</button>
+                            </div>
+                            <div class="panel-content">
+                                <pre id="json-output"></pre>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
