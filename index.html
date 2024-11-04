@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Useful Tools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .tool {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Useful Tools</h1>
+
+    <div class="tool">
+        <h2>Current IP Address</h2>
+        <p id="ip-address">Loading...</p>
+        <button onclick="getIPAddress()">Refresh IP</button>
+    </div>
+
+    <div class="tool">
+        <h2>JWT Parser</h2>
+        <textarea id="jwt-input" rows="4" cols="50" placeholder="Enter JWT here"></textarea>
+        <button onclick="parseJWT()">Parse JWT</button>
+        <pre id="jwt-output"></pre>
+    </div>
+
+    <div class="tool">
+        <h2>Days since January 1, 1970</h2>
+        <p id="days-since-1970"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
