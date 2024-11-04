@@ -3,40 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Useful Tools</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .tool {
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-    </style>
+    <meta name="description" content="Essential Developer Tools: JWT Parser, Unix Timestamp Calculator, IP Checker">
+    <meta name="keywords" content="jwt parser, unix timestamp, ip checker, developer tools, programming tools">
+    <meta name="author" content="KhanhND">
+    <meta property="og:title" content="DevTools - Essential Tools for Developers">
+    <meta property="og:description" content="Collection of useful tools for developers including JWT Parser, Unix Timestamp Calculator, and IP Checker">
+    <meta property="og:image" content="/images/og-image.png">
+    
+    <title>DevTools - Essential Tools for Developers</title>
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>My Useful Tools</h1>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="/images/logo.png" alt="DevTools Logo" width="32" height="32">
+                <h1>DevTools</h1>
+            </div>
+            <nav>
+                <ul class="feature-list">
+                    <li>
+                        <a href="#jwt-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="" width="20" height="20">
+                            JWT Parser
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#days-tool" class="nav-item">
+                            <img src="/images/icons/back-in-time.svg" alt="" width="20" height="20">
+                            Unix Days
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#ip-tool" class="nav-item">
+                            <img src="/images/icons/ip.svg" alt="" width="20" height="20">
+                            IP Checker
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
 
-    <div class="tool">
-        <h2>Current IP Address</h2>
-        <p id="ip-address">Loading...</p>
-        <button onclick="getIPAddress()">Refresh IP</button>
-    </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="jwt-tool" class="tool">
+                <h2>JWT Parser</h2>
+                <div class="tool-content">
+                    <textarea id="jwt-input" placeholder="Enter your JWT token here..."></textarea>
+                    <button id="parse-jwt" class="btn">Parse Token</button>
+                    <div id="jwt-output"></div>
+                </div>
+            </div>
 
-    <div class="tool">
-        <h2>JWT Parser</h2>
-        <textarea id="jwt-input" rows="4" cols="50" placeholder="Enter JWT here"></textarea>
-        <button onclick="parseJWT()">Parse JWT</button>
-        <pre id="jwt-output"></pre>
-    </div>
+            <div id="days-tool" class="tool">
+                <h2>Unix Days Calculator</h2>
+                <div class="tool-content">
+                    <div class="days-counter">
+                        <span id="days-since-1970"></span>
+                    </div>
+                    <p class="tool-description">Days since January 1, 1970 (Unix Epoch)</p>
+                </div>
+            </div>
 
-    <div class="tool">
-        <h2>Days since January 1, 1970</h2>
-        <p id="days-since-1970"></p>
+            <div id="ip-tool" class="tool">
+                <h2>IP Checker</h2>
+                <div class="tool-content">
+                    <div class="ip-display">
+                        <div class="label">Your IP Address:</div>
+                        <div id="ip-address" class="value"></div>
+                    </div>
+                    <button id="refresh-ip" class="btn">Refresh</button>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script src="script.js"></script>
