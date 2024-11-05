@@ -102,9 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to calculate days since January 1, 1970
     function calculateDaysSince1970() {
         const now = new Date();
-        const start = new Date(1970, 0, 1);
-        const diffTime = Math.abs(now - start);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const start = new Date(Date.UTC(1970, 0, 1));
+        const diffTime = now - start;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         document.getElementById('days-since-1970').textContent = diffDays;
     }
 
