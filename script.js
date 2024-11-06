@@ -469,6 +469,86 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Trong phần DOMContentLoaded, thêm:
     initIPInfo();
+
+    // Base64 Tool Functions
+    function initBase64Tool() {
+        const input = document.getElementById('base64-input');
+        const output = document.getElementById('base64-output');
+        const encodeBtn = document.getElementById('base64-encode');
+        const decodeBtn = document.getElementById('base64-decode');
+        const clearBtn = document.getElementById('base64-clear');
+        const copyBtn = document.getElementById('base64-copy');
+
+        // Encode function
+        encodeBtn.addEventListener('click', () => {
+            try {
+                const text = input.value;
+                if (!text) {
+                    throw new Error('Vui lòng nhập text cần encode');
+                }
+                const encoded = btoa(unescape(encodeURIComponent(text)));
+                output.value = encoded;
+            } catch (error) {
+                output.value = `Error: ${error.message}`;
+            }
+        });
+
+        // Decode function
+        decodeBtn.addEventListener('click', () => {
+            try {
+                const text = input.value;
+                if (!text) {
+                    throw new Error('Vui lòng nhập text cần decode');
+                }
+                const decoded = decodeURIComponent(escape(atob(text)));
+                output.value = decoded;
+            } catch (error) {
+                output.value = 'Error: Invalid Base64 string';
+            }
+        });
+
+        // Clear function
+        clearBtn.addEventListener('click', () => {
+            input.value = '';
+            output.value = '';
+            input.focus();
+        });
+
+        // Copy function
+        copyBtn.addEventListener('click', async () => {
+            try {
+                const textToCopy = output.value;
+                if (!textToCopy) {
+                    throw new Error('Không có nội dung để copy');
+                }
+                
+                await navigator.clipboard.writeText(textToCopy);
+                
+                // Visual feedback
+                copyBtn.textContent = 'Copied!';
+                copyBtn.classList.add('copy-success');
+                
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                    copyBtn.classList.remove('copy-success');
+                }, 1000);
+            } catch (error) {
+                alert('Không thể copy: ' + error.message);
+            }
+        });
+
+        // Auto-resize textareas
+        function autoResize(element) {
+            element.style.height = 'auto';
+            element.style.height = element.scrollHeight + 'px';
+        }
+
+        input.addEventListener('input', () => autoResize(input));
+        output.addEventListener('input', () => autoResize(output));
+    }
+
+    // Thêm vào phần DOMContentLoaded
+    initBase64Tool();
 });
 
 // Function to get current IP address

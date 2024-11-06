@@ -69,6 +69,12 @@
                             IP Checker
                         </a>
                     </li>
+                    <li>
+                        <a href="#base64-tool" class="nav-item">
+                            <img src="/images/icons/base64.svg" alt="Base64 Encoder/Decoder Icon" width="20" height="20">
+                            Base64
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- Thêm nút toggle -->
@@ -181,6 +187,25 @@
                                 <pre id="json-output"></pre>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thêm vào phần tools -->
+            <div id="base64-tool" class="tool">
+                <h2>Base64 Encoder/Decoder</h2>
+                <div class="tool-content">
+                    <div class="input-group">
+                        <textarea id="base64-input" placeholder="Nhập text cần encode/decode..."></textarea>
+                    </div>
+                    <div class="button-group">
+                        <button id="base64-encode" class="btn">Encode</button>
+                        <button id="base64-decode" class="btn">Decode</button>
+                        <button id="base64-clear" class="btn btn-secondary">Clear</button>
+                        <button id="base64-copy" class="btn btn-secondary">Copy</button>
+                    </div>
+                    <div class="output-group">
+                        <textarea id="base64-output" placeholder="Kết quả..." readonly></textarea>
                     </div>
                 </div>
             </div>
