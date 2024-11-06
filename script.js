@@ -582,3 +582,51 @@ function parseJWT() {
 
 // Initial calls
 getIPAddress();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const base64Input = document.getElementById('base64-input');
+    const base64FileInput = document.getElementById('base64-file-input');
+    const base64Output = document.getElementById('base64-output');
+    const encodeButton = document.getElementById('base64-encode');
+    const decodeButton = document.getElementById('base64-decode');
+    const clearButton = document.getElementById('base64-clear');
+    const copyButton = document.getElementById('base64-copy');
+
+    encodeButton.addEventListener('click', () => {
+        const input = base64Input.value;
+        if (input) {
+            base64Output.textContent = btoa(input);
+        }
+    });
+
+    decodeButton.addEventListener('click', () => {
+        const input = base64Input.value;
+        if (input) {
+            try {
+                base64Output.textContent = atob(input);
+            } catch (e) {
+                base64Output.textContent = 'Invalid Base64 string';
+            }
+        }
+    });
+
+    clearButton.addEventListener('click', () => {
+        base64Input.value = '';
+        base64Output.textContent = '';
+    });
+
+    copyButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(base64Output.textContent);
+    });
+
+    base64FileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                base64Input.value = reader.result;
+            };
+            reader.readAsText(file);
+        }
+    });
+});

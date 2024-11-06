@@ -512,3 +512,34 @@ body {
 .copy-success {
     animation: copySuccess 1s ease;
 }
+
+.tool-content .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tool-content .file-input {
+    margin-top: 10px;
+}
+
+.tool-content .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tool-content .output-group {
+    margin-top: 20px;
+}
+
+.tool-content .output-area {
+    width: 100%;
+    height: 200px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #ddd;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

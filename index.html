@@ -40,7 +40,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="/images/logo.png" alt="DevTools - Developer Utilities Platform" width="32" height="32">
+                <img src="/images/logo.png" alt="DevTools - Developer Utilities Platform Logo" width="32" height="32">
                 <h1>Developer Tools Platform</h1>
             </div>
             <nav>
@@ -48,44 +48,43 @@
                     <li>
                         <a href="#jwt-tool" class="nav-item">
                             <img src="/images/icons/web-programming.svg" alt="JWT Parser Tool Icon" width="20" height="20">
-                            JWT Parser
+                            <span>JWT Parser</span>
                         </a>
                     </li>
                     <li>
                         <a href="#json-tool" class="nav-item">
                             <img src="/images/icons/json.svg" alt="JSON Formatter Tool Icon" width="20" height="20">
-                            JSON Formatter
+                            <span>JSON Formatter</span>
                         </a>
                     </li>
                     <li>
                         <a href="#days-tool" class="nav-item">
                             <img src="/images/icons/back-in-time.svg" alt="Unix Time Calculator Icon" width="20" height="20">
-                            Unix Time
+                            <span>Unix Time</span>
                         </a>
                     </li>
                     <li>
                         <a href="#ip-tool" class="nav-item">
                             <img src="/images/icons/ip.svg" alt="IP Address Checker Icon" width="20" height="20">
-                            IP Checker
+                            <span>IP Checker</span>
                         </a>
                     </li>
                     <li>
                         <a href="#base64-tool" class="nav-item">
                             <img src="/images/icons/base64.svg" alt="Base64 Encoder/Decoder Icon" width="20" height="20">
-                            Base64
+                            <span>Base64</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-            <!-- Thêm nút toggle -->
             <button class="sidebar-toggle">
-                <i class="fas fa-bars"></i>  <!-- Nếu dùng Font Awesome -->
+                <i class="fas fa-bars"></i>  <!-- If using Font Awesome -->
             </button>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <div id="jwt-tool" class="tool">
+            <section id="jwt-tool" class="tool">
                 <h2>JWT Parser</h2>
                 <div class="tool-content">
                     <div class="jwt-input-section">
@@ -119,9 +118,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div id="days-tool" class="tool">
+            <section id="days-tool" class="tool">
                 <h2>Unix Days Calculator</h2>
                 <div class="tool-content">
                     <div class="days-counter">
@@ -129,16 +128,16 @@
                     </div>
                     <p class="tool-description">Days since January 1, 1970 (Unix Epoch)</p>
                 </div>
-            </div>
+            </section>
 
-            <div id="ip-tool" class="tool">
+            <section id="ip-tool" class="tool">
                 <h2>IP Checker</h2>
                 <div class="tool-content">
                     <div id="ip-info"></div>
                 </div>
-            </div>
+            </section>
 
-            <div id="json-tool" class="tool">
+            <section id="json-tool" class="tool">
                 <h2>JSON Formatter</h2>
                 <div class="tool-content">
                     <div class="format-options">
@@ -189,14 +188,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- Thêm vào phần tools -->
-            <div id="base64-tool" class="tool">
+            <section id="base64-tool" class="tool">
                 <h2>Base64 Encoder/Decoder</h2>
                 <div class="tool-content">
                     <div class="input-group">
-                        <textarea id="base64-input" placeholder="Nhập text cần encode/decode..."></textarea>
+                        <textarea id="base64-input" placeholder="Enter text to encode/decode..."></textarea>
+                        <input type="file" id="base64-file-input" class="file-input">
                     </div>
                     <div class="button-group">
                         <button id="base64-encode" class="btn">Encode</button>
@@ -205,10 +205,10 @@
                         <button id="base64-copy" class="btn btn-secondary">Copy</button>
                     </div>
                     <div class="output-group">
-                        <textarea id="base64-output" placeholder="Kết quả..." readonly></textarea>
+                        <pre id="base64-output" class="output-area" placeholder="Result..." readonly></pre>
                     </div>
                 </div>
-            </div>
+            </section>
         </main>
     </div>
 
