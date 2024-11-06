@@ -260,6 +260,215 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize when DOM is loaded
     initJwtParser();
+
+    // Function to get system info
+    function getSystemInfo() {
+        const browserInfo = {
+            name: navigator.userAgent,
+            language: navigator.language,
+            platform: navigator.platform,
+            screenResolution: `${window.screen.width}x${window.screen.height}`,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            browser: getBrowserInfo()
+        };
+        return browserInfo;
+    }
+
+    // Function to detect browser name and version
+    function getBrowserInfo() {
+        const userAgent = navigator.userAgent;
+        let browser = "Unknown";
+        
+        if (userAgent.match(/chrome|chromium|crios/i)) {
+            browser = "Chrome";
+        } else if (userAgent.match(/firefox|fxios/i)) {
+            browser = "Firefox";
+        } else if (userAgent.match(/safari/i)) {
+            browser = "Safari";
+        } else if (userAgent.match(/opr\//i)) {
+            browser = "Opera";
+        } else if (userAgent.match(/edg/i)) {
+            browser = "Edge";
+        }
+        
+        return browser;
+    }
+
+    // Danh sách các API để lấy IP
+    const IP_APIS = [
+        {
+            name: 'ipify',
+            url: 'https://api.ipify.org?format=json',
+            transform: (data) => ({ ip: data.ip })
+        },
+        {
+            name: 'ipapi.co',
+            url: 'https://ipapi.co/json/',
+            transform: (data) => ({ ip: data.ip })
+        },
+        {
+            name: 'cloudflare',
+            url: 'https://1.1.1.1/cdn-cgi/trace',
+            transform: (data) => {
+                const ip = data.split('\n').find(line => line.startsWith('ip=')).split('=')[1];
+                return { ip };
+            }
+        }
+    ];
+
+    // Danh sách các API để lấy location
+    const LOCATION_APIS = [
+        {
+            name: 'ip-api',
+            url: (ip) => `http://ip-api.com/json/${ip}`,
+            transform: (data) => ({
+                country: data.country,
+                countryCode: data.countryCode,
+                region: data.regionName,
+                city: data.city,
+                timezone: data.timezone,
+                isp: data.isp,
+                lat: data.lat,
+                lon: data.lon,
+                as: data.as
+            })
+        },
+        {
+            name: 'ipapi.co',
+            url: (ip) => `https://ipapi.co/${ip}/json/`,
+            transform: (data) => ({
+                country: data.country_name,
+                countryCode: data.country_code,
+                region: data.region,
+                city: data.city,
+                timezone: data.timezone,
+                isp: data.org,
+                lat: data.latitude,
+                lon: data.longitude,
+                as: data.asn
+            })
+        },
+        {
+            name: 'ipwho.is',
+            url: (ip) => `https://ipwho.is/${ip}`,
+            transform: (data) => ({
+                country: data.country,
+                countryCode: data.country_code,
+                region: data.region,
+                city: data.city,
+                timezone: data.timezone.id,
+                isp: data.connection.isp,
+                lat: data.latitude,
+                lon: data.longitude,
+                as: data.connection.asn
+            })
+        }
+    ];
+
+    // Function to try different APIs until one works
+    async function tryAPIs(apis, param = null) {
+        for (const api of apis) {
+            try {
+                const url = typeof api.url === 'function' ? api.url(param) : api.url;
+                const response = await fetch(url);
+                
+                let data;
+                if (api.name === 'cloudflare') {
+                    data = await response.text();
+                } else {
+                    data = await response.json();
+                }
+                
+                if (response.ok && data) {
+                    console.log(`Successfully used ${api.name}`);
+                    return {
+                        ...api.transform(data),
+                        source: api.name
+                    };
+                }
+            } catch (error) {
+                console.warn(`Failed to fetch from ${api.name}:`, error);
+                continue;
+            }
+        }
+        throw new Error('All APIs failed');
+    }
+
+    // Function to get IP and location info
+    async function getIPAddress() {
+        const refreshBtn = document.getElementById('ip-refresh');
+        refreshBtn.classList.add('loading');
+        
+        try {
+            document.getElementById('ip-info').innerHTML = `
+                <div class="loading-message">
+                    <p>Đang tải thông tin...</p>
+                </div>
+            `;
+
+            const ipData = await tryAPIs(IP_APIS);
+            const locationData = await tryAPIs(LOCATION_APIS, ipData.ip);
+            const systemInfo = getSystemInfo();
+            
+            const ipInfoHTML = `
+                <div class="ip-info-group">
+                    <h3>Network Information</h3>
+                    <p><strong>IP Address:</strong> ${ipData.ip}</p>
+                    <p><strong>ISP:</strong> ${locationData.isp || 'N/A'}</p>
+                    <p><strong>Connection Type:</strong> ${locationData.as || 'N/A'}</p>
+                    <p class="api-source">Source: IP (${ipData.source})</p>
+                </div>
+                <div class="ip-info-group">
+                    <h3>Location Information</h3>
+                    <p><strong>Country:</strong> ${locationData.country} (${locationData.countryCode})</p>
+                    <p><strong>Region:</strong> ${locationData.region}</p>
+                    <p><strong>City:</strong> ${locationData.city}</p>
+                    <p><strong>Timezone:</strong> ${locationData.timezone}</p>
+                    <p><strong>Coordinates:</strong> ${locationData.lat}, ${locationData.lon}</p>
+                    <p class="api-source">Source: Location (${locationData.source})</p>
+                </div>
+                <div class="ip-info-group">
+                    <h3>Browser Information</h3>
+                    <p><strong>Browser:</strong> ${systemInfo.browser}</p>
+                    <p><strong>Language:</strong> ${systemInfo.language}</p>
+                    <p><strong>Platform:</strong> ${systemInfo.platform}</p>
+                    <p><strong>Screen Resolution:</strong> ${systemInfo.screenResolution}</p>
+                    <p><strong>Timezone:</strong> ${systemInfo.timezone}</p>
+                    <p class="api-source">Source: Local Browser Data</p>
+                </div>
+            `;
+            
+            document.getElementById('ip-info').innerHTML = ipInfoHTML;
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('ip-info').innerHTML = `
+                <div class="error-message">
+                    <p>Lỗi khi lấy thông tin IP: ${error.message}</p>
+                    <p>Vui lòng thử lại sau vài phút.</p>
+                </div>
+            `;
+        } finally {
+            refreshBtn.classList.remove('loading');
+        }
+    }
+
+    // Initialize IP info with refresh button
+    function initIPInfo() {
+        const ipContainer = document.getElementById('ip-info').parentElement;
+        const refreshButton = document.createElement('button');
+        refreshButton.id = 'ip-refresh';
+        refreshButton.innerHTML = `
+            <span class="refresh-icon">↻</span>
+            <span class="button-text">Refresh</span>
+        `;
+        ipContainer.insertBefore(refreshButton, document.getElementById('ip-info'));
+        
+        refreshButton.addEventListener('click', getIPAddress);
+        getIPAddress();
+    }
+
+    // Trong phần DOMContentLoaded, thêm:
+    initIPInfo();
 });
 
 // Function to get current IP address

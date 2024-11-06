@@ -311,3 +311,157 @@ body {
 .btn-small:hover {
     background: var(--background-color);
 }
+
+#ip-refresh {
+    padding: 8px 16px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+#ip-refresh:hover {
+    background-color: #45a049;
+}
+
+#ip-refresh.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+#ip-refresh.loading .refresh-icon {
+    animation: spin 1s linear infinite;
+}
+
+.ip-info-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+}
+
+.ip-info-group h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.ip-info-group p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.error-message {
+    color: #d32f2f;
+    padding: 10px;
+    background-color: #ffebee;
+    border-radius: 4px;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* IP Tool Styles */
+#ip-tool .tool-content {
+    padding: 20px;
+}
+
+#ip-refresh {
+    padding: 8px 16px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+#ip-refresh:hover {
+    background-color: #45a049;
+}
+
+#ip-refresh.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+#ip-refresh.loading .refresh-icon {
+    animation: spin 1s linear infinite;
+}
+
+.ip-info-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+}
+
+.ip-info-group h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.ip-info-group p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.error-message {
+    color: #d32f2f;
+    padding: 10px;
+    background-color: #ffebee;
+    border-radius: 4px;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.loading-message {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.loading-message:after {
+    content: '...';
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60% { content: '...'; }
+    80%, 100% { content: ''; }
+}
+
+.api-source {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+}
+
+.ip-info-group {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+}
