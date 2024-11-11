@@ -478,6 +478,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const decodeBtn = document.getElementById('base64-decode');
         const clearBtn = document.getElementById('base64-clear');
         const copyBtn = document.getElementById('base64-copy');
+        const unicodeCheckbox = document.getElementById('base64-unicode');
+
+        // Set Unicode checkbox to be checked by default
+        unicodeCheckbox.checked = true;
 
         // Encode function
         encodeBtn.addEventListener('click', () => {
@@ -486,7 +490,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!text) {
                     throw new Error('Vui lòng nhập text cần encode');
                 }
-                const encoded = btoa(unescape(encodeURIComponent(text)));
+                const encoded = unicodeCheckbox.checked 
+                    ? btoa(unescape(encodeURIComponent(text))) 
+                    : btoa(text);
                 output.value = encoded;
             } catch (error) {
                 output.value = `Error: ${error.message}`;
@@ -500,7 +506,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!text) {
                     throw new Error('Vui lòng nhập text cần decode');
                 }
-                const decoded = decodeURIComponent(escape(atob(text)));
+                const decoded = unicodeCheckbox.checked 
+                    ? decodeURIComponent(escape(atob(text))) 
+                    : atob(text);
                 output.value = decoded;
             } catch (error) {
                 output.value = 'Error: Invalid Base64 string';
