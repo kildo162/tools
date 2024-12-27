@@ -543,3 +543,38 @@ body {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+
+/* Telegram Tool Specific Styles */
+#telegram-tool .tool-content {
+    padding: 20px;
+}
+
+#telegram-chat-id, #telegram-message {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background: #f8fafc;
+}
+
+#telegram-chat-id::placeholder, #telegram-message::placeholder {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+#send-telegram-message {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#send-telegram-message:hover {
+    background-color: var(--secondary-color);
+}

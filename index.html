@@ -75,6 +75,12 @@
                             <span>Base64</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="#telegram-tool" class="nav-item">
+                            <img src="/images/icons/paper.svg" alt="Telegram Chatbot Icon" width="20" height="20">
+                            <span>Telegram Chatbot</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <button class="sidebar-toggle">
@@ -212,6 +218,19 @@
                     </div>
                     <div class="output-group">
                         <pre id="base64-output" class="output-area" placeholder="Result..." readonly></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="telegram-tool" class="tool">
+                <h2>Telegram Chatbot</h2>
+                <div class="tool-content">
+                    <div class="input-group">
+                        <input type="text" id="telegram-chat-id" placeholder="Enter Chat ID... e.g., 123456789">
+                        <textarea id="telegram-message" placeholder="Enter your message... e.g., Hello, this is a test message!"></textarea>
+                    </div>
+                    <div class="button-group">
+                        <button id="send-telegram-message" class="btn">Send Message</button>
                     </div>
                 </div>
             </section>
