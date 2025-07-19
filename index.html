@@ -414,20 +414,37 @@
             </section>
 
             <section id="json-tool" class="tool">
-                <h2>JSON Formatter</h2>
+                <h2>JSON Formatter & Validator</h2>
                 <div class="tool-content">
+                    <!-- Enhanced Format Options -->
                     <div class="format-options">
-                        <select id="indent-size" class="select-style">
-                            <option value="2">2 spaces</option>
-                            <option value="4">4 spaces</option>
-                            <option value="tab">Tab</option>
-                        </select>
+                        <div class="format-option-group">
+                            <label for="indent-size">Indentation:</label>
+                            <select id="indent-size" class="select-style">
+                                <option value="2">2 spaces</option>
+                                <option value="4">4 spaces</option>
+                                <option value="8">8 spaces</option>
+                                <option value="tab">Tab</option>
+                            </select>
+                        </div>
+                        
                         <div class="format-switches">
-                            <label class="switch">
+                            <label class="checkbox-label">
                                 <input type="checkbox" id="sort-keys">
-                                <span class="slider"></span>
-                                <span class="label">Sort Keys</span>
+                                Sort Keys Alphabetically
                             </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="compact-arrays">
+                                Compact Arrays (single line)
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="escape-unicode">
+                                Escape Unicode Characters
+                            </label>
+                        </div>
+                        
+                        <div class="format-stats">
+                            <span id="json-stats"></span>
                         </div>
                     </div>
                     
@@ -435,33 +452,88 @@
                         <!-- Input Panel -->
                         <div class="json-panel">
                             <div class="panel-header">
-                                <span>Input JSON</span>
-                                <button class="btn-small" id="clear-json">Clear</button>
+                                <div class="panel-header-left">
+                                    <span>Input JSON</span>
+                                    <div class="input-tools">
+                                        <button class="btn-small" id="sample-json" title="Load Sample JSON">📄 Sample</button>
+                                        <input type="file" id="json-file-input" accept=".json,.txt" style="display: none;">
+                                        <button class="btn-small" id="load-json-file" title="Load from File">📁 Load</button>
+                                    </div>
+                                </div>
+                                <div class="panel-header-right">
+                                    <button class="btn-small" id="clear-json">Clear</button>
+                                </div>
                             </div>
                             <div class="panel-content">
-                                <textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+                                <textarea id="json-input" placeholder="Paste your JSON here or use sample data..."></textarea>
                             </div>
                         </div>
 
-                        <!-- Actions -->
+                        <!-- Enhanced Actions -->
                         <div class="json-actions">
-                            <button class="btn" id="format-json">Format →</button>
-                            <button class="btn btn-secondary" id="minify-json">Minify →</button>
+                            <button class="btn" id="format-json" title="Format and beautify JSON">✨ Format</button>
+                            <button class="btn btn-secondary" id="minify-json" title="Compress JSON">🗜️ Minify</button>
+                            <button class="btn btn-secondary" id="validate-json" title="Validate JSON syntax">✅ Validate</button>
+                            <button class="btn btn-secondary" id="escape-json" title="Escape JSON for strings">🔒 Escape</button>
                         </div>
 
                         <!-- Output Panel -->
                         <div class="json-panel">
                             <div class="panel-header">
                                 <div class="panel-header-left">
-                                    <span>Formatted Output</span>
+                                    <span>Output</span>
                                     <div class="validation-status" id="validation-status"></div>
+                                    <div class="json-info">
+                                        <span id="json-size-info"></span>
+                                    </div>
                                 </div>
-                                <button class="btn-small" id="copy-json">Copy</button>
+                                <div class="panel-header-right">
+                                    <button class="btn-small" id="copy-json" title="Copy to clipboard">📋 Copy</button>
+                                    <button class="btn-small" id="download-json" title="Download as file">💾 Download</button>
+                                </div>
                             </div>
                             <div class="panel-content">
                                 <pre id="json-output"></pre>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- JSON Path Explorer -->
+                    <div class="json-path-section" style="margin-top: 2rem;">
+                        <h3>JSON Path Explorer</h3>
+                        <div class="path-input-group">
+                            <input type="text" id="json-path-input" placeholder="Enter JSONPath (e.g., $.users[0].name)" />
+                            <button class="btn" id="extract-path">Extract</button>
+                        </div>
+                        <div class="path-result" id="path-result"></div>
+                        <div class="path-examples">
+                            <small>
+                                Examples: <code>$</code> (root), <code>$.name</code> (property), 
+                                <code>$.users[0]</code> (array index), <code>$.users[*].name</code> (all names)
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Schema Validation -->
+                    <div class="json-schema-section" style="margin-top: 2rem;">
+                        <h3>JSON Schema Validation</h3>
+                        <div class="schema-input-group">
+                            <textarea id="json-schema-input" placeholder="Enter JSON Schema..." rows="6"></textarea>
+                            <button class="btn" id="validate-schema">Validate Against Schema</button>
+                        </div>
+                        <div class="schema-result" id="schema-result"></div>
+                    </div>
+
+                    <!-- Conversion Tools -->
+                    <div class="json-conversion-section" style="margin-top: 2rem;">
+                        <h3>Convert To/From</h3>
+                        <div class="conversion-buttons">
+                            <button class="btn btn-secondary" id="json-to-csv">JSON → CSV</button>
+                            <button class="btn btn-secondary" id="json-to-yaml">JSON → YAML</button>
+                            <button class="btn btn-secondary" id="json-to-xml">JSON → XML</button>
+                            <button class="btn btn-secondary" id="csv-to-json">CSV → JSON</button>
+                        </div>
+                        <div class="conversion-result" id="conversion-result"></div>
                     </div>
                 </div>
             </section>
@@ -511,5 +583,6 @@
     <script src="components/Sidebar.js"></script>
     <script src="components/JwtTools.js"></script>
     <script src="components/UnixTimeConverter.js"></script>
+    <script src="components/JSONFormatter.js"></script>
 </body>
 </html>
