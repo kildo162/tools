@@ -545,4 +545,556 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.readAsText(file);
         }
     });
+
+    // Donate Modal Functions
+    window.showDonateModal = function() {
+        // Create modal HTML
+        const modalHTML = `
+            <div id="donate-modal" class="modal-overlay" onclick="closeDonateModal()">
+                <div class="modal-content" onclick="event.stopPropagation()">
+                    <div class="modal-header">
+                        <h2>💙 Support DevTools</h2>
+                        <button class="modal-close" onclick="closeDonateModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your support helps keep these tools free and continuously improved!</p>
+                        <div class="donate-options">
+                            <a href="https://www.buymeacoffee.com/khanhnd35" target="_blank" class="donate-option coffee">
+                                <span class="option-icon">☕</span>
+                                <div class="option-text">
+                                    <strong>Buy me a coffee</strong>
+                                    <small>One-time donation</small>
+                                </div>
+                            </a>
+                            <a href="https://github.com/sponsors/kildo162" target="_blank" class="donate-option github">
+                                <span class="option-icon">💖</span>
+                                <div class="option-text">
+                                    <strong>GitHub Sponsors</strong>
+                                    <small>Monthly support</small>
+                                </div>
+                            </a>
+                            <a href="https://paypal.me/khanhnd35" target="_blank" class="donate-option paypal">
+                                <span class="option-icon">💰</span>
+                                <div class="option-text">
+                                    <strong>PayPal</strong>
+                                    <small>Direct donation</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="other-support">
+                            <h3>Other ways to support:</h3>
+                            <div class="support-buttons">
+                                <a href="https://github.com/kildo162/tools" target="_blank" class="support-btn">
+                                    <span>⭐</span> Star on GitHub
+                                </a>
+                                <a href="https://github.com/kildo162/tools/issues" target="_blank" class="support-btn">
+                                    <span>🐛</span> Report Issues
+                                </a>
+                                <a href="#" onclick="shareProject()" class="support-btn">
+                                    <span>📢</span> Share Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Add modal to page
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        
+        // Add modal styles
+        addModalStyles();
+        
+        // Show modal with animation
+        setTimeout(() => {
+            document.getElementById('donate-modal').classList.add('show');
+        }, 10);
+    };
+
+    window.closeDonateModal = function() {
+        const modal = document.getElementById('donate-modal');
+        if (modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
+        }
+    };
+
+    window.shareProject = function() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'DevTools - Free Developer Utilities',
+                text: 'Check out these amazing free developer tools!',
+                url: window.location.href
+            });
+        } else {
+            // Fallback: copy to clipboard
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+    };
+
+    // MoMo Modal Functions
+    window.showMoMoModal = function() {
+        const modalHTML = `
+            <div id="momo-modal" class="modal-overlay" onclick="closeMoMoModal()">
+                <div class="modal-content" onclick="event.stopPropagation()">
+                    <div class="modal-header">
+                        <h2>💰 MoMo Payment</h2>
+                        <button class="modal-close" onclick="closeMoMoModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payment-info">
+                            <div class="payment-method">
+                                <div class="qr-section">
+                                    <div class="qr-placeholder">
+                                        <div class="qr-code">📱</div>
+                                        <p>Scan QR code with MoMo app</p>
+                                    </div>
+                                </div>
+                                <div class="payment-details">
+                                    <div class="detail-item">
+                                        <strong>Phone:</strong>
+                                        <span>0123456789</span>
+                                        <button class="copy-btn" onclick="copyToClipboard('0123456789')">📋</button>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Name:</strong>
+                                        <span>NGUYEN DINH KHANH</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Message:</strong>
+                                        <span>Support DevTools</span>
+                                        <button class="copy-btn" onclick="copyToClipboard('Support DevTools')">📋</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-note">
+                            <p><strong>Note:</strong> Please include "Support DevTools" in the message so we can identify your donation. Thank you! 🙏</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        addModalStyles();
+        setTimeout(() => {
+            document.getElementById('momo-modal').classList.add('show');
+        }, 10);
+    };
+
+    window.closeMoMoModal = function() {
+        const modal = document.getElementById('momo-modal');
+        if (modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
+        }
+    };
+
+    // ZaloPay Modal Functions
+    window.showZaloPayModal = function() {
+        const modalHTML = `
+            <div id="zalopay-modal" class="modal-overlay" onclick="closeZaloPayModal()">
+                <div class="modal-content" onclick="event.stopPropagation()">
+                    <div class="modal-header">
+                        <h2>💳 ZaloPay Payment</h2>
+                        <button class="modal-close" onclick="closeZaloPayModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payment-info">
+                            <div class="payment-method">
+                                <div class="qr-section">
+                                    <div class="qr-placeholder">
+                                        <div class="qr-code">📱</div>
+                                        <p>Scan QR code with ZaloPay app</p>
+                                    </div>
+                                </div>
+                                <div class="payment-details">
+                                    <div class="detail-item">
+                                        <strong>Phone:</strong>
+                                        <span>0123456789</span>
+                                        <button class="copy-btn" onclick="copyToClipboard('0123456789')">📋</button>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Name:</strong>
+                                        <span>NGUYEN DINH KHANH</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Message:</strong>
+                                        <span>Support DevTools</span>
+                                        <button class="copy-btn" onclick="copyToClipboard('Support DevTools')">📋</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-note">
+                            <p><strong>Note:</strong> Please include "Support DevTools" in the message so we can identify your donation. Thank you! 🙏</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        addModalStyles();
+        setTimeout(() => {
+            document.getElementById('zalopay-modal').classList.add('show');
+        }, 10);
+    };
+
+    window.closeZaloPayModal = function() {
+        const modal = document.getElementById('zalopay-modal');
+        if (modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
+        }
+    };
+
+    // Copy to clipboard function
+    window.copyToClipboard = function(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            // Show temporary success message
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '✅';
+            button.style.color = '#10b981';
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.color = '';
+            }, 1500);
+        }).catch(() => {
+            alert('Failed to copy. Please copy manually: ' + text);
+        });
+    };
+
+    function addModalStyles() {
+        if (!document.getElementById('modal-styles')) {
+            const styles = `
+                <style id="modal-styles">
+                .modal-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.8);
+                    backdrop-filter: blur(8px);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: all 0.3s ease;
+                }
+                
+                .modal-overlay.show {
+                    opacity: 1;
+                    visibility: visible;
+                }
+                
+                .modal-content {
+                    background: linear-gradient(135deg, #ffffff, #f8fafc);
+                    border-radius: 16px;
+                    max-width: 480px;
+                    width: 90%;
+                    max-height: 90vh;
+                    overflow-y: auto;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                    transform: scale(0.8) translateY(20px);
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                
+                .modal-overlay.show .modal-content {
+                    transform: scale(1) translateY(0);
+                }
+                
+                .modal-header {
+                    padding: 24px 24px 16px;
+                    border-bottom: 1px solid #e2e8f0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                
+                .modal-header h2 {
+                    margin: 0;
+                    color: #1e293b;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+                
+                .modal-close {
+                    background: none;
+                    border: none;
+                    font-size: 24px;
+                    cursor: pointer;
+                    color: #64748b;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.2s ease;
+                }
+                
+                .modal-close:hover {
+                    background: #f1f5f9;
+                    color: #334155;
+                }
+                
+                .modal-body {
+                    padding: 24px;
+                }
+                
+                .modal-body p {
+                    color: #475569;
+                    margin: 0 0 24px;
+                    line-height: 1.6;
+                }
+                
+                .donate-options {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    margin-bottom: 32px;
+                }
+                
+                .donate-option {
+                    display: flex;
+                    align-items: center;
+                    padding: 16px;
+                    border: 2px solid #e2e8f0;
+                    border-radius: 12px;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    background: #ffffff;
+                }
+                
+                .donate-option:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+                }
+                
+                .donate-option.coffee:hover {
+                    border-color: #f59e0b;
+                    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.2);
+                }
+                
+                .donate-option.github:hover {
+                    border-color: #ec4899;
+                    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.2);
+                }
+                
+                .donate-option.paypal:hover {
+                    border-color: #3b82f6;
+                    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+                }
+                
+                .option-icon {
+                    font-size: 24px;
+                    margin-right: 16px;
+                    width: 40px;
+                    text-align: center;
+                }
+                
+                .option-text {
+                    flex: 1;
+                }
+                
+                .option-text strong {
+                    display: block;
+                    color: #1e293b;
+                    font-size: 16px;
+                    margin-bottom: 2px;
+                }
+                
+                .option-text small {
+                    color: #64748b;
+                    font-size: 13px;
+                }
+                
+                .other-support {
+                    border-top: 1px solid #e2e8f0;
+                    padding-top: 24px;
+                }
+                
+                .other-support h3 {
+                    margin: 0 0 16px;
+                    color: #334155;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+                
+                .support-buttons {
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                }
+                
+                .support-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    padding: 8px 12px;
+                    background: #f1f5f9;
+                    color: #475569;
+                    text-decoration: none;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    transition: all 0.2s ease;
+                }
+                
+                .support-btn:hover {
+                    background: #e2e8f0;
+                    color: #334155;
+                    transform: translateY(-1px);
+                }
+                
+                @media (max-width: 480px) {
+                    .modal-content {
+                        width: 95%;
+                        margin: 20px;
+                    }
+                    
+                    .donate-options {
+                        gap: 8px;
+                    }
+                    
+                    .donate-option {
+                        padding: 12px;
+                    }
+                    
+                    .support-buttons {
+                        justify-content: center;
+                    }
+                }
+                
+                /* Payment Modal Styles */
+                .payment-info {
+                    margin-bottom: 24px;
+                }
+                
+                .payment-method {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                }
+                
+                .qr-section {
+                    text-align: center;
+                    padding: 20px;
+                    background: #f8fafc;
+                    border-radius: 12px;
+                    border: 2px dashed #e2e8f0;
+                }
+                
+                .qr-placeholder {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 12px;
+                }
+                
+                .qr-code {
+                    font-size: 48px;
+                    color: #64748b;
+                }
+                
+                .qr-placeholder p {
+                    color: #64748b;
+                    font-size: 14px;
+                    margin: 0;
+                }
+                
+                .payment-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+                
+                .detail-item {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px;
+                    background: #f8fafc;
+                    border-radius: 8px;
+                    border: 1px solid #e2e8f0;
+                }
+                
+                .detail-item strong {
+                    color: #334155;
+                    min-width: 80px;
+                }
+                
+                .detail-item span {
+                    flex: 1;
+                    margin: 0 12px;
+                    font-family: monospace;
+                    color: #1e293b;
+                }
+                
+                .copy-btn {
+                    background: #3b82f6;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 6px 10px;
+                    cursor: pointer;
+                    font-size: 12px;
+                    transition: all 0.2s ease;
+                }
+                
+                .copy-btn:hover {
+                    background: #2563eb;
+                    transform: translateY(-1px);
+                }
+                
+                .payment-note {
+                    background: linear-gradient(135deg, #fef3c7, #fde68a);
+                    padding: 16px;
+                    border-radius: 8px;
+                    border-left: 4px solid #f59e0b;
+                }
+                
+                .payment-note p {
+                    margin: 0;
+                    color: #92400e;
+                    font-size: 13px;
+                    line-height: 1.5;
+                }
+                
+                @media (max-width: 480px) {
+                    .payment-method {
+                        gap: 16px;
+                    }
+                    
+                    .detail-item {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 8px;
+                    }
+                    
+                    .detail-item strong,
+                    .detail-item span {
+                        margin: 0;
+                    }
+                }
+                </style>
+            `;
+            document.head.insertAdjacentHTML('beforeend', styles);
+        }
+    }
 });

@@ -1,0 +1,54 @@
+{
+  "name": "devtools-webapp",
+  "version": "2.0.0",
+  "description": "Optimized developer tools with lazy loading and performance optimizations",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "serve": "python -m http.server 8000 --directory .",
+    "build": "./build.sh",
+    "build:prod": "./build.sh && cd dist && python -m http.server 8080",
+    "preview": "cd dist && python -m http.server 8080",
+    "analyze": "npm run analyze:bundle && npm run analyze:lighthouse",
+    "analyze:bundle": "echo 'Analyzing bundle size...' && find . -name '*.js' -o -name '*.css' | head -10 | xargs wc -c",
+    "analyze:lighthouse": "echo 'Run: lighthouse http://localhost:8080 --output html --output-path ./lighthouse-report.html'",
+    "test": "echo 'No tests specified yet'",
+    "lint": "echo 'Linting JavaScript files...' && find . -name '*.js' ! -path './node_modules/*' ! -path './dist/*' -exec echo 'Checking: {}' \\;",
+    "clean": "rm -rf dist/ *.log lighthouse-report.html",
+    "deploy": "npm run build && echo 'Deploy dist/ directory to your hosting provider'"
+  },
+  "keywords": [
+    "developer-tools",
+    "jwt",
+    "json-formatter",
+    "encryption",
+    "hash-generator",
+    "uuid-generator",
+    "password-generator",
+    "performance",
+    "lazy-loading",
+    "pwa"
+  ],
+  "author": "KhanhND",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kildo162/tools.git"
+  },
+  "homepage": "https://kildo162.github.io/tools",
+  "devDependencies": {
+    "http-server": "^14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "config": {
+    "port": "8000"
+  }
+}

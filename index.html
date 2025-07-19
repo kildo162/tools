@@ -44,110 +44,189 @@
                 <h1>DevTools</h1>
             </div>
             <nav>
-                <ul class="feature-list">
-                    <li>
-                        <a href="#jwt-validation" class="nav-item active">
-                            <img src="/images/icons/web-programming.svg" alt="JWT Validation Tool Icon" width="22" height="22">
-                            <span>JWT Validation</span>
+                <!-- JWT & Token Tools -->
+                <div class="tool-group">
+                    <div class="group-header">
+                        <span class="group-icon">🔐</span>
+                        <span class="group-title">Authentication & Tokens</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>
+                            <a href="#jwt-validation" class="nav-item active">
+                                <img src="/images/icons/web-programming.svg" alt="JWT Validation Tool Icon" width="22" height="22">
+                                <span>JWT Validation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#jwt-generator" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="JWT Generator Tool Icon" width="22" height="22">
+                                <span>JWT Generator</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#jwt-fuzzer" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="JWT Fuzzer Tool Icon" width="22" height="22">
+                                <span>JWT Fuzzer</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Text Processing Tools -->
+                <div class="tool-group">
+                    <div class="group-header">
+                        <span class="group-icon">📝</span>
+                        <span class="group-title">Text & Data Processing</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>
+                            <a href="#json-tool" class="nav-item">
+                                <img src="/images/icons/json.svg" alt="JSON Formatter Tool Icon" width="22" height="22">
+                                <span>JSON Formatter</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#base64-tool" class="nav-item">
+                                <img src="/images/icons/base64.svg" alt="Base64 Encoder/Decoder Icon" width="22" height="22">
+                                <span>Base64 Encoder/Decoder</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#url-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="URL Encoder/Decoder Icon" width="22" height="22">
+                                <span>URL Encoder/Decoder</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#hash-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="Hash Generator Icon" width="22" height="22">
+                                <span>Hash Generator</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Security & Encryption -->
+                <div class="tool-group">
+                    <div class="group-header">
+                        <span class="group-icon">🔒</span>
+                        <span class="group-title">Security & Encryption</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>
+                            <a href="#symmetric-encryption-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="Symmetric Encryption Icon" width="22" height="22">
+                                <span>Symmetric Encryption</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#rsa-key-generator-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="RSA Key Generator Icon" width="22" height="22">
+                                <span>RSA Key Generator</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#rsa-encrypt-decrypt-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="RSA Encrypt/Decrypt Icon" width="22" height="22">
+                                <span>RSA Encrypt/Decrypt</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#password-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="Password Generator Icon" width="22" height="22">
+                                <span>Password Generator</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Generators & Utilities -->
+                <div class="tool-group">
+                    <div class="group-header">
+                        <span class="group-icon">⚡</span>
+                        <span class="group-title">Generators & Utilities</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>
+                            <a href="#encryption-key-generator-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="Encryption Key Generator Icon" width="22" height="22">
+                                <span>Encryption Key Generator</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#api-key-generator-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="API Key Generator Icon" width="22" height="22">
+                                <span>API Key Generator</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#uuid-generator-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="UUID Generator Icon" width="22" height="22">
+                                <span>UUID Generator</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#days-tool" class="nav-item">
+                                <img src="/images/icons/back-in-time.svg" alt="Unix Time Converter Icon" width="22" height="22">
+                                <span>Unix Time Converter</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Network & Integration -->
+                <div class="tool-group">
+                    <div class="group-header">
+                        <span class="group-icon">🌐</span>
+                        <span class="group-title">Network & Integration</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>
+                            <a href="#ip-tool" class="nav-item">
+                                <img src="/images/icons/ip.svg" alt="IP Address Checker Icon" width="22" height="22">
+                                <span>IP Address Checker</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#telegram-tool" class="nav-item">
+                                <img src="/images/icons/paper.svg" alt="Telegram Chatbot Icon" width="22" height="22">
+                                <span>Telegram Bot</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Support Section -->
+            <div class="support-section">
+                <div class="donate-section">
+                    <h3>💙 Support</h3>
+                    <p>Keep tools free!</p>
+                    <div class="donate-buttons">
+                        <a href="#" class="donate-btn primary" onclick="showDonateModal()">
+                            <span class="btn-icon">☕</span>
+                            <span>Coffee</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#jwt-generator" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="JWT Generator Tool Icon" width="22" height="22">
-                            <span>JWT Generator</span>
+                        <a href="https://github.com/kildo162/tools" target="_blank" class="donate-btn secondary">
+                            <span class="btn-icon">⭐</span>
+                            <span>GitHub</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#jwt-fuzzer" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="JWT Fuzzer Tool Icon" width="22" height="22">
-                            <span>JWT Fuzzer</span>
+                        <a href="#" class="donate-btn momo" onclick="showMoMoModal()">
+                            <span class="btn-icon">💰</span>
+                            <span>MoMo</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#json-tool" class="nav-item">
-                            <img src="/images/icons/json.svg" alt="JSON Formatter Tool Icon" width="22" height="22">
-                            <span>JSON Formatter</span>
+                        <a href="#" class="donate-btn zalo" onclick="showZaloPayModal()">
+                            <span class="btn-icon">💳</span>
+                            <span>ZaloPay</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="#days-tool" class="nav-item">
-                            <img src="/images/icons/back-in-time.svg" alt="Unix Time Converter Icon" width="22" height="22">
-                            <span>Unix Time Converter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#ip-tool" class="nav-item">
-                            <img src="/images/icons/ip.svg" alt="IP Address Checker Icon" width="22" height="22">
-                            <span>IP Checker</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#base64-tool" class="nav-item">
-                            <img src="/images/icons/base64.svg" alt="Base64 Encoder/Decoder Icon" width="22" height="22">
-                            <span>Base64</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#url-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="URL Encoder/Decoder Icon" width="22" height="22">
-                            <span>URL Encoder</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#hash-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="Hash Generator Icon" width="22" height="22">
-                            <span>Hash Generator</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#password-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="Password Generator Icon" width="22" height="22">
-                            <span>Password Generator</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#symmetric-encryption-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="Symmetric Encryption Icon" width="22" height="22">
-                            <span>Symmetric Encryption</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#encryption-key-generator-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="Encryption Key Generator Icon" width="22" height="22">
-                            <span>Encryption Key Generator</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#api-key-generator-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="API Key Generator Icon" width="22" height="22">
-                            <span>API Key Generator</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#uuid-generator-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="UUID Generator Icon" width="22" height="22">
-                            <span>UUID Generator</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#rsa-key-generator-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="RSA Key Generator Icon" width="22" height="22">
-                            <span>RSA Key Generator</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#rsa-encrypt-decrypt-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="RSA Encrypt/Decrypt Icon" width="22" height="22">
-                            <span>RSA Encrypt/Decrypt</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#telegram-tool" class="nav-item">
-                            <img src="/images/icons/paper.svg" alt="Telegram Chatbot Icon" width="22" height="22">
-                            <span>Telegram</span>
-                        </a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-info">
+                    <div class="version">v2.0.0</div>
+                    <div class="copyright">Made with ❤️ by KhanhND</div>
+                </div>
+            </div>
             </nav>
         </aside>
         

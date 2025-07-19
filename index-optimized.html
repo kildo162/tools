@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online developer tools including JWT Parser, JSON Formatter, Unix Time Calculator and IP Address Checker. Simple, fast and secure tools for developers.">
+    <meta name="keywords" content="developer tools, jwt decoder, json formatter, unix timestamp converter, ip checker, online tools">
+    <meta name="author" content="KhanhND">
+    <title>DevTools - JWT Parser, JSON Formatter & Developer Utilities</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Developer Tools - Essential Tools for Developers">
+    <meta property="og:description" content="Free online developer tools: JWT Parser, JSON Formatter, Unix Time Calculator and IP Checker">
+    <meta property="og:image" content="/images/og-image.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Developer Tools - Essential Tools for Developers">
+    <meta name="twitter:description" content="Free online developer tools for developers">
+    <meta name="twitter:image" content="/images/og-image.png">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Critical CSS - Inline for performance -->
+    <style>
+        /* Critical CSS will be inlined here by build process */
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/js/core/ModuleLoader.js" as="script">
+    <link rel="preload" href="/js/core/Router.js" as="script">
+    <link rel="preload" href="/js/app.js" as="script">
+    
+    <!-- Preload fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"></noscript>
+    
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div id="page-loader">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar will be loaded dynamically -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <img src="/images/logo.png" alt="DevTools Logo" width="36" height="36" loading="lazy">
+                <h1>DevTools</h1>
+            </div>
+            <nav id="navigation">
+                <!-- Navigation will be populated by JavaScript -->
+                <div class="nav-loading">
+                    <div class="spinner"></div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main content area -->
+        <main class="main-content">
+            <!-- Tool sections will be loaded dynamically -->
+            <div id="tool-container">
+                <!-- JWT Validation Tool -->
+                <section class="tool" id="jwt-validation">
+                    <h2>🔐 JWT Validation & Decoder</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading JWT tools...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- JSON Formatter Tool -->
+                <section class="tool" id="json-tool">
+                    <h2>📄 JSON Formatter & Validator</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading JSON formatter...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Other tools will be loaded as needed -->
+                <section class="tool" id="url-tool">
+                    <h2>🔗 URL Encoder/Decoder</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading URL encoder...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Add placeholder sections for all other tools -->
+                <section class="tool" id="hash-tool">
+                    <h2>🔒 Hash Generator</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading hash generator...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tool" id="password-generator">
+                    <h2>🔑 Password Generator</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading password generator...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tool" id="uuid-generator">
+                    <h2>🆔 UUID Generator</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading UUID generator...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tool" id="unix-time-tool">
+                    <h2>⏰ Unix Time Converter</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading time converter...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Add other tool placeholders as needed -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Core JavaScript - Load in order -->
+    <script src="/js/core/ModuleLoader.js"></script>
+    <script src="/js/core/Router.js"></script>
+    <script src="/js/app.js"></script>
+
+    <!-- Service Worker for caching -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(error) {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Non-critical CSS loading -->
+    <script>
+        // Load non-critical CSS asynchronously
+        function loadCSS(href) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            link.media = 'print';
+            link.onload = function() { this.media = 'all'; };
+            document.head.appendChild(link);
+        }
+        
+        // Load remaining styles after page load
+        window.addEventListener('load', function() {
+            loadCSS('/styles/components.css');
+            loadCSS('/styles/utilities.css');
+        });
+    </script>
+</body>
+</html>
