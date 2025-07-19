@@ -40,83 +40,106 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="/images/logo.png" alt="DevTools - Developer Utilities Platform Logo" width="32" height="32">
-                <h1>Developer Tools Platform</h1>
+                <img src="/images/logo.png" alt="DevTools Logo" width="36" height="36">
+                <h1>DevTools</h1>
             </div>
             <nav>
                 <ul class="feature-list">
                     <li>
-                        <a href="#jwt-tool" class="nav-item">
-                            <img src="/images/icons/web-programming.svg" alt="JWT Parser Tool Icon" width="20" height="20">
-                            <span>JWT Parser</span>
+                        <a href="#jwt-validation" class="nav-item active">
+                            <img src="/images/icons/web-programming.svg" alt="JWT Validation Tool Icon" width="22" height="22">
+                            <span>JWT Validation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#jwt-generator" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="JWT Generator Tool Icon" width="22" height="22">
+                            <span>JWT Generator</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#jwt-fuzzer" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="JWT Fuzzer Tool Icon" width="22" height="22">
+                            <span>JWT Fuzzer</span>
                         </a>
                     </li>
                     <li>
                         <a href="#json-tool" class="nav-item">
-                            <img src="/images/icons/json.svg" alt="JSON Formatter Tool Icon" width="20" height="20">
+                            <img src="/images/icons/json.svg" alt="JSON Formatter Tool Icon" width="22" height="22">
                             <span>JSON Formatter</span>
                         </a>
                     </li>
                     <li>
                         <a href="#days-tool" class="nav-item">
-                            <img src="/images/icons/back-in-time.svg" alt="Unix Time Calculator Icon" width="20" height="20">
+                            <img src="/images/icons/back-in-time.svg" alt="Unix Time Calculator Icon" width="22" height="22">
                             <span>Unix Time</span>
                         </a>
                     </li>
                     <li>
                         <a href="#ip-tool" class="nav-item">
-                            <img src="/images/icons/ip.svg" alt="IP Address Checker Icon" width="20" height="20">
+                            <img src="/images/icons/ip.svg" alt="IP Address Checker Icon" width="22" height="22">
                             <span>IP Checker</span>
                         </a>
                     </li>
                     <li>
                         <a href="#base64-tool" class="nav-item">
-                            <img src="/images/icons/base64.svg" alt="Base64 Encoder/Decoder Icon" width="20" height="20">
+                            <img src="/images/icons/base64.svg" alt="Base64 Encoder/Decoder Icon" width="22" height="22">
                             <span>Base64</span>
                         </a>
                     </li>
                     <li>
                         <a href="#telegram-tool" class="nav-item">
-                            <img src="/images/icons/paper.svg" alt="Telegram Chatbot Icon" width="20" height="20">
-                            <span>Telegram Chatbot</span>
+                            <img src="/images/icons/paper.svg" alt="Telegram Chatbot Icon" width="22" height="22">
+                            <span>Telegram</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-            <button class="sidebar-toggle">
-                <i class="fas fa-bars"></i>  <!-- If using Font Awesome -->
-            </button>
         </aside>
+        
+        <!-- Mobile toggle button -->
+        <button class="sidebar-toggle" aria-label="Toggle Navigation">
+            &#9776;
+        </button>
 
         <!-- Main Content -->
         <main class="main-content">
-            <section id="jwt-tool" class="tool">
-                <h2>JWT Parser</h2>
+            <section id="jwt-validation" class="tool">
+                <h2>JWT Validation & Decoder</h2>
                 <div class="tool-content">
                     <div class="jwt-input-section">
                         <textarea id="jwt-input" placeholder="Enter your JWT token here..."></textarea>
-                        <button id="parse-jwt" class="btn">Decode Token</button>
+                        <div class="jwt-controls">
+                            <button id="parse-jwt" class="btn primary">Decode & Validate</button>
+                            <div class="jwt-secret-input">
+                                <input type="text" id="jwt-secret" placeholder="Secret key (for signature validation)" />
+                                <button id="verify-jwt" class="btn secondary">Verify Signature</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="jwt-result">
+                        <div class="jwt-status">
+                            <div id="jwt-valid-status" class="status-indicator"></div>
+                        </div>
                         <div class="jwt-parts">
                             <div class="jwt-part header">
                                 <div class="part-label">
-                                    <span class="dot"></span>
+                                    <span class="dot header-dot"></span>
                                     HEADER
                                 </div>
                                 <div class="part-content"></div>
                             </div>
                             <div class="jwt-part payload">
                                 <div class="part-label">
-                                    <span class="dot"></span>
+                                    <span class="dot payload-dot"></span>
                                     PAYLOAD
                                 </div>
                                 <div class="part-content"></div>
                             </div>
                             <div class="jwt-part signature">
                                 <div class="part-label">
-                                    <span class="dot"></span>
+                                    <span class="dot signature-dot"></span>
                                     SIGNATURE
                                 </div>
                                 <div class="part-content"></div>
@@ -140,6 +163,115 @@
                 <h2>IP Checker</h2>
                 <div class="tool-content">
                     <div id="ip-info"></div>
+                </div>
+            </section>
+
+            <section id="jwt-generator" class="tool">
+                <h2>JWT Generator & Secret Key Generator</h2>
+                <div class="tool-content">
+                    <div class="generator-sections">
+                        <!-- Secret Key Generator -->
+                        <div class="secret-generator">
+                            <h3>Generate Secure Secret Key</h3>
+                            <div class="secret-controls">
+                                <label for="key-length">Secret Key Length:</label>
+                                <select id="key-length">
+                                    <option value="32">32 bits</option>
+                                    <option value="64">64 bits</option>
+                                    <option value="128">128 bits</option>
+                                    <option value="256" selected>256 bits</option>
+                                    <option value="512">512 bits</option>
+                                </select>
+                                <button id="generate-secret" class="btn primary">Generate Secret</button>
+                            </div>
+                            <div class="secret-output">
+                                <div class="secret-display">
+                                    <div id="generated-secret" class="secret-value" data-hidden="true">Click 'Generate Secret' to create a secure key</div>
+                                    <div class="secret-actions">
+                                        <button id="show-secret" class="btn secondary" disabled>Show Full Secret</button>
+                                        <button id="copy-secret" class="btn secondary" disabled>Copy to Clipboard</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- JWT Token Generator -->
+                        <div class="jwt-generator">
+                            <h3>Generate JWT Token</h3>
+                            <div class="jwt-gen-controls">
+                                <div class="gen-section">
+                                    <label for="jwt-algorithm">Algorithm:</label>
+                                    <select id="jwt-algorithm">
+                                        <option value="HS256">HS256</option>
+                                        <option value="HS384">HS384</option>
+                                        <option value="HS512">HS512</option>
+                                    </select>
+                                </div>
+                                <div class="gen-section">
+                                    <label for="jwt-secret-input">Secret Key:</label>
+                                    <input type="text" id="jwt-secret-input" placeholder="Enter secret key or use generated one above" />
+                                </div>
+                                <div class="gen-section">
+                                    <label>Header (JSON):</label>
+                                    <textarea id="jwt-header" placeholder='{"alg": "HS256", "typ": "JWT"}'></textarea>
+                                </div>
+                                <div class="gen-section">
+                                    <label>Payload (JSON):</label>
+                                    <textarea id="jwt-payload" placeholder='{"sub": "1234567890", "name": "John Doe", "iat": 1516239022}'></textarea>
+                                </div>
+                                <button id="generate-jwt" class="btn primary">Generate JWT Token</button>
+                            </div>
+                            <div class="jwt-gen-output">
+                                <label>Generated JWT Token:</label>
+                                <textarea id="generated-jwt" readonly placeholder="Generated JWT will appear here..."></textarea>
+                                <button id="copy-jwt" class="btn secondary" disabled>Copy JWT</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="jwt-fuzzer" class="tool">
+                <h2>JWT Security Fuzzer</h2>
+                <div class="tool-content">
+                    <div class="fuzzer-section">
+                        <div class="fuzzer-input">
+                            <label for="fuzz-jwt-input">Original JWT Token:</label>
+                            <textarea id="fuzz-jwt-input" placeholder="Enter JWT token to fuzz test..."></textarea>
+                        </div>
+                        
+                        <div class="fuzzer-options">
+                            <h3>Fuzzing Options</h3>
+                            <div class="fuzz-checks">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="fuzz-none-alg" checked> None Algorithm Attack
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="fuzz-blank-signature" checked> Blank Signature Attack
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="fuzz-weak-secret" checked> Weak Secret Detection
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="fuzz-expired-token" checked> Expired Token Test
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="fuzz-audience-bypass" checked> Audience Bypass Test
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="fuzz-issuer-spoof" checked> Issuer Spoofing Test
+                                </label>
+                            </div>
+                            <button id="start-fuzzing" class="btn primary">Start Security Fuzzing</button>
+                        </div>
+
+                        <div class="fuzzer-results">
+                            <h3>Security Test Results</h3>
+                            <div id="fuzzer-output" class="fuzz-results">
+                                <div class="fuzz-placeholder">Run fuzzing tests to see security vulnerabilities</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -239,5 +371,6 @@
 
     <script src="script.js"></script>
     <script src="components/Sidebar.js"></script>
+    <script src="components/JwtTools.js"></script>
 </body>
 </html>

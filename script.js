@@ -38,67 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.tool').classList.add('active');
     document.querySelector('.feature-list a').classList.add('active');
 
-    // Xử lý JWT Parser
-    const jwtInput = document.getElementById('jwt-input');
-    const parseJwtButton = document.getElementById('parse-jwt');
-    const jwtOutput = document.getElementById('jwt-output');
-
-    parseJwtButton.addEventListener('click', function() {
-        const jwt = jwtInput.value.trim();
-        if (!jwt) {
-            jwtOutput.innerHTML = '<div class="error-message">Vui lòng nhập JWT token</div>';
-            return;
-        }
-
-        try {
-            const parts = jwt.split('.');
-            if (parts.length !== 3) {
-                throw new Error('Invalid JWT format');
-            }
-
-            const header = JSON.parse(atob(parts[0]));
-            const payload = JSON.parse(atob(parts[1]));
-
-            // Tạo HTML với cả phần tổng quan và chi tiết
-            jwtOutput.innerHTML = `
-                <div class="jwt-overview">
-                    <div class="jwt-overview-item">
-                        <span class="jwt-dot header-dot"></span>
-                        <span class="jwt-part">${parts[0]}</span>
-                    </div>
-                    <div class="jwt-overview-item">
-                        <span class="jwt-dot payload-dot"></span>
-                        <span class="jwt-part">${parts[1]}</span>
-                    </div>
-                    <div class="jwt-overview-item">
-                        <span class="jwt-dot signature-dot"></span>
-                        <span class="jwt-part">${parts[2]}</span>
-                    </div>
-                </div>
-                <div class="jwt-details">
-                    <div class="jwt-section jwt-header">
-                        <div class="jwt-label">HEADER</div>
-                        <pre>${JSON.stringify(header, null, 2)}</pre>
-                    </div>
-                    <div class="jwt-section jwt-payload">
-                        <div class="jwt-label">PAYLOAD</div>
-                        <pre>${JSON.stringify(payload, null, 2)}</pre>
-                    </div>
-                    <div class="jwt-section jwt-signature">
-                        <div class="jwt-label">SIGNATURE</div>
-                        <pre>${parts[2]}</pre>
-                    </div>
-                </div>
-            `;
-        } catch (error) {
-            jwtOutput.innerHTML = `
-                <div class="error-message">
-                    Lỗi khi parse JWT: ${error.message}
-                </div>
-            `;
-        }
-    });
-
     // Function to calculate days since January 1, 1970
     function calculateDaysSince1970() {
         const now = new Date();
