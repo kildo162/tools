@@ -88,6 +88,60 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#url-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="URL Encoder/Decoder Icon" width="22" height="22">
+                            <span>URL Encoder</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#hash-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="Hash Generator Icon" width="22" height="22">
+                            <span>Hash Generator</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#password-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="Password Generator Icon" width="22" height="22">
+                            <span>Password Generator</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#symmetric-encryption-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="Symmetric Encryption Icon" width="22" height="22">
+                            <span>Symmetric Encryption</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#encryption-key-generator-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="Encryption Key Generator Icon" width="22" height="22">
+                            <span>Encryption Key Generator</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#api-key-generator-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="API Key Generator Icon" width="22" height="22">
+                            <span>API Key Generator</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#uuid-generator-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="UUID Generator Icon" width="22" height="22">
+                            <span>UUID Generator</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#rsa-key-generator-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="RSA Key Generator Icon" width="22" height="22">
+                            <span>RSA Key Generator</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#rsa-encrypt-decrypt-tool" class="nav-item">
+                            <img src="/images/icons/web-programming.svg" alt="RSA Encrypt/Decrypt Icon" width="22" height="22">
+                            <span>RSA Encrypt/Decrypt</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#telegram-tool" class="nav-item">
                             <img src="/images/icons/paper.svg" alt="Telegram Chatbot Icon" width="22" height="22">
                             <span>Telegram</span>
@@ -576,13 +630,820 @@
                     </div>
                 </div>
             </section>
+
+            <!-- URL Encoder/Decoder Tool -->
+            <section id="url-tool" class="tool">
+                <h2>URL Encoder/Decoder</h2>
+                <div class="tool-content">
+                    <div class="url-encoder-container">
+                        <!-- Input Section -->
+                        <div class="url-input-section">
+                            <div class="input-with-label">
+                                <label for="url-input">Input Text/URL</label>
+                                <textarea id="url-input" placeholder="Enter text or URL to encode/decode..." rows="6"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="url-actions">
+                            <button class="btn" id="url-encode-btn">🔒 Encode</button>
+                            <button class="btn btn-secondary" id="url-decode-btn">🔓 Decode</button>
+                            <button class="btn btn-secondary" id="url-clear-btn">🧹 Clear</button>
+                        </div>
+
+                        <!-- Output Section -->
+                        <div class="url-output-section">
+                            <div class="input-with-label">
+                                <label for="url-output">Output</label>
+                                <textarea id="url-output" placeholder="Result will appear here..." rows="6" readonly></textarea>
+                            </div>
+                            <div class="url-output-actions">
+                                <button class="btn-small" id="url-copy-btn">📋 Copy</button>
+                                <button class="btn-small" id="url-swap-btn">🔄 Swap</button>
+                            </div>
+                        </div>
+
+                        <!-- URL Components Section -->
+                        <div class="url-components-section">
+                            <h3>URL Component Encoder</h3>
+                            <div class="url-components-grid">
+                                <div class="component-item">
+                                    <label>Scheme:</label>
+                                    <input type="text" id="url-scheme" placeholder="https" />
+                                </div>
+                                <div class="component-item">
+                                    <label>Host:</label>
+                                    <input type="text" id="url-host" placeholder="example.com" />
+                                </div>
+                                <div class="component-item">
+                                    <label>Path:</label>
+                                    <input type="text" id="url-path" placeholder="/path/to/resource" />
+                                </div>
+                                <div class="component-item">
+                                    <label>Query:</label>
+                                    <input type="text" id="url-query" placeholder="param1=value1&param2=value2" />
+                                </div>
+                                <div class="component-item">
+                                    <label>Fragment:</label>
+                                    <input type="text" id="url-fragment" placeholder="section1" />
+                                </div>
+                            </div>
+                            <div class="component-actions">
+                                <button class="btn" id="build-url-btn">🔨 Build URL</button>
+                                <button class="btn btn-secondary" id="parse-url-btn">🔍 Parse URL</button>
+                            </div>
+                            <div class="component-result">
+                                <textarea id="url-component-result" placeholder="Built/Parsed URL will appear here..." rows="3" readonly></textarea>
+                                <button class="btn-small" id="component-copy-btn">📋 Copy</button>
+                            </div>
+                        </div>
+
+                        <!-- Examples Section -->
+                        <div class="url-examples-section">
+                            <h3>Common Use Cases</h3>
+                            <div class="example-buttons">
+                                <button class="btn-small" id="example-query-params">Query Parameters</button>
+                                <button class="btn-small" id="example-special-chars">Special Characters</button>
+                                <button class="btn-small" id="example-unicode">Unicode Text</button>
+                                <button class="btn-small" id="example-json-param">JSON in URL</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hash Generator Tool -->
+            <section id="hash-tool" class="tool">
+                <h2>Hash Generator</h2>
+                <p class="tool-description">Generate secure hashes using multiple algorithms. Works in all environments with fallback implementations.</p>
+                <div class="tool-content">
+                    <div class="hash-generator-container">
+                        <!-- Input Section -->
+                        <div class="hash-input-section">
+                            <div class="input-with-label">
+                                <label for="hash-input">Input Text</label>
+                                <textarea id="hash-input" placeholder="Enter text to generate hash..." rows="6"></textarea>
+                            </div>
+                            <div class="hash-input-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="hash-file-mode">
+                                    File Mode (for file hashing)
+                                </label>
+                                <input type="file" id="hash-file-input" style="display: none;">
+                                <button class="btn-small" id="hash-file-btn" style="display: none;">📁 Choose File</button>
+                            </div>
+                        </div>
+
+                        <!-- Hash Algorithm Selection -->
+                        <div class="hash-algorithms-section">
+                            <h3>Hash Algorithms</h3>
+                            <div class="algorithm-grid">
+                                <label class="algorithm-item">
+                                    <input type="checkbox" name="hash-algo" value="md5" checked>
+                                    <span class="algorithm-name">MD5</span>
+                                    <small>128-bit (32 chars)</small>
+                                </label>
+                                <label class="algorithm-item">
+                                    <input type="checkbox" name="hash-algo" value="sha1" checked>
+                                    <span class="algorithm-name">SHA-1</span>
+                                    <small>160-bit (40 chars)</small>
+                                </label>
+                                <label class="algorithm-item">
+                                    <input type="checkbox" name="hash-algo" value="sha256" checked>
+                                    <span class="algorithm-name">SHA-256</span>
+                                    <small>256-bit (64 chars)</small>
+                                </label>
+                                <label class="algorithm-item">
+                                    <input type="checkbox" name="hash-algo" value="sha384">
+                                    <span class="algorithm-name">SHA-384</span>
+                                    <small>384-bit (96 chars)</small>
+                                </label>
+                                <label class="algorithm-item">
+                                    <input type="checkbox" name="hash-algo" value="sha512">
+                                    <span class="algorithm-name">SHA-512</span>
+                                    <small>512-bit (128 chars)</small>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="hash-actions">
+                            <button class="btn" id="generate-hashes-btn">🔐 Generate Hashes</button>
+                            <button class="btn btn-secondary" id="hash-clear-btn">🧹 Clear</button>
+                            <button class="btn btn-secondary" id="compare-hash-btn">⚖️ Compare</button>
+                        </div>
+
+                        <!-- Results Section -->
+                        <div class="hash-results-section">
+                            <h3>Generated Hashes</h3>
+                            <div id="hash-results-container">
+                                <!-- Hash results will be populated here -->
+                            </div>
+                        </div>
+
+                        <!-- Hash Comparison Section -->
+                        <div class="hash-comparison-section" style="display: none;">
+                            <h3>Hash Comparison</h3>
+                            <div class="comparison-inputs">
+                                <div class="input-with-label">
+                                    <label>Hash 1:</label>
+                                    <input type="text" id="compare-hash-1" placeholder="Enter first hash..." />
+                                </div>
+                                <div class="input-with-label">
+                                    <label>Hash 2:</label>
+                                    <input type="text" id="compare-hash-2" placeholder="Enter second hash..." />
+                                </div>
+                            </div>
+                            <div class="comparison-result" id="comparison-result"></div>
+                        </div>
+
+                        <!-- Hash Verification Section -->
+                        <div class="hash-verification-section">
+                            <h3>Hash Verification</h3>
+                            <div class="verification-inputs">
+                                <div class="input-with-label">
+                                    <label>Original Text:</label>
+                                    <input type="text" id="verify-text" placeholder="Enter original text..." />
+                                </div>
+                                <div class="input-with-label">
+                                    <label>Hash to Verify:</label>
+                                    <input type="text" id="verify-hash" placeholder="Enter hash to verify..." />
+                                </div>
+                                <div class="input-with-label">
+                                    <label>Algorithm:</label>
+                                    <select id="verify-algorithm">
+                                        <option value="md5">MD5</option>
+                                        <option value="sha1">SHA-1</option>
+                                        <option value="sha256">SHA-256</option>
+                                        <option value="sha384">SHA-384</option>
+                                        <option value="sha512">SHA-512</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="hash-actions">
+                                <button class="btn" id="verify-hash-btn">✅ Verify Hash</button>
+                                <button class="btn btn-secondary" id="sample-verify-btn">📋 Load Sample</button>
+                            </div>
+                            <div class="verification-result" id="verification-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Password Generator Tool -->
+            <section id="password-tool" class="tool">
+                <h2>Password Generator</h2>
+                <p class="tool-description">Generate strong, secure passwords with customizable options and strength analysis.</p>
+                <div class="tool-content">
+                    <div class="password-generator-container">
+                        <!-- Password Configuration -->
+                        <div class="password-config-section">
+                            <div class="password-length-section">
+                                <label for="password-length">Password Length: <span id="password-length-display">16</span></label>
+                                <input type="range" id="password-length" min="8" max="64" value="16">
+                            </div>
+                            
+                            <div class="password-options-grid">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="include-uppercase" checked>
+                                    Include Uppercase (A-Z)
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="include-lowercase" checked>
+                                    Include Lowercase (a-z)
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="include-numbers" checked>
+                                    Include Numbers (0-9)
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="include-symbols" checked>
+                                    Include Symbols (!@#$%)
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="exclude-similar">
+                                    Exclude Similar Characters (i, l, 1, L, o, 0, O)
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Generated Password -->
+                        <div class="password-output-section">
+                            <div class="password-display">
+                                <code id="password-output">Generated password will appear here</code>
+                                <button class="btn-small" id="copy-password-btn">📋 Copy</button>
+                            </div>
+                            
+                            <!-- Strength Meter -->
+                            <div class="password-strength-section">
+                                <div class="strength-meter-container">
+                                    <div class="strength-meter">
+                                        <div class="strength-meter-bar" id="password-strength-meter"></div>
+                                    </div>
+                                    <div class="strength-info">
+                                        <span class="strength-text" id="password-strength-text">Strong</span>
+                                        <span class="strength-percent" id="password-strength-percent">80%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn" id="generate-password-btn">🔄 Generate New Password</button>
+                        </div>
+                        
+                        <!-- Batch Generator -->
+                        <div class="password-batch-section">
+                            <h3>Batch Password Generator</h3>
+                            <div class="batch-controls">
+                                <div class="input-with-label">
+                                    <label>Number of passwords:</label>
+                                    <input type="number" id="batch-password-count" min="1" max="50" value="5">
+                                </div>
+                                <button class="btn-secondary" id="generate-batch-btn">📝 Generate Batch</button>
+                            </div>
+                            <div class="batch-output" id="batch-password-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Symmetric Encryption Tool -->
+            <section id="symmetric-encryption-tool" class="tool">
+                <h2>Symmetric Encryption Tool</h2>
+                <p class="tool-description">Encrypt and decrypt text using symmetric encryption algorithms like AES, DES, and 3DES.</p>
+                <div class="tool-content">
+                    <div class="symmetric-encryption-container">
+                        <!-- Algorithm and Mode Selection -->
+                        <div class="encryption-config-section">
+                            <div class="config-grid">
+                                <div class="input-with-label">
+                                    <label>Encryption Algorithm:</label>
+                                    <select id="symmetric-algorithm">
+                                        <option value="aes-256">AES-256</option>
+                                        <option value="aes-192">AES-192</option>
+                                        <option value="aes-128">AES-128</option>
+                                        <option value="3des">3DES (Triple DES)</option>
+                                        <option value="des">DES</option>
+                                        <option value="chacha20">ChaCha20</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mode-selection">
+                                    <label>Operation Mode:</label>
+                                    <div class="radio-group">
+                                        <label class="radio-option">
+                                            <input type="radio" name="encryption-mode" id="encrypt-mode" value="encrypt" checked>
+                                            🔒 Encrypt
+                                        </label>
+                                        <label class="radio-option">
+                                            <input type="radio" name="encryption-mode" id="decrypt-mode" value="decrypt">
+                                            🔓 Decrypt
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Key Input Section -->
+                        <div class="encryption-key-section">
+                            <div class="key-input-group">
+                                <div class="input-with-label">
+                                    <label>Encryption Key:</label>
+                                    <div class="key-input-container">
+                                        <input type="text" id="encryption-key" placeholder="Enter encryption key in hex format...">
+                                        <select id="key-format">
+                                            <option value="hex">Hex</option>
+                                            <option value="base64">Base64</option>
+                                            <option value="utf8">UTF-8</option>
+                                        </select>
+                                        <button class="btn-small" id="generate-key-btn">🎲 Generate</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="key-requirements" id="key-requirements-info"></div>
+                        </div>
+                        
+                        <!-- Text Input/Output Section -->
+                        <div class="encryption-io-section">
+                            <div class="io-grid">
+                                <div class="input-section">
+                                    <div class="input-with-label">
+                                        <label id="encryption-input-label">Text to Encrypt:</label>
+                                        <textarea id="encryption-text-input" rows="6" placeholder="Enter text to encrypt..."></textarea>
+                                    </div>
+                                    
+                                    <div class="file-mode-section">
+                                        <label class="checkbox-option">
+                                            <input type="checkbox" id="encryption-file-mode">
+                                            File Mode
+                                        </label>
+                                        <input type="file" id="encryption-file-input" style="display: none;">
+                                        <button class="btn-small" id="encryption-file-btn" style="display: none;">📁 Choose File</button>
+                                        <label id="file-mode-label" style="display: none;">Selected file content will appear in the text area</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="output-section">
+                                    <div class="input-with-label">
+                                        <label id="encryption-output-label">Encrypted Output (Hex):</label>
+                                        <textarea id="encryption-text-output" rows="6" placeholder="Output will appear here..." readonly></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="encryption-actions">
+                                <button class="btn" id="process-encryption-btn">🔒 Encrypt</button>
+                                <button class="btn-secondary" id="swap-encryption-btn">⇄ Swap</button>
+                                <button class="btn-secondary" id="clear-encryption-btn">🗑 Clear</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Results Section -->
+                        <div class="encryption-results" id="encryption-results"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Encryption Key Generator Tool -->
+            <section id="encryption-key-generator-tool" class="tool">
+                <h2>Encryption Key Generator</h2>
+                <p class="tool-description">Generate secure encryption keys for various algorithms including AES, ChaCha20, and more.</p>
+                <div class="tool-content">
+                    <div class="key-generator-container">
+                        <!-- Key Configuration -->
+                        <div class="key-config-section">
+                            <div class="key-options-grid">
+                                <div class="input-with-label">
+                                    <label>Key Type:</label>
+                                    <select id="encryption-key-type">
+                                        <option value="aes">AES (Advanced Encryption Standard)</option>
+                                        <option value="chacha20">ChaCha20</option>
+                                        <option value="des">DES (Data Encryption Standard)</option>
+                                        <option value="3des">3DES (Triple DES)</option>
+                                        <option value="twofish">Twofish</option>
+                                        <option value="blowfish">Blowfish</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-with-label">
+                                    <label>Key Size:</label>
+                                    <select id="encryption-key-size">
+                                        <option value="256">256 bits</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-with-label">
+                                    <label>Format:</label>
+                                    <select id="encryption-key-format">
+                                        <option value="hex">Hexadecimal</option>
+                                        <option value="base64">Base64</option>
+                                        <option value="base64url">Base64 URL-safe</option>
+                                        <option value="binary">Binary</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Key Information -->
+                        <div class="key-info" id="encryption-key-info"></div>
+                        
+                        <!-- Generated Key Display -->
+                        <div class="key-output-section">
+                            <div class="key-display">
+                                <div class="input-with-label">
+                                    <label>Generated Key:</label>
+                                    <div class="key-output-container">
+                                        <code id="generated-encryption-key">Key will appear here</code>
+                                        <button class="btn-small" id="copy-encryption-key-btn">📋 Copy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn" id="generate-encryption-key-btn">🎲 Generate New Key</button>
+                        </div>
+                        
+                        <!-- Key Statistics -->
+                        <div class="key-stats" id="key-stats"></div>
+                        
+                        <!-- Batch Key Generator -->
+                        <div class="batch-keys-section">
+                            <h3>Batch Key Generator</h3>
+                            <div class="batch-controls">
+                                <div class="input-with-label">
+                                    <label>Number of keys:</label>
+                                    <input type="number" id="batch-key-count" min="1" max="20" value="5">
+                                </div>
+                                <button class="btn-secondary" id="generate-batch-keys-btn">🗝 Generate Batch</button>
+                            </div>
+                            <div class="batch-output" id="batch-keys-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Key Generator Tool -->
+            <section id="api-key-generator-tool" class="tool">
+                <h2>API Key Generator</h2>
+                <p class="tool-description">Generate secure API keys in various formats including UUID, alphanumeric, and custom patterns.</p>
+                <div class="tool-content">
+                    <div class="api-key-generator-container">
+                        <!-- API Key Configuration -->
+                        <div class="api-key-config-section">
+                            <div class="api-key-options-grid">
+                                <div class="input-with-label">
+                                    <label>API Key Format:</label>
+                                    <select id="api-key-format">
+                                        <option value="uuid">UUID (xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx)</option>
+                                        <option value="alphanumeric">Alphanumeric (A-Z, a-z, 0-9)</option>
+                                        <option value="hex">Hexadecimal (0-9, a-f)</option>
+                                        <option value="base64">Base64 (A-Z, a-z, 0-9, +, /)</option>
+                                        <option value="base64url">Base64 URL-safe (A-Z, a-z, 0-9, -, _)</option>
+                                        <option value="numeric">Numeric (0-9)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-with-label">
+                                    <label>Length: <span id="api-key-length-display">32</span></label>
+                                    <input type="range" id="api-key-length" min="8" max="128" value="32">
+                                </div>
+                            </div>
+                            
+                            <div class="api-key-prefix-suffix">
+                                <div class="input-with-label">
+                                    <label>Prefix (Optional):</label>
+                                    <input type="text" id="api-key-prefix" placeholder="e.g., api_">
+                                </div>
+                                <div class="input-with-label">
+                                    <label>Suffix (Optional):</label>
+                                    <input type="text" id="api-key-suffix" placeholder="e.g., _prod">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- API Key Information -->
+                        <div class="api-key-info" id="api-key-info"></div>
+                        
+                        <!-- Generated API Key Display -->
+                        <div class="api-key-output-section">
+                            <div class="api-key-display">
+                                <div class="input-with-label">
+                                    <label>Generated API Key:</label>
+                                    <div class="api-key-output-container">
+                                        <code id="generated-api-key">API key will appear here</code>
+                                        <button class="btn-small" id="copy-api-key-btn">📋 Copy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn" id="generate-api-key-btn">🎲 Generate New API Key</button>
+                        </div>
+                        
+                        <!-- API Key Statistics -->
+                        <div class="api-key-stats" id="api-key-stats"></div>
+                        
+                        <!-- Batch API Key Generator -->
+                        <div class="batch-api-keys-section">
+                            <h3>Batch API Key Generator</h3>
+                            <div class="batch-controls">
+                                <div class="input-with-label">
+                                    <label>Number of API keys:</label>
+                                    <input type="number" id="batch-api-key-count" min="1" max="50" value="5">
+                                </div>
+                                <button class="btn-secondary" id="generate-batch-api-keys-btn">🔑 Generate Batch</button>
+                            </div>
+                            <div class="batch-output" id="batch-api-keys-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UUID Generator Tool -->
+            <section id="uuid-generator-tool" class="tool">
+                <div class="tool-header">
+                    <h2>UUID Generator</h2>
+                    <p>Generate universally unique identifiers (UUIDs) in different formats</p>
+                </div>
+                <div class="tool-content">
+                    <div class="uuid-generator-container">
+                        <!-- UUID Type Selection -->
+                        <div class="uuid-type-section">
+                            <h3>UUID Version</h3>
+                            <div class="uuid-type-selector">
+                                <label class="uuid-type-option">
+                                    <input type="radio" name="uuid-version" value="4" id="uuid-v4-radio" checked>
+                                    <span class="uuid-type-label">
+                                        <strong>UUID v4 (Random)</strong>
+                                        <small>Randomly generated UUID (most common)</small>
+                                    </span>
+                                </label>
+                                <label class="uuid-type-option">
+                                    <input type="radio" name="uuid-version" value="1" id="uuid-v1-radio">
+                                    <span class="uuid-type-label">
+                                        <strong>UUID v1 (Time-based)</strong>
+                                        <small>Based on timestamp and MAC address</small>
+                                    </span>
+                                </label>
+                                <label class="uuid-type-option">
+                                    <input type="radio" name="uuid-version" value="5" id="uuid-v5-radio">
+                                    <span class="uuid-type-label">
+                                        <strong>UUID v5 (Name-based)</strong>
+                                        <small>SHA-1 hash of namespace and name</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- UUID v5 Namespace Selection -->
+                        <div class="uuid-v5-options" id="uuid-v5-options" style="display: none;">
+                            <h4>UUID v5 Configuration</h4>
+                            <div class="uuid-v5-controls">
+                                <div class="input-with-label">
+                                    <label>Namespace:</label>
+                                    <select id="uuid-namespace-select">
+                                        <option value="dns">DNS (Domain names)</option>
+                                        <option value="url">URL (Uniform resource locators)</option>
+                                        <option value="oid">OID (Object identifiers)</option>
+                                        <option value="x500">X.500 (Distinguished names)</option>
+                                        <option value="custom">Custom Namespace UUID</option>
+                                    </select>
+                                </div>
+                                <div class="input-with-label custom-namespace" id="custom-namespace-input" style="display: none;">
+                                    <label>Custom Namespace UUID:</label>
+                                    <input type="text" id="custom-namespace-uuid" placeholder="Enter UUID namespace">
+                                </div>
+                                <div class="input-with-label">
+                                    <label>Name:</label>
+                                    <input type="text" id="uuid-name-input" placeholder="Enter name to hash">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UUID Information -->
+                        <div class="uuid-info" id="uuid-info"></div>
+
+                        <!-- Generated UUID Display -->
+                        <div class="uuid-output-section">
+                            <div class="uuid-display">
+                                <div class="input-with-label">
+                                    <label>Generated UUID:</label>
+                                    <div class="uuid-output-container">
+                                        <code id="generated-uuid">UUID will appear here</code>
+                                        <button class="btn-small" id="copy-uuid-btn">📋 Copy</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="uuid-actions">
+                                <button class="btn" id="generate-uuid-btn">🎲 Generate UUID</button>
+                                <button class="btn-secondary" id="clear-uuid-btn">🗑️ Clear</button>
+                            </div>
+                        </div>
+
+                        <!-- UUID Statistics -->
+                        <div class="uuid-stats" id="uuid-stats"></div>
+
+                        <!-- Batch UUID Generator -->
+                        <div class="batch-uuid-section">
+                            <h3>Batch UUID Generator</h3>
+                            <div class="batch-controls">
+                                <div class="input-with-label">
+                                    <label>Number of UUIDs:</label>
+                                    <input type="number" id="batch-uuid-count" min="1" max="100" value="10">
+                                </div>
+                                <button class="btn-secondary" id="generate-batch-uuids-btn">🔢 Generate Batch</button>
+                            </div>
+                            <div class="batch-output" id="batch-uuids-output"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSA Key Generator Tool -->
+            <section id="rsa-key-generator-tool" class="tool">
+                <div class="tool-header">
+                    <h2>RSA Key Generator</h2>
+                    <p>Generate RSA public and private key pairs for cryptographic operations</p>
+                </div>
+                <div class="tool-content">
+                    <div class="rsa-key-generator-container">
+                        <!-- RSA Configuration -->
+                        <div class="rsa-config-section">
+                            <h3>RSA Key Configuration</h3>
+                            <div class="rsa-config-controls">
+                                <div class="input-with-label">
+                                    <label>Key Size:</label>
+                                    <select id="rsa-key-size">
+                                        <option value="1024">1024 bits (Legacy)</option>
+                                        <option value="2048" selected>2048 bits (Recommended)</option>
+                                        <option value="3072">3072 bits (High Security)</option>
+                                        <option value="4096">4096 bits (Maximum Security)</option>
+                                    </select>
+                                </div>
+                                <div class="input-with-label">
+                                    <label>Output Format:</label>
+                                    <select id="rsa-key-format">
+                                        <option value="pem" selected>PEM (Privacy-Enhanced Mail)</option>
+                                        <option value="der">DER (Base64 encoded)</option>
+                                        <option value="hex">Hexadecimal</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RSA Key Information -->
+                        <div class="rsa-key-info" id="rsa-key-info"></div>
+
+                        <!-- Generated Keys Display -->
+                        <div class="rsa-keys-output-section">
+                            <div class="key-pair-container">
+                                <div class="key-container">
+                                    <div class="key-header">
+                                        <h4>🔓 Public Key</h4>
+                                        <button class="btn-small" id="copy-public-key-btn">📋 Copy</button>
+                                    </div>
+                                    <textarea id="rsa-public-key" readonly placeholder="Public key will appear here..."></textarea>
+                                </div>
+                                <div class="key-container">
+                                    <div class="key-header">
+                                        <h4>🔐 Private Key</h4>
+                                        <button class="btn-small" id="copy-private-key-btn">📋 Copy</button>
+                                    </div>
+                                    <textarea id="rsa-private-key" readonly placeholder="Private key will appear here..."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="rsa-key-actions">
+                                <button class="btn" id="generate-rsa-keys-btn">🔑 Generate New Key Pair</button>
+                                <button class="btn-secondary" id="download-keys-btn">💾 Download Keys</button>
+                            </div>
+                        </div>
+
+                        <!-- RSA Key Statistics -->
+                        <div class="rsa-key-stats" id="rsa-key-stats"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSA Encrypt/Decrypt Tool -->
+            <section id="rsa-encrypt-decrypt-tool" class="tool">
+                <div class="tool-header">
+                    <h2>RSA Encrypt/Decrypt</h2>
+                    <p>Encrypt and decrypt messages using RSA public/private keys</p>
+                </div>
+                <div class="tool-content">
+                    <div class="rsa-crypto-container">
+                        <!-- RSA Crypto Options -->
+                        <div class="rsa-crypto-options">
+                            <div class="crypto-options-controls">
+                                <div class="input-with-label">
+                                    <label>Padding Scheme:</label>
+                                    <select id="rsa-padding-scheme">
+                                        <option value="RSA-OAEP" selected>RSA-OAEP (Recommended)</option>
+                                        <option value="RSASSA-PKCS1-v1_5">PKCS1 v1.5 (Legacy)</option>
+                                    </select>
+                                </div>
+                                <div class="input-with-label">
+                                    <label>Encoding:</label>
+                                    <select id="rsa-encoding-format">
+                                        <option value="base64" selected>Base64</option>
+                                        <option value="hex">Hexadecimal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn-small" id="generate-keys-shortcut">🔑 Generate Keys Quick</button>
+                        </div>
+
+                        <!-- Tab Navigation -->
+                        <div class="crypto-tabs">
+                            <button class="tab-btn active" id="rsa-encrypt-tab">🔒 Encrypt</button>
+                            <button class="tab-btn" id="rsa-decrypt-tab">🔓 Decrypt</button>
+                        </div>
+
+                        <!-- Encryption Tab Content -->
+                        <div class="crypto-tab-content" id="rsa-encrypt-content">
+                            <div class="key-input-section">
+                                <div class="input-with-label">
+                                    <label>Public Key (PEM Format):</label>
+                                    <textarea id="rsa-public-key-input" placeholder="-----BEGIN PUBLIC KEY-----&#10;...&#10;-----END PUBLIC KEY-----"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="message-section">
+                                <div class="input-with-label">
+                                    <label>Message to Encrypt:</label>
+                                    <textarea id="rsa-plaintext-input" placeholder="Enter your message here..."></textarea>
+                                </div>
+                                
+                                <div class="crypto-actions">
+                                    <button class="btn" id="rsa-encrypt-btn">🔒 Encrypt Message</button>
+                                    <button class="btn-secondary" id="clear-encryption-btn">🗑️ Clear</button>
+                                </div>
+                            </div>
+                            
+                            <div class="result-section">
+                                <div class="input-with-label">
+                                    <label>Encrypted Message:</label>
+                                    <textarea id="rsa-encrypted-output" readonly placeholder="Encrypted message will appear here..."></textarea>
+                                    <button class="btn-small" id="copy-encrypted-btn">📋 Copy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decryption Tab Content -->
+                        <div class="crypto-tab-content" id="rsa-decrypt-content" style="display: none;">
+                            <div class="key-input-section">
+                                <div class="input-with-label">
+                                    <label>Private Key (PEM Format):</label>
+                                    <textarea id="rsa-private-key-input" placeholder="-----BEGIN PRIVATE KEY-----&#10;...&#10;-----END PRIVATE KEY-----"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="message-section">
+                                <div class="input-with-label">
+                                    <label>Encrypted Message:</label>
+                                    <textarea id="rsa-ciphertext-input" placeholder="Enter encrypted message (base64)..."></textarea>
+                                </div>
+                                
+                                <div class="crypto-actions">
+                                    <button class="btn" id="rsa-decrypt-btn">🔓 Decrypt Message</button>
+                                    <button class="btn-secondary" id="clear-decryption-btn">🗑️ Clear</button>
+                                </div>
+                            </div>
+                            
+                            <div class="result-section">
+                                <div class="input-with-label">
+                                    <label>Decrypted Message:</label>
+                                    <textarea id="rsa-decrypted-output" readonly placeholder="Decrypted message will appear here..."></textarea>
+                                    <button class="btn-small" id="copy-decrypted-btn">📋 Copy</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Information Display -->
+                        <div class="rsa-crypto-key-info" id="rsa-crypto-key-info"></div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
     <script src="script.js"></script>
+    <script src="components/JwtTools.js"></script>
+    <script src="components/Sidebar.js"></script>
+    <script src="components/UnixTimeConverter.js"></script>
+    <script src="components/URLEncoderDecoder.js"></script>
+    <script src="components/HashGenerator.js"></script>
+    <script src="components/PasswordGenerator.js"></script>
+    <script src="components/SymmetricEncryption.js"></script>
+    <script src="components/EncryptionKeyGenerator.js"></script>
+    <script src="components/APIKeyGenerator.js"></script>
+    <script src="components/UUIDGenerator.js"></script>
+    <script src="components/RSAKeyGenerator.js"></script>
+    <script src="components/RSAEncryptDecrypt.js"></script>
     <script src="components/Sidebar.js"></script>
     <script src="components/JwtTools.js"></script>
     <script src="components/UnixTimeConverter.js"></script>
     <script src="components/JSONFormatter.js"></script>
+    <script src="components/URLEncoderDecoder.js"></script>
+    <script src="components/HashGenerator.js"></script>
 </body>
 </html>
