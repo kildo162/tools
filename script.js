@@ -38,21 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.tool').classList.add('active');
     document.querySelector('.feature-list a').classList.add('active');
 
-    // Function to calculate days since January 1, 1970
-    function calculateDaysSince1970() {
-        const now = new Date();
-        const start = new Date(Date.UTC(1970, 0, 1));
-        const diffTime = now - start;
-        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-        document.getElementById('days-since-1970').textContent = diffDays;
-    }
-
-    // Initial call
-    calculateDaysSince1970();
-
-    // Update every second
-    setInterval(calculateDaysSince1970, 1000);
-
     // JSON Formatter
     function initJsonFormatter() {
         const jsonInput = document.getElementById('json-input');
@@ -498,19 +483,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initBase64Tool();
 });
 
-// Function to get current IP address
-function getIPAddress() {
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('ip-address').textContent = data.ip;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('ip-address').textContent = 'Error fetching IP';
-        });
-}
-
 // Function to parse JWT
 function parseJWT() {
     const jwtInput = document.getElementById('jwt-input').value;
@@ -526,9 +498,6 @@ function parseJWT() {
         document.getElementById('jwt-output').textContent = 'Invalid JWT';
     }
 }
-
-// Initial calls
-getIPAddress();
 
 document.addEventListener('DOMContentLoaded', () => {
     const base64Input = document.getElementById('base64-input');

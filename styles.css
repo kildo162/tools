@@ -55,7 +55,335 @@ body {
     padding: 1.5rem;
 }
 
-/* Days Counter Specific Styles */
+/* Unix Time Converter Styles */
+.unix-current-time {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.unix-current-time h3 {
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.time-displays {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.time-display-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.copy-days-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    color: white;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.copy-days-btn:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.time-display-item label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.time-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: 'Fira Code', monospace;
+    word-break: break-all;
+}
+
+.converter-section {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.converter-section h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.converter-input-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: end;
+    margin-bottom: 1rem;
+}
+
+.input-with-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-with-label label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.input-with-label input,
+.input-with-label select {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-with-label input:focus,
+.input-with-label select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.converter-result {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0;
+    min-height: 60px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    color: #374151;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.converter-result:empty::before {
+    content: 'Result will appear here...';
+    color: #9ca3af;
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background-color 0.2s ease;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item:hover {
+    background-color: #f8fafc;
+}
+
+.result-label {
+    font-weight: 600;
+    color: #374151;
+    margin-right: 1rem;
+    min-width: 140px;
+    font-family: 'Inter', sans-serif;
+}
+
+.result-value {
+    flex: 1;
+    font-family: 'Fira Code', monospace;
+    color: #1e293b;
+    word-break: break-all;
+    text-align: right;
+    margin-right: 0.5rem;
+}
+
+.copy-item-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+    min-width: 50px;
+}
+
+.copy-item-btn:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+}
+
+.copy-item-btn:active {
+    transform: scale(0.95);
+}
+
+.quick-actions {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.quick-actions h3 {
+    margin: 0 0 1rem 0;
+    color: #92400e;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.quick-action-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+
+.batch-converter textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.batch-result {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.batch-result:empty::before {
+    content: 'Batch conversion results will appear here...';
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.batch-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.875rem;
+}
+
+.batch-result-item:last-child {
+    border-bottom: none;
+}
+
+.batch-result-unix {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.batch-result-human {
+    color: #374151;
+}
+
+.unix-info {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+.unix-info h3 {
+    margin: 0 0 1rem 0;
+    color: #0c4a6e;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 0.5rem;
+    border: 1px solid #e0f2fe;
+}
+
+.info-item strong {
+    color: #0c4a6e;
+    font-weight: 600;
+}
+
+.info-item span {
+    font-family: 'Fira Code', monospace;
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+.result-success {
+    background: #dcfce7 !important;
+    border-color: #bbf7d0 !important;
+    color: #15803d !important;
+}
+
+.result-error {
+    background: #fef2f2 !important;
+    border-color: #fecaca !important;
+    color: #dc2626 !important;
+}
+
+/* Days Counter Styles - Legacy Support */
 .days-counter {
     display: flex;
     justify-content: center;

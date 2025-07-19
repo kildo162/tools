@@ -71,8 +71,8 @@
                     </li>
                     <li>
                         <a href="#days-tool" class="nav-item">
-                            <img src="/images/icons/back-in-time.svg" alt="Unix Time Calculator Icon" width="22" height="22">
-                            <span>Unix Time</span>
+                            <img src="/images/icons/back-in-time.svg" alt="Unix Time Converter Icon" width="22" height="22">
+                            <span>Unix Time Converter</span>
                         </a>
                     </li>
                     <li>
@@ -150,12 +150,150 @@
             </section>
 
             <section id="days-tool" class="tool">
-                <h2>Unix Days Calculator</h2>
+                <h2>Unix Time Converter</h2>
                 <div class="tool-content">
-                    <div class="days-counter">
-                        <span id="days-since-1970"></span>
+                    <!-- Current Unix Time Display -->
+                    <div class="unix-current-time">
+                        <h3>Current Unix Time</h3>
+                        <div class="time-displays">
+                            <div class="time-display-item">
+                                <label>Unix Timestamp (seconds)</label>
+                                <div class="time-value" id="current-unix-seconds">0</div>
+                            </div>
+                            <div class="time-display-item">
+                                <label>Unix Timestamp (milliseconds)</label>
+                                <div class="time-value" id="current-unix-millis">0</div>
+                            </div>
+                            <div class="time-display-item">
+                                <label>Days since Unix Epoch</label>
+                                <div class="time-value" id="current-unix-days">0</div>
+                                <button class="copy-days-btn" id="copy-current-days" title="Copy Days">📋</button>
+                            </div>
+                            <div class="time-display-item">
+                                <label>Human Readable</label>
+                                <div class="time-value" id="current-human-time">-</div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="tool-description">Days since January 1, 1970 (Unix Epoch)</p>
+
+                    <!-- Custom Days Calculator -->
+                    <div class="converter-section">
+                        <h3>Calculate Days Since Unix Epoch for Custom Date</h3>
+                        <div class="converter-input-group">
+                            <div class="input-with-label">
+                                <label for="custom-date">Select Date</label>
+                                <input type="date" id="custom-date" />
+                            </div>
+                            <div class="input-with-label">
+                                <label for="custom-time">Time (Optional)</label>
+                                <input type="time" id="custom-time" value="00:00" />
+                            </div>
+                            <button id="calculate-custom-days" class="btn primary">Calculate Days</button>
+                        </div>
+                        <div class="converter-result" id="custom-days-result"></div>
+                    </div>
+
+                    <!-- Unix to Human Converter -->
+                    <div class="converter-section">
+                        <h3>Convert Unix Timestamp to Human Time</h3>
+                        <div class="converter-input-group">
+                            <div class="input-with-label">
+                                <label for="unix-input">Unix Timestamp</label>
+                                <input type="text" id="unix-input" placeholder="Enter unix timestamp (seconds or milliseconds)" />
+                            </div>
+                            <div class="input-with-label">
+                                <label for="unix-timezone">Timezone</label>
+                                <select id="unix-timezone">
+                                    <option value="UTC">UTC</option>
+                                    <option value="local">Local Time</option>
+                                    <option value="America/New_York">New York (EST/EDT)</option>
+                                    <option value="Europe/London">London (GMT/BST)</option>
+                                    <option value="Europe/Paris">Paris (CET/CEST)</option>
+                                    <option value="Asia/Tokyo">Tokyo (JST)</option>
+                                    <option value="Asia/Shanghai">Shanghai (CST)</option>
+                                    <option value="Asia/Ho_Chi_Minh">Ho Chi Minh (ICT)</option>
+                                    <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                                </select>
+                            </div>
+                            <button id="convert-unix-btn" class="btn primary">Convert</button>
+                        </div>
+                        <div class="converter-result" id="unix-convert-result"></div>
+                    </div>
+
+                    <!-- Human to Unix Converter -->
+                    <div class="converter-section">
+                        <h3>Convert Human Time to Unix Timestamp</h3>
+                        <div class="converter-input-group">
+                            <div class="input-with-label">
+                                <label for="human-date">Date</label>
+                                <input type="date" id="human-date" />
+                            </div>
+                            <div class="input-with-label">
+                                <label for="human-time">Time</label>
+                                <input type="time" id="human-time" step="1" />
+                            </div>
+                            <div class="input-with-label">
+                                <label for="human-timezone">Timezone</label>
+                                <select id="human-timezone">
+                                    <option value="UTC">UTC</option>
+                                    <option value="local">Local Time</option>
+                                    <option value="America/New_York">New York (EST/EDT)</option>
+                                    <option value="Europe/London">London (GMT/BST)</option>
+                                    <option value="Europe/Paris">Paris (CET/CEST)</option>
+                                    <option value="Asia/Tokyo">Tokyo (JST)</option>
+                                    <option value="Asia/Shanghai">Shanghai (CST)</option>
+                                    <option value="Asia/Ho_Chi_Minh">Ho Chi Minh (ICT)</option>
+                                    <option value="Australia/Sydney">Sydney (AEST/AEDT)</option>
+                                </select>
+                            </div>
+                            <button id="convert-human-btn" class="btn primary">Convert</button>
+                        </div>
+                        <div class="converter-result" id="human-convert-result"></div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-action-buttons">
+                            <button class="btn secondary" id="copy-current-unix">Copy Current Unix Time</button>
+                            <button class="btn secondary" id="copy-current-iso">Copy Current ISO Time</button>
+                            <button class="btn secondary" id="set-now-btn">Set to Now</button>
+                            <button class="btn secondary" id="clear-all-btn">Clear All</button>
+                        </div>
+                    </div>
+
+                    <!-- Batch Converter -->
+                    <div class="converter-section">
+                        <h3>Batch Converter</h3>
+                        <div class="batch-converter">
+                            <textarea id="batch-input" placeholder="Enter multiple unix timestamps, one per line..."></textarea>
+                            <button id="batch-convert-btn" class="btn primary">Batch Convert</button>
+                            <div class="batch-result" id="batch-result"></div>
+                        </div>
+                    </div>
+
+                    <!-- Unix Time Information -->
+                    <div class="unix-info">
+                        <h3>About Unix Time</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Unix Epoch Start:</strong>
+                                <span>January 1, 1970, 00:00:00 UTC</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>32-bit Unix Time Limit:</strong>
+                                <span>January 19, 2038, 03:14:07 UTC</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Seconds in a Day:</strong>
+                                <span>86,400</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Milliseconds in a Second:</strong>
+                                <span>1,000</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -372,5 +510,6 @@
     <script src="script.js"></script>
     <script src="components/Sidebar.js"></script>
     <script src="components/JwtTools.js"></script>
+    <script src="components/UnixTimeConverter.js"></script>
 </body>
 </html>
