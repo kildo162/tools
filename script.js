@@ -34,9 +34,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Hiển thị tool đầu tiên mặc định
-    document.querySelector('.tool').classList.add('active');
-    document.querySelector('.feature-list a').classList.add('active');
+    // Hiển thị trang home mặc định
+    document.getElementById('home').classList.add('active');
+    
+    // Xử lý navigation cho logo click và other tools
+    document.addEventListener('click', function(e) {
+        // Handle logo click
+        if (e.target.closest('.logo-link')) {
+            e.preventDefault();
+            hideAllTools();
+            document.getElementById('home').classList.add('active');
+            return;
+        }
+        
+        // Handle other navigation links
+        if (e.target.matches('a[href^="#"]') || e.target.closest('a[href^="#"]')) {
+            const link = e.target.matches('a[href^="#"]') ? e.target : e.target.closest('a[href^="#"]');
+            const href = link.getAttribute('href');
+            
+            if (href && href !== '#home') {
+                const targetId = href.substring(1);
+                const targetTool = document.getElementById(targetId);
+                if (targetTool && targetTool.classList.contains('tool')) {
+                    e.preventDefault();
+                    hideAllTools();
+                    targetTool.classList.add('active');
+                    
+                    // Highlight corresponding sidebar link
+                    const sidebarLink = document.querySelector(`.feature-list a[href="${href}"]`);
+                    if (sidebarLink) {
+                        sidebarLink.classList.add('active');
+                    }
+                }
+            }
+        }
+    });
 
     // JSON Formatter
     function initJsonFormatter() {

@@ -42,8 +42,10 @@
                 <!-- Sidebar -->
                 <aside class="sidebar">
             <div class="logo">
-                <img src="/images/logo.png" alt="DevTools Logo" width="36" height="36">
-                <h1>DevTools</h1>
+                <a href="#home" class="logo-link">
+                    <img src="/images/logo.png" alt="DevTools Logo" width="36" height="36">
+                    <h1>DevTools</h1>
+                </a>
             </div>
             <nav>
                 <!-- JWT & Token Tools -->
@@ -249,6 +251,213 @@
 
         <!-- Main Content -->
         <main class="main-content">
+            <!-- Welcome/Default Page -->
+            <section id="home" class="tool default-page active">
+                <div class="dashboard-hero">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Free Developer Tools</h1>
+                        <p class="hero-subtitle">Secure, client-side tools for modern developers. No data leaves your browser.</p>
+                        <div class="hero-features">
+                            <div class="hero-feature">
+                                <div class="feature-badge">🔒</div>
+                                <span>Privacy-First</span>
+                            </div>
+                            <div class="hero-feature">
+                                <div class="feature-badge">⚡</div>
+                                <span>Lightning Fast</span>
+                            </div>
+                            <div class="hero-feature">
+                                <div class="feature-badge">🎯</div>
+                                <span>Production Ready</span>
+                            </div>
+                        </div>
+                        <div class="hero-cta">
+                            <a href="#jwt-validation" class="cta-primary">Try JWT Tools</a>
+                            <a href="#curl-builder-tool" class="cta-secondary">Build API Requests</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-stats">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">🔧</div>
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Developer Tools</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">�️</div>
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Client-Side</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-value">0ms</div>
+                            <div class="stat-label">Server Delay</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">�</div>
+                            <div class="stat-value">Free</div>
+                            <div class="stat-label">Forever</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-tools">
+                    <div class="tools-header">
+                        <h2>Popular Tools</h2>
+                        <p>Most used tools by developers worldwide</p>
+                    </div>
+                    
+                    <div class="popular-tools-grid">
+                        <a href="#jwt-validation" class="tool-card popular">
+                            <div class="tool-icon">�</div>
+                            <div class="tool-info">
+                                <h3>JWT Decoder</h3>
+                                <p>Decode and validate JSON Web Tokens instantly</p>
+                                <div class="tool-stats">
+                                    <span class="usage-stat">Most Popular</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#curl-builder-tool" class="tool-card trending">
+                            <div class="tool-icon">�</div>
+                            <div class="tool-info">
+                                <h3>Curl Builder</h3>
+                                <p>Build and test HTTP requests with ease</p>
+                                <div class="tool-stats">
+                                    <span class="usage-stat trending">Trending</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#json-tool" class="tool-card">
+                            <div class="tool-icon">📄</div>
+                            <div class="tool-info">
+                                <h3>JSON Formatter</h3>
+                                <p>Format, validate and beautify JSON data</p>
+                                <div class="tool-stats">
+                                    <span class="usage-stat">Essential</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#hash-tool" class="tool-card">
+                            <div class="tool-icon">🔐</div>
+                            <div class="tool-info">
+                                <h3>Hash Generator</h3>
+                                <p>Generate MD5, SHA-1, SHA-256 hashes</p>
+                                <div class="tool-stats">
+                                    <span class="usage-stat">Security</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#password-generator" class="tool-card">
+                            <div class="tool-icon">🛡️</div>
+                            <div class="tool-info">
+                                <h3>Password Generator</h3>
+                                <p>Create secure passwords with custom rules</p>
+                                <div class="tool-stats">
+                                    <span class="usage-stat">Security</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#uuid-generator" class="tool-card">
+                            <div class="tool-icon">🆔</div>
+                            <div class="tool-info">
+                                <h3>UUID Generator</h3>
+                                <p>Generate unique identifiers (v1, v4)</p>
+                                <div class="tool-stats">
+                                    <span class="usage-stat">Utility</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dashboard-categories">
+                    <div class="categories-header">
+                        <h2>Browse by Category</h2>
+                        <p>Find tools organized by functionality</p>
+                    </div>
+
+                    <div class="category-grid">
+                        <div class="category-card auth">
+                            <div class="category-icon">🔐</div>
+                            <h3>Authentication</h3>
+                            <p>JWT tools, token validation, and security utilities</p>
+                            <div class="category-tools">
+                                <a href="#jwt-validation">JWT Decoder</a>
+                                <a href="#jwt-generator">JWT Generator</a>
+                                <a href="#jwt-fuzzer">JWT Fuzzer</a>
+                            </div>
+                        </div>
+
+                        <div class="category-card data">
+                            <div class="category-icon">📝</div>
+                            <h3>Data Processing</h3>
+                            <p>Format, validate, and transform your data</p>
+                            <div class="category-tools">
+                                <a href="#json-tool">JSON Formatter</a>
+                                <a href="#json-diff-tool">JSON Diff</a>
+                                <a href="#yaml-diff-tool">YAML Diff</a>
+                                <a href="#url-tool">URL Encoder</a>
+                            </div>
+                        </div>
+
+                        <div class="category-card network">
+                            <div class="category-icon">🌐</div>
+                            <h3>Network Tools</h3>
+                            <p>API testing and network utilities</p>
+                            <div class="category-tools">
+                                <a href="#curl-builder-tool">Curl Builder</a>
+                                <a href="#ip-tool">IP Checker</a>
+                            </div>
+                        </div>
+
+                        <div class="category-card security">
+                            <div class="category-icon">🔒</div>
+                            <h3>Security</h3>
+                            <p>Encryption, hashing, and security tools</p>
+                            <div class="category-tools">
+                                <a href="#hash-tool">Hash Generator</a>
+                                <a href="#password-generator">Password Gen</a>
+                                <a href="#symmetric-encryption">AES Encryption</a>
+                                <a href="#rsa-key-generator">RSA Keys</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-footer">
+                    <div class="footer-content">
+                        <div class="footer-section">
+                            <h3>Why Choose DevTools?</h3>
+                            <ul class="feature-list">
+                                <li>✅ 100% client-side processing</li>
+                                <li>✅ No data stored on servers</li>
+                                <li>✅ Open source and transparent</li>
+                                <li>✅ Fast and reliable</li>
+                                <li>✅ Mobile-friendly design</li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h3>Popular Use Cases</h3>
+                            <ul class="use-cases">
+                                <li>🔍 Debug JWT tokens in development</li>
+                                <li>🚀 Test API endpoints with Curl</li>
+                                <li>📄 Format JSON for better readability</li>
+                                <li>🔐 Generate secure passwords</li>
+                                <li>⚡ Convert Unix timestamps</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id="jwt-validation" class="tool">
                 <h2>JWT Validation & Decoder</h2>
                 <div class="tool-content">

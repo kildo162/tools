@@ -77,7 +77,16 @@ class OptimizedSidebar {
         const navigation = document.getElementById('navigation');
         if (!navigation) return;
 
-        const html = this.navigationData.map(group => `
+        const homeHtml = `
+            <div class="home-link">
+                <a href="#home" class="nav-item home-nav active" data-route="home">
+                    <img src="./images/icons/web-programming.svg" alt="Home" width="22" height="22" loading="lazy">
+                    <span>🏠 Home</span>
+                </a>
+            </div>
+        `;
+
+        const groupsHtml = this.navigationData.map(group => `
             <div class="tool-group">
                 <div class="group-header">
                     <span class="group-icon">${group.icon}</span>
@@ -96,7 +105,7 @@ class OptimizedSidebar {
             </div>
         `).join('');
 
-        navigation.innerHTML = html;
+        navigation.innerHTML = homeHtml + groupsHtml;
     }
 
     attachEventListeners() {
