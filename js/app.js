@@ -29,6 +29,8 @@ class DevToolsApp {
         this.componentMap.set('api-key-generator', 'APIKeyGenerator');
         this.componentMap.set('rsa-key-generator', 'RSAKeyGenerator');
         this.componentMap.set('rsa-encrypt-decrypt', 'RSAEncryptDecrypt');
+        this.componentMap.set('json-diff-tool', 'JSONDiffTool');
+        this.componentMap.set('yaml-diff-tool', 'YAMLDiffTool');
     }
 
     /**
@@ -120,6 +122,18 @@ class DevToolsApp {
                 title: 'RSA Encrypt/Decrypt',
                 description: 'Encrypt and decrypt text using RSA keys',
                 component: 'rsa-encrypt-decrypt'
+            },
+            {
+                path: 'json-diff-tool',
+                title: 'JSON Diff Tool',
+                description: 'Compare and find differences between JSON files',
+                component: 'json-diff-tool'
+            },
+            {
+                path: 'yaml-diff-tool',
+                title: 'YAML Diff Tool',
+                description: 'Compare and find differences between YAML files',
+                component: 'yaml-diff-tool'
             }
         ];
 

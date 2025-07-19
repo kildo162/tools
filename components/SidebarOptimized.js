@@ -24,7 +24,9 @@ class OptimizedSidebar {
                 items: [
                     { id: 'json-tool', title: 'JSON Formatter', icon: './images/icons/json.svg' },
                     { id: 'url-tool', title: 'URL Encoder/Decoder', icon: './images/icons/web-programming.svg' },
-                    { id: 'hash-tool', title: 'Hash Generator', icon: './images/icons/web-programming.svg' }
+                    { id: 'hash-tool', title: 'Hash Generator', icon: './images/icons/web-programming.svg' },
+                    { id: 'json-diff-tool', title: 'JSON Diff Tool', icon: './images/icons/json.svg' },
+                    { id: 'yaml-diff-tool', title: 'YAML Diff Tool', icon: './images/icons/web-programming.svg' }
                 ]
             },
             {

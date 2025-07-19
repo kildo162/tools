@@ -12,7 +12,7 @@ todolist:
 - giới thiệu page
 - ✅ donate page
 - private friendly annalytic - plausible
-- Diff tool cho JSON/YAML
+- ✅ Diff tool cho JSON/YAML
 - Curl request builder
 - AI tools page
 - SEO tools page

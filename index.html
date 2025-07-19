@@ -105,6 +105,18 @@
                                 <span>Hash Generator</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="#json-diff-tool" class="nav-item">
+                                <img src="/images/icons/json.svg" alt="JSON Diff Tool Icon" width="22" height="22">
+                                <span>JSON Diff Tool</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#yaml-diff-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="YAML Diff Tool Icon" width="22" height="22">
+                                <span>YAML Diff Tool</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -1502,6 +1514,168 @@
                     </div>
                 </div>
             </section>
+
+            <!-- JSON Diff Tool -->
+            <section id="json-diff-tool" class="tool">
+                <h2>🔍 JSON Diff Tool</h2>
+                <div class="tool-content">
+                    <div class="diff-container">
+                        <!-- Input Panels -->
+                        <div class="diff-inputs-row">
+                            <div class="diff-panel">
+                                <div class="panel-header">
+                                    <span>Original JSON</span>
+                                    <div class="input-tools">
+                                        <button class="btn-small" id="json-diff-sample-1" title="Load Sample">📄</button>
+                                        <input type="file" id="json-diff-file-1" accept=".json,.txt" style="display: none;">
+                                        <button class="btn-small" id="json-diff-load-1" title="Load from File">📁</button>
+                                        <button class="btn-small" id="json-diff-clear-1">Clear</button>
+                                    </div>
+                                </div>
+                                <div class="panel-content">
+                                    <textarea id="json-diff-input-1" placeholder="Paste your first JSON here..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="diff-panel">
+                                <div class="panel-header">
+                                    <span>Modified JSON</span>
+                                    <div class="input-tools">
+                                        <button class="btn-small" id="json-diff-sample-2" title="Load Sample">📄</button>
+                                        <input type="file" id="json-diff-file-2" accept=".json,.txt" style="display: none;">
+                                        <button class="btn-small" id="json-diff-load-2" title="Load from File">📁</button>
+                                        <button class="btn-small" id="json-diff-clear-2">Clear</button>
+                                    </div>
+                                </div>
+                                <div class="panel-content">
+                                    <textarea id="json-diff-input-2" placeholder="Paste your second JSON here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Options and Controls -->
+                        <div class="diff-options">
+                            <div class="diff-controls">
+                                <button class="btn" id="json-diff-compare">🔍 Compare</button>
+                                <button class="btn btn-secondary" id="json-diff-clear-all">🧹 Clear All</button>
+                                <button class="btn btn-secondary" id="json-diff-swap">🔄 Swap</button>
+                            </div>
+                            <div class="diff-settings">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="json-diff-ignore-case">
+                                    Ignore Case
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="json-diff-ignore-whitespace">
+                                    Ignore Whitespace
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="json-diff-sort-keys">
+                                    Sort Keys
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Diff Result -->
+                        <div class="diff-result-section">
+                            <div class="diff-result-header">
+                                <span>Differences</span>
+                                <div class="diff-stats" id="json-diff-stats"></div>
+                                <div class="diff-result-actions">
+                                    <button class="btn-small" id="json-diff-export">📁 Export</button>
+                                    <button class="btn-small" id="json-diff-copy">📋 Copy</button>
+                                </div>
+                            </div>
+                            <div class="diff-result-content" id="json-diff-result">
+                                <div class="diff-placeholder">
+                                    <span>🔍 Compare two JSON objects to see differences</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- YAML Diff Tool -->
+            <section id="yaml-diff-tool" class="tool">
+                <h2>📋 YAML Diff Tool</h2>
+                <div class="tool-content">
+                    <div class="diff-container">
+                        <!-- Input Panels -->
+                        <div class="diff-inputs-row">
+                            <div class="diff-panel">
+                                <div class="panel-header">
+                                    <span>Original YAML</span>
+                                    <div class="input-tools">
+                                        <button class="btn-small" id="yaml-diff-sample-1" title="Load Sample">📄</button>
+                                        <input type="file" id="yaml-diff-file-1" accept=".yaml,.yml,.txt" style="display: none;">
+                                        <button class="btn-small" id="yaml-diff-load-1" title="Load from File">📁</button>
+                                        <button class="btn-small" id="yaml-diff-clear-1">Clear</button>
+                                    </div>
+                                </div>
+                                <div class="panel-content">
+                                    <textarea id="yaml-diff-input-1" placeholder="Paste your first YAML here..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="diff-panel">
+                                <div class="panel-header">
+                                    <span>Modified YAML</span>
+                                    <div class="input-tools">
+                                        <button class="btn-small" id="yaml-diff-sample-2" title="Load Sample">📄</button>
+                                        <input type="file" id="yaml-diff-file-2" accept=".yaml,.yml,.txt" style="display: none;">
+                                        <button class="btn-small" id="yaml-diff-load-2" title="Load from File">📁</button>
+                                        <button class="btn-small" id="yaml-diff-clear-2">Clear</button>
+                                    </div>
+                                </div>
+                                <div class="panel-content">
+                                    <textarea id="yaml-diff-input-2" placeholder="Paste your second YAML here..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Options and Controls -->
+                        <div class="diff-options">
+                            <div class="diff-controls">
+                                <button class="btn" id="yaml-diff-compare">🔍 Compare</button>
+                                <button class="btn btn-secondary" id="yaml-diff-clear-all">🧹 Clear All</button>
+                                <button class="btn btn-secondary" id="yaml-diff-swap">🔄 Swap</button>
+                            </div>
+                            <div class="diff-settings">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="yaml-diff-ignore-case">
+                                    Ignore Case
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="yaml-diff-ignore-whitespace">
+                                    Ignore Whitespace
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="yaml-diff-sort-keys">
+                                    Sort Keys
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Diff Result -->
+                        <div class="diff-result-section">
+                            <div class="diff-result-header">
+                                <span>Differences</span>
+                                <div class="diff-stats" id="yaml-diff-stats"></div>
+                                <div class="diff-result-actions">
+                                    <button class="btn-small" id="yaml-diff-export">📁 Export</button>
+                                    <button class="btn-small" id="yaml-diff-copy">📋 Copy</button>
+                                </div>
+                            </div>
+                            <div class="diff-result-content" id="yaml-diff-result">
+                                <div class="diff-placeholder">
+                                    <span>📋 Compare two YAML documents to see differences</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
         </div>
         
@@ -1586,6 +1760,8 @@
     <script src="components/UUIDGenerator.js"></script>
     <script src="components/RSAKeyGenerator.js"></script>
     <script src="components/RSAEncryptDecrypt.js"></script>
+    <script src="components/JSONDiffTool.js"></script>
+    <script src="components/YAMLDiffTool.js"></script>
     <script src="components/Sidebar.js"></script>
     <script src="components/JwtTools.js"></script>
     <script src="components/UnixTimeConverter.js"></script>
