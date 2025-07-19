@@ -29,6 +29,7 @@ class PasswordGenerator {
         // Batch generator
         this.batchCountInput = document.getElementById('batch-password-count');
         this.generateBatchBtn = document.getElementById('generate-batch-btn');
+        this.copyAllPasswordsBtn = document.getElementById('copy-all-passwords-btn');
         this.batchOutput = document.getElementById('batch-password-output');
         
         // Character sets
@@ -60,6 +61,7 @@ class PasswordGenerator {
         
         // Batch generator
         this.generateBatchBtn?.addEventListener('click', () => this.generateBatchPasswords());
+        this.copyAllPasswordsBtn?.addEventListener('click', () => this.copyAllPasswords());
     }
 
     updateLength() {
@@ -249,6 +251,9 @@ class PasswordGenerator {
             passwords.push(this.generatePassword());
         }
         
+        // Store passwords for copying
+        this.batchPasswords = passwords;
+        
         if (this.batchOutput) {
             this.batchOutput.innerHTML = passwords.map((password, index) => `
                 <div class="batch-password-item">
@@ -258,6 +263,18 @@ class PasswordGenerator {
                 </div>
             `).join('');
         }
+        
+        this.showSuccess(`Generated ${count} passwords successfully!`);
+    }
+
+    copyAllPasswords() {
+        if (!this.batchPasswords || this.batchPasswords.length === 0) {
+            this.showError('No passwords to copy. Please generate passwords first.');
+            return;
+        }
+        
+        const allPasswords = this.batchPasswords.join('\n');
+        this.copyToClipboard(allPasswords, `Copied all ${this.batchPasswords.length} passwords to clipboard!`);
     }
 
     showError(message) {

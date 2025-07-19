@@ -1,8 +1,9 @@
 // API Key Generator Component
 class APIKeyGenerator {
     constructor() {
-        this.initializeElements();
-        this.bindEvents();
+        this.initializeElements();        // Batch generator
+        this.generateBatchAPIKeysBtn?.addEventListener('click', () => this.generateBatchAPIKeys());
+        this.copyAllAPIKeysBtn?.addEventListener('click', () => this.copyAllAPIKeys());       this.bindEvents();
         this.generateAPIKey();
     }
 
@@ -29,6 +30,7 @@ class APIKeyGenerator {
         // Batch generator
         this.batchCountInput = document.getElementById('batch-api-key-count');
         this.generateBatchAPIKeysBtn = document.getElementById('generate-batch-api-keys-btn');
+        this.copyAllAPIKeysBtn = document.getElementById('copy-all-api-keys-btn');
         this.batchAPIKeysOutput = document.getElementById('batch-api-keys-output');
         
         // Character sets for different formats
@@ -301,6 +303,9 @@ class APIKeyGenerator {
             apiKeys.push(finalKey);
         }
         
+        // Store API keys for copying
+        this.batchAPIKeys = apiKeys;
+        
         if (this.batchAPIKeysOutput) {
             this.batchAPIKeysOutput.innerHTML = apiKeys.map((key, index) => `
                 <div class="batch-api-key-item">
@@ -314,7 +319,17 @@ class APIKeyGenerator {
             `).join('');
         }
         
-        this.showSuccess(`Generated ${count} API keys successfully`);
+        this.showSuccess(`Generated ${count} API keys successfully!`);
+    }
+
+    copyAllAPIKeys() {
+        if (!this.batchAPIKeys || this.batchAPIKeys.length === 0) {
+            this.showError('No API keys to copy. Please generate API keys first.');
+            return;
+        }
+        
+        const allAPIKeys = this.batchAPIKeys.join('\n');
+        this.copyToClipboard(allAPIKeys, `Copied all ${this.batchAPIKeys.length} API keys to clipboard!`);
     }
 
     showSuccess(message) {
