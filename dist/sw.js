@@ -1,13 +1,13 @@
-const CACHE_NAME = 'devtools-v1752900362';
+const CACHE_NAME = 'devtools-gh-1752912219';
 const STATIC_ASSETS = [
-    '/',
-    '/css/critical.css',
-    '/js/core/ModuleLoader.js',
-    '/js/core/Router.js',
-    '/js/app.js',
-    '/images/logo.png',
-    '/images/favicon/favicon-32x32.png',
-    '/images/favicon/favicon-16x16.png'
+    './',
+    './css/critical.css',
+    './js/core/ModuleLoader.js',
+    './js/core/Router.js',
+    './js/app.js',
+    './images/logo.png',
+    './images/favicon/favicon-32x32.png',
+    './images/favicon/favicon-16x16.png'
 ];
 
 const COMPONENT_CACHE = 'devtools-components-v1';
@@ -46,16 +46,16 @@ self.addEventListener('fetch', event => {
     if (request.method !== 'GET') return;
 
     // Handle different types of requests
-    if (url.pathname.startsWith('/components/')) {
+    if (url.pathname.startsWith('./components/')) {
         // Components: Cache First strategy
         event.respondWith(cacheFirst(request, COMPONENT_CACHE));
-    } else if (url.pathname.startsWith('/css/') || url.pathname.startsWith('/js/')) {
+    } else if (url.pathname.startsWith('./css/') || url.pathname.startsWith('./js/')) {
         // CSS/JS: Cache First strategy
         event.respondWith(cacheFirst(request, CACHE_NAME));
-    } else if (url.pathname.startsWith('/images/')) {
+    } else if (url.pathname.startsWith('./images/')) {
         // Images: Cache First strategy
         event.respondWith(cacheFirst(request, CACHE_NAME));
-    } else if (url.pathname === '/' || url.pathname.endsWith('.html')) {
+    } else if (url.pathname === './' || url.pathname.endsWith('.html')) {
         // HTML: Network First strategy
         event.respondWith(networkFirst(request));
     } else {
@@ -97,7 +97,7 @@ async function networkFirst(request) {
     } catch (error) {
         console.log('Network request failed, trying cache:', error);
         const cachedResponse = await caches.match(request);
-        return cachedResponse || caches.match('/offline.html') || new Response('Offline');
+        return cachedResponse || caches.match('./offline.html') || new Response('Offline');
     }
 }
 

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Donate - DevTools. Support our free developer tools project via ZaloPay or MoMo.">
+    <meta name="keywords" content="donate, support, zalopay, momo, developer tools, contribution">
+    <meta name="author" content="KhanhND">
+
+    <title>Donate - DevTools</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Donate - DevTools">
+    <meta property="og:description" content="Support our free developer tools project">
+    <meta property="og:image" content="/images/og-image.png">
+    <meta property="og:url" content="https://yourwebsite.com/donate">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Donate - DevTools">
+    <meta name="twitter:description" content="Support our free developer tools project">
+    <meta name="twitter:image" content="/images/og-image.png">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .donate-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .donate-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .donate-header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .donate-header .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .donate-description {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .donate-description h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .donate-description p {
+            margin: 0;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .payment-card {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .payment-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .payment-card h3 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .payment-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+        }
+        
+        .zalopay-icon {
+            background: linear-gradient(135deg, #0068ff, #0052cc);
+        }
+        
+        .momo-icon {
+            background: linear-gradient(135deg, #d82d8b, #ae2472);
+        }
+        
+        .github-icon {
+            background: linear-gradient(135deg, #24292e, #0d1117);
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 3px solid #f1f5f9;
+            border-radius: 12px;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .qr-code:hover {
+            transform: scale(1.05);
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        /* Modal styles for QR code zoom */
+        .qr-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .qr-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        
+        .qr-modal img {
+            max-width: 600px;
+            max-height: 600px;
+            width: auto;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .qr-modal h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .qr-modal p {
+            color: #718096;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #718096;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .close-modal:hover {
+            color: #2d3748;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .payment-info {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+        
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            padding: 12px 24px;
+            background: #f7fafc;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+        
+        .back-home:hover {
+            background: #e2e8f0;
+            color: #2b6cb0;
+            transform: translateX(-2px);
+        }
+        
+        .thank-you-section {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            color: #2d3748;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .thank-you-section h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .thank-you-section p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        .features-list {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .features-list h4 {
+            color: #2d3748;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            color: #4a5568;
+        }
+        
+        .features-list li::before {
+            content: "✨";
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .donate-header h1 {
+                font-size: 2rem;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .qr-code {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .donate-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .qr-modal-content {
+                margin: 20px;
+                padding: 20px;
+                max-width: calc(100vw - 40px);
+            }
+            
+            .qr-modal img {
+                max-width: 450px;
+                max-height: 450px;
+            }
+            
+            .qr-modal h3 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .qr-modal img {
+                max-width: 350px;
+                max-height: 350px;
+            }
+            
+            .qr-modal-content {
+                margin: 15px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px 0;">
+    <div class="donate-container">
+        <a href="/" class="back-home">
+            ← Back to Home
+        </a>
+        
+        <div class="donate-header">
+            <h1>☕ Support DevTools</h1>
+            <div class="subtitle">
+                Help keep our free developer tools running and continuously improving. Your support means the world to us!
+            </div>
+        </div>
+        
+        <div class="donate-description">
+            <h3>🚀 Why Your Support Matters</h3>
+            <p>DevTools provides completely free, client-side tools that prioritize your privacy and security. Your donations help us maintain servers, improve features, and keep everything free for the developer community.</p>
+        </div>
+        
+        <div class="features-list">
+            <h4>🛠️ What Your Donation Supports:</h4>
+            <ul>
+                <li>Server hosting and maintenance costs</li>
+                <li>Development of new developer tools</li>
+                <li>Security updates and improvements</li>
+                <li>Keeping all tools completely free</li>
+                <li>No ads, no tracking, no premium tiers</li>
+                <li>Open source development</li>
+            </ul>
+        </div>
+        
+        <div class="payment-methods">
+            <div class="payment-card">
+                <h3>
+                    <div class="payment-icon github-icon"></div>
+                    GitHub Sponsors
+                </h3>
+                <div class="qr-code" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; font-size: 3rem; min-height: 200px;">
+                    ⭐
+                </div>
+                <div class="payment-info">
+                    Support through GitHub Sponsors<br>
+                    <a href="https://github.com/sponsors/kildo162" target="_blank" style="color: #3182ce; text-decoration: underline;">Become a Sponsor</a>
+                </div>
+            </div>
+            
+            <div class="payment-card">
+                <h3>
+                    <div class="payment-icon zalopay-icon"></div>
+                    ZaloPay
+                </h3>
+                <div class="qr-code">
+                    <img src="/images/zlp.jpeg" alt="ZaloPay QR Code" />
+                </div>
+                <div class="payment-info">
+                    Scan the QR code with your ZaloPay app<br>
+                    or send to ZaloPay wallet
+                </div>
+            </div>
+            
+            <div class="payment-card">
+                <h3>
+                    <div class="payment-icon momo-icon"></div>
+                    MoMo
+                </h3>
+                <div class="qr-code">
+                    <img src="/images/momo.jpeg" alt="MoMo QR Code" />
+                </div>
+                <div class="payment-info">
+                    Scan the QR code with your MoMo app<br>
+                    or transfer to MoMo wallet
+                </div>
+            </div>
+        </div>
+        
+        <div class="thank-you-section">
+            <h3>🙏 Thank You!</h3>
+            <p>Every contribution, no matter the size, helps us continue providing free, secure, and privacy-focused tools for developers worldwide. We truly appreciate your support! For any questions, contact us at <a href="mailto:support@devtools.com" style="color: #2d3748; text-decoration: underline;">support@devtools.com</a></p>
+        </div>
+    </div>
+    
+    <!-- QR Code Zoom Modal -->
+    <div id="qrModal" class="qr-modal">
+        <div class="qr-modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modalTitle">Scan QR Code</h3>
+            <img id="modalQrImage" src="" alt="QR Code" />
+            <p id="modalDescription">Scan this QR code with your mobile app</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('qrModal');
+            const modalImage = document.getElementById('modalQrImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            // Add click event to all QR codes (only actual images)
+            document.querySelectorAll('.qr-code img').forEach(qrCode => {
+                qrCode.parentElement.addEventListener('click', function() {
+                    const imgSrc = qrCode.src;
+                    const paymentCard = qrCode.closest('.payment-card');
+                    const paymentTitle = paymentCard.querySelector('h3').textContent.trim();
+                    
+                    modalImage.src = imgSrc;
+                    modalTitle.textContent = `Scan ${paymentTitle} QR Code`;
+                    
+                    if (paymentTitle.includes('ZaloPay')) {
+                        modalDescription.textContent = 'Open your ZaloPay app and scan this QR code to make a donation';
+                    } else if (paymentTitle.includes('MoMo')) {
+                        modalDescription.textContent = 'Open your MoMo app and scan this QR code to make a donation';
+                    }
+                    
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal when clicking the X button
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside the modal content
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close modal when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

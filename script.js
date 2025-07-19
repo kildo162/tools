@@ -1097,4 +1097,63 @@ document.addEventListener('DOMContentLoaded', () => {
             document.head.insertAdjacentHTML('beforeend', styles);
         }
     }
+
+    // Floating Menu Functionality
+    function initFloatingMenu() {
+        const floatingMenuBtn = document.getElementById('floating-menu-btn');
+        const floatingMenuItems = document.getElementById('floating-menu-items');
+        let isMenuOpen = false;
+
+        if (floatingMenuBtn && floatingMenuItems) {
+            floatingMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                isMenuOpen = !isMenuOpen;
+                
+                if (isMenuOpen) {
+                    floatingMenuItems.classList.add('active');
+                    floatingMenuBtn.style.transform = 'rotate(45deg) scale(1.1)';
+                } else {
+                    floatingMenuItems.classList.remove('active');
+                    floatingMenuBtn.style.transform = 'rotate(0deg) scale(1)';
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.floating-menu')) {
+                    isMenuOpen = false;
+                    floatingMenuItems.classList.remove('active');
+                    floatingMenuBtn.style.transform = 'rotate(0deg) scale(1)';
+                }
+            });
+
+            // Close menu when clicking on menu items
+            const menuItems = floatingMenuItems.querySelectorAll('.floating-menu-item');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    isMenuOpen = false;
+                    floatingMenuItems.classList.remove('active');
+                    floatingMenuBtn.style.transform = 'rotate(0deg) scale(1)';
+                });
+            });
+
+            // Add hover effects for menu button
+            floatingMenuBtn.addEventListener('mouseenter', function() {
+                if (!isMenuOpen) {
+                    this.style.transform = 'translateY(-2px) scale(1.05)';
+                }
+            });
+
+            floatingMenuBtn.addEventListener('mouseleave', function() {
+                if (!isMenuOpen) {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        }
+    }
+
+    // Initialize floating menu
+    initFloatingMenu();
 });

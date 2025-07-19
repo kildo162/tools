@@ -37,8 +37,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
+        <div class="main-wrapper">
+            <div class="content-wrapper">
+                <!-- Sidebar -->
+                <aside class="sidebar">
             <div class="logo">
                 <img src="/images/logo.png" alt="DevTools Logo" width="36" height="36">
                 <h1>DevTools</h1>
@@ -200,31 +202,23 @@
             <!-- Support Section -->
             <div class="support-section">
                 <div class="donate-section">
-                    <h3>💙 Support</h3>
-                    <p>Keep tools free!</p>
+                    <h3>💙 Support DevTools</h3>
+                    <p>Help keep our free developer tools running!</p>
                     <div class="donate-buttons">
-                        <a href="#" class="donate-btn primary" onclick="showDonateModal()">
+                        <a href="/donate.html" class="donate-btn primary">
                             <span class="btn-icon">☕</span>
-                            <span>Coffee</span>
+                            <span>Donate</span>
                         </a>
                         <a href="https://github.com/kildo162/tools" target="_blank" class="donate-btn secondary">
                             <span class="btn-icon">⭐</span>
                             <span>GitHub</span>
-                        </a>
-                        <a href="#" class="donate-btn momo" onclick="showMoMoModal()">
-                            <span class="btn-icon">💰</span>
-                            <span>MoMo</span>
-                        </a>
-                        <a href="#" class="donate-btn zalo" onclick="showZaloPayModal()">
-                            <span class="btn-icon">💳</span>
-                            <span>ZaloPay</span>
                         </a>
                     </div>
                 </div>
                 
                 <div class="footer-info">
                     <div class="version">v2.0.0</div>
-                    <div class="copyright">Made with ❤️ by KhanhND</div>
+                    <div class="copyright">Made with ❤️ for developers worldwide</div>
                 </div>
             </div>
             </nav>
@@ -1509,6 +1503,74 @@
                 </div>
             </section>
         </main>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="/images/logo.png" alt="DevTools Logo" width="24" height="24">
+                        <span>DevTools</span>
+                    </div>
+                    <p class="footer-description">
+                        Free, secure, client-side developer tools for modern development workflows.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/donate.html">☕ Donate</a></li>
+                        <li><a href="https://github.com/kildo162/tools" target="_blank">⭐ GitHub</a></li>
+                        <li><a href="mailto:khanhnd162@gmail.com">📧 Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/cookie-policy.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 DevTools. Made with ❤️ for developers worldwide.</p>
+                <div class="footer-security-notice">
+                    🔐 All processing happens in your browser - nothing is sent to our servers
+                </div>
+            </div>
+        </footer>
+        </div>
+    </div>
+
+    <!-- Floating Quick Access -->
+    <div class="floating-menu">
+        <button class="floating-menu-btn" id="floating-menu-btn">
+            <span class="menu-icon">⚡</span>
+            <span class="menu-text">Quick</span>
+        </button>
+        <div class="floating-menu-items" id="floating-menu-items">
+            <a href="/donate.html" class="floating-menu-item donate">
+                <span class="item-icon">☕</span>
+                <span class="item-text">Donate</span>
+            </a>
+            <a href="/privacy-policy.html" class="floating-menu-item">
+                <span class="item-icon">🔒</span>
+                <span class="item-text">Privacy</span>
+            </a>
+            <a href="/terms-of-service.html" class="floating-menu-item">
+                <span class="item-icon">📄</span>
+                <span class="item-text">Terms</span>
+            </a>
+            <a href="/cookie-policy.html" class="floating-menu-item">
+                <span class="item-icon">🍪</span>
+                <span class="item-text">Cookies</span>
+            </a>
+        </div>
     </div>
 
     <script src="script.js"></script>
