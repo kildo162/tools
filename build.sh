@@ -18,8 +18,24 @@ cp index-optimized.html $BUILD_DIR/index.html
 
 # Inline critical CSS
 echo "Inlining critical CSS..."
-CRITICAL_CSS=$(cat css/critical.css | sed 's/\/\*.*\*\///g' | tr -d '\n\r' | sed 's/  */ /g')
-sed -i "s|/* Critical CSS will be inlined here by build process */|$CRITICAL_CSS|g" $BUILD_DIR/index.html
+if [ -f "css/critical.css" ]; then
+    # Read critical CSS and minify it
+    CRITICAL_CSS=$(cat css/critical.css | \
+        sed '/\/\*.*\*\//d' | \
+        sed '/^[[:space:]]*$/d' | \
+        tr -d '\n' | \
+        sed 's/[[:space:]]\+/ /g' | \
+        sed 's/; /;/g' | \
+        sed 's/: /:/g' | \
+        sed 's/{ /{/g' | \
+        sed 's/ }/}/g')
+    
+    # Replace the placeholder with actual CSS
+    sed -i "s|/\* Critical CSS will be inlined here by build process \*/|$CRITICAL_CSS|g" $BUILD_DIR/index.html
+    echo "✅ Critical CSS inlined ($(echo "$CRITICAL_CSS" | wc -c) bytes)"
+else
+    echo "⚠️ Critical CSS file not found"
+fi
 
 # Optimize and minify JavaScript
 echo "Processing JavaScript files..."
