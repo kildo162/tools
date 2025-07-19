@@ -31,6 +31,7 @@ class DevToolsApp {
         this.componentMap.set('rsa-encrypt-decrypt', 'RSAEncryptDecrypt');
         this.componentMap.set('json-diff-tool', 'JSONDiffTool');
         this.componentMap.set('yaml-diff-tool', 'YAMLDiffTool');
+        this.componentMap.set('curl-builder-tool', 'CurlBuilder');
     }
 
     /**
@@ -134,6 +135,12 @@ class DevToolsApp {
                 title: 'YAML Diff Tool',
                 description: 'Compare and find differences between YAML files',
                 component: 'yaml-diff-tool'
+            },
+            {
+                path: 'curl-builder-tool',
+                title: 'Curl Request Builder',
+                description: 'Build and generate curl commands for HTTP requests',
+                component: 'curl-builder-tool'
             }
         ];
 

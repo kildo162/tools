@@ -54,6 +54,15 @@ class OptimizedSidebar {
                     { id: 'rsa-encrypt-decrypt', title: 'RSA Encrypt/Decrypt', icon: './images/icons/web-programming.svg' },
                     { id: 'encryption-key-generator', title: 'Encryption Key Generator', icon: './images/icons/web-programming.svg' }
                 ]
+            },
+            {
+                title: 'Network & Integration',
+                icon: '🌐',
+                items: [
+                    { id: 'curl-builder-tool', title: 'Curl Request Builder', icon: './images/icons/web-programming.svg' },
+                    { id: 'ip-tool', title: 'IP Address Checker', icon: './images/icons/ip.svg' },
+                    { id: 'telegram-tool', title: 'Telegram Bot', icon: './images/icons/paper.svg' }
+                ]
             }
         ];
     }

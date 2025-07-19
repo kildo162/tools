@@ -196,6 +196,12 @@
                     </div>
                     <ul class="feature-list">
                         <li>
+                            <a href="#curl-builder-tool" class="nav-item">
+                                <img src="/images/icons/web-programming.svg" alt="Curl Request Builder Icon" width="22" height="22">
+                                <span>Curl Request Builder</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="#ip-tool" class="nav-item">
                                 <img src="/images/icons/ip.svg" alt="IP Address Checker Icon" width="22" height="22">
                                 <span>IP Address Checker</span>
@@ -1676,8 +1682,279 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Curl Request Builder Tool -->
+            <section id="curl-builder-tool" class="tool">
+                <h2>🌐 Curl Request Builder</h2>
+                <p class="tool-description">Build and generate curl commands for HTTP requests with an easy-to-use interface.</p>
+                
+                <div class="tool-content">
+                    <div class="curl-builder-container">
+                        <!-- Request Configuration -->
+                        <div class="curl-request-config">
+                            <div class="curl-method-url">
+                                <div class="method-select">
+                                    <select id="curl-method">
+                                        <option value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                        <option value="PUT">PUT</option>
+                                        <option value="DELETE">DELETE</option>
+                                        <option value="PATCH">PATCH</option>
+                                        <option value="HEAD">HEAD</option>
+                                        <option value="OPTIONS">OPTIONS</option>
+                                    </select>
+                                </div>
+                                <div class="url-input">
+                                    <input type="text" id="curl-url" placeholder="https://api.example.com/endpoint" />
+                                </div>
+                                <button class="btn" id="curl-send-request">🚀 Send Request</button>
+                            </div>
+                        </div>
+
+                        <!-- Request Tabs -->
+                        <div class="curl-tabs">
+                            <button class="curl-tab active" data-tab="headers">Headers</button>
+                            <button class="curl-tab" data-tab="params">Query Params</button>
+                            <button class="curl-tab" data-tab="body">Body</button>
+                            <button class="curl-tab" data-tab="auth">Auth</button>
+                            <button class="curl-tab" data-tab="options">Options</button>
+                        </div>
+
+                        <!-- Tab Content -->
+                        <div class="curl-tab-content">
+                            <!-- Headers Tab -->
+                            <div class="curl-tab-panel active" id="headers-panel">
+                                <div class="key-value-pairs" id="curl-headers">
+                                    <div class="key-value-pair">
+                                        <input type="text" placeholder="Header name" class="key-input" />
+                                        <input type="text" placeholder="Header value" class="value-input" />
+                                        <button class="remove-pair">×</button>
+                                    </div>
+                                </div>
+                                <button class="btn-small" id="add-header">+ Add Header</button>
+                            </div>
+
+                            <!-- Query Parameters Tab -->
+                            <div class="curl-tab-panel" id="params-panel">
+                                <div class="key-value-pairs" id="curl-params">
+                                    <div class="key-value-pair">
+                                        <input type="text" placeholder="Parameter name" class="key-input" />
+                                        <input type="text" placeholder="Parameter value" class="value-input" />
+                                        <button class="remove-pair">×</button>
+                                    </div>
+                                </div>
+                                <button class="btn-small" id="add-param">+ Add Parameter</button>
+                            </div>
+
+                            <!-- Body Tab -->
+                            <div class="curl-tab-panel" id="body-panel">
+                                <div class="body-type-selector">
+                                    <label>
+                                        <input type="radio" name="body-type" value="none" checked>
+                                        None
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="body-type" value="form-data">
+                                        Form Data
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="body-type" value="x-www-form-urlencoded">
+                                        x-www-form-urlencoded
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="body-type" value="raw">
+                                        Raw
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="body-type" value="binary">
+                                        Binary
+                                    </label>
+                                </div>
+                                
+                                <div class="body-content">
+                                    <div class="form-data-content" style="display: none;">
+                                        <div class="key-value-pairs" id="curl-form-data">
+                                            <div class="key-value-pair">
+                                                <input type="text" placeholder="Key" class="key-input" />
+                                                <input type="text" placeholder="Value" class="value-input" />
+                                                <select class="type-select">
+                                                    <option value="text">Text</option>
+                                                    <option value="file">File</option>
+                                                </select>
+                                                <button class="remove-pair">×</button>
+                                            </div>
+                                        </div>
+                                        <button class="btn-small" id="add-form-data">+ Add Form Data</button>
+                                    </div>
+
+                                    <div class="urlencoded-content" style="display: none;">
+                                        <div class="key-value-pairs" id="curl-urlencoded">
+                                            <div class="key-value-pair">
+                                                <input type="text" placeholder="Key" class="key-input" />
+                                                <input type="text" placeholder="Value" class="value-input" />
+                                                <button class="remove-pair">×</button>
+                                            </div>
+                                        </div>
+                                        <button class="btn-small" id="add-urlencoded">+ Add Parameter</button>
+                                    </div>
+
+                                    <div class="raw-content" style="display: none;">
+                                        <div class="raw-type-selector">
+                                            <select id="raw-type">
+                                                <option value="json">JSON</option>
+                                                <option value="xml">XML</option>
+                                                <option value="text">Text</option>
+                                                <option value="html">HTML</option>
+                                                <option value="javascript">JavaScript</option>
+                                            </select>
+                                        </div>
+                                        <textarea id="curl-raw-body" placeholder="Enter raw body content"></textarea>
+                                    </div>
+
+                                    <div class="binary-content" style="display: none;">
+                                        <input type="file" id="curl-binary-file">
+                                        <p class="file-info">Select a file to upload</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Authentication Tab -->
+                            <div class="curl-tab-panel" id="auth-panel">
+                                <div class="auth-type-selector">
+                                    <label>
+                                        <input type="radio" name="auth-type" value="none" checked>
+                                        No Auth
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="auth-type" value="basic">
+                                        Basic Auth
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="auth-type" value="bearer">
+                                        Bearer Token
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="auth-type" value="api-key">
+                                        API Key
+                                    </label>
+                                </div>
+
+                                <div class="auth-content">
+                                    <div class="basic-auth-content" style="display: none;">
+                                        <input type="text" id="basic-username" placeholder="Username" />
+                                        <input type="password" id="basic-password" placeholder="Password" />
+                                    </div>
+
+                                    <div class="bearer-auth-content" style="display: none;">
+                                        <input type="text" id="bearer-token" placeholder="Bearer token" />
+                                    </div>
+
+                                    <div class="api-key-content" style="display: none;">
+                                        <input type="text" id="api-key-name" placeholder="Key name" />
+                                        <input type="text" id="api-key-value" placeholder="Key value" />
+                                        <select id="api-key-location">
+                                            <option value="header">Header</option>
+                                            <option value="query">Query Parameter</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Options Tab -->
+                            <div class="curl-tab-panel" id="options-panel">
+                                <div class="curl-options">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="curl-follow-redirects">
+                                        Follow Redirects (-L)
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="curl-include-headers">
+                                        Include Response Headers (-i)
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="curl-insecure">
+                                        Allow Insecure SSL (-k)
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="curl-verbose">
+                                        Verbose Output (-v)
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="curl-compressed">
+                                        Request Compressed Response (--compressed)
+                                    </label>
+                                </div>
+
+                                <div class="timeout-options">
+                                    <label>
+                                        Connection Timeout (seconds):
+                                        <input type="number" id="curl-connect-timeout" min="1" max="300" value="30" />
+                                    </label>
+                                    <label>
+                                        Max Time (seconds):
+                                        <input type="number" id="curl-max-time" min="1" max="3600" value="300" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Generated Curl Command -->
+                        <div class="curl-output-section">
+                            <div class="curl-output-header">
+                                <h3>Generated Curl Command</h3>
+                                <div class="curl-actions">
+                                    <button class="btn-small" id="curl-copy">📋 Copy</button>
+                                    <button class="btn-small" id="curl-save">💾 Save</button>
+                                    <button class="btn-small" id="curl-load">📁 Load</button>
+                                </div>
+                            </div>
+                            <div class="curl-command-output">
+                                <pre id="curl-command"><code>curl --location 'https://api.example.com/endpoint'</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Response Section -->
+                        <div class="curl-response-section" style="display: none;">
+                            <div class="curl-response-header">
+                                <h3>Response</h3>
+                                <div class="response-info">
+                                    <span class="response-status" id="response-status"></span>
+                                    <span class="response-time" id="response-time"></span>
+                                    <span class="response-size" id="response-size"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="response-tabs">
+                                <button class="response-tab active" data-tab="body">Response Body</button>
+                                <button class="response-tab" data-tab="headers">Response Headers</button>
+                            </div>
+
+                            <div class="response-content">
+                                <div class="response-tab-panel active" id="response-body-panel">
+                                    <pre id="response-body"><code></code></pre>
+                                </div>
+                                <div class="response-tab-panel" id="response-headers-panel">
+                                    <pre id="response-headers"><code></code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Examples -->
+                        <div class="curl-examples-section">
+                            <h3>Quick Examples</h3>
+                            <div class="curl-examples">
+                                <button class="example-btn" data-example="get">GET Request</button>
+                                <button class="example-btn" data-example="post-json">POST JSON</button>
+                                <button class="example-btn" data-example="post-form">POST Form</button>
+                                <button class="example-btn" data-example="auth-bearer">Bearer Auth</button>
+                                <button class="example-btn" data-example="file-upload">File Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
-        </div>
+        </div>>
         
         <!-- Footer -->
         <footer class="footer">
@@ -1762,6 +2039,7 @@
     <script src="components/RSAEncryptDecrypt.js"></script>
     <script src="components/JSONDiffTool.js"></script>
     <script src="components/YAMLDiffTool.js"></script>
+    <script src="components/CurlBuilder.js"></script>
     <script src="components/Sidebar.js"></script>
     <script src="components/JwtTools.js"></script>
     <script src="components/UnixTimeConverter.js"></script>
