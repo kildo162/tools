@@ -9,13 +9,15 @@
     "build": "./build.sh",
     "build:prod": "./build.sh && cd dist && python -m http.server 8080",
     "preview": "cd dist && python -m http.server 8080",
+    "deploy:manual": "npm run build && cd dist && git init && git add . && git commit -m 'Deploy optimized build' && git push -f origin master:gh-pages",
+    "deploy:github": "echo 'Deployment handled by GitHub Actions. Push to master branch to trigger.'",
     "analyze": "npm run analyze:bundle && npm run analyze:lighthouse",
     "analyze:bundle": "echo 'Analyzing bundle size...' && find . -name '*.js' -o -name '*.css' | head -10 | xargs wc -c",
-    "analyze:lighthouse": "echo 'Run: lighthouse http://localhost:8080 --output html --output-path ./lighthouse-report.html'",
+    "analyze:lighthouse": "echo 'Run: lighthouse https://kildo162.github.io/tools --output html --output-path ./lighthouse-report.html'",
     "test": "echo 'No tests specified yet'",
     "lint": "echo 'Linting JavaScript files...' && find . -name '*.js' ! -path './node_modules/*' ! -path './dist/*' -exec echo 'Checking: {}' \\;",
     "clean": "rm -rf dist/ *.log lighthouse-report.html",
-    "deploy": "npm run build && echo 'Deploy dist/ directory to your hosting provider'"
+    "setup:ghpages": "echo 'Setting up GitHub Pages...' && git checkout --orphan gh-pages && git rm -rf . && echo 'GitHub Pages branch created. Run npm run deploy:manual to deploy.'"
   },
   "keywords": [
     "developer-tools",

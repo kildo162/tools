@@ -13,44 +13,44 @@ class OptimizedSidebar {
                 title: 'Authentication & Tokens',
                 icon: '🔐',
                 items: [
-                    { id: 'jwt-validation', title: 'JWT Validation', icon: '/images/icons/web-programming.svg' },
-                    { id: 'jwt-generator', title: 'JWT Generator', icon: '/images/icons/web-programming.svg' },
-                    { id: 'jwt-fuzzer', title: 'JWT Fuzzer', icon: '/images/icons/web-programming.svg' }
+                    { id: 'jwt-validation', title: 'JWT Validation', icon: './images/icons/web-programming.svg' },
+                    { id: 'jwt-generator', title: 'JWT Generator', icon: './images/icons/web-programming.svg' },
+                    { id: 'jwt-fuzzer', title: 'JWT Fuzzer', icon: './images/icons/web-programming.svg' }
                 ]
             },
             {
                 title: 'Text & Data Processing',
                 icon: '📝',
                 items: [
-                    { id: 'json-tool', title: 'JSON Formatter', icon: '/images/icons/json.svg' },
-                    { id: 'url-tool', title: 'URL Encoder/Decoder', icon: '/images/icons/web-programming.svg' },
-                    { id: 'hash-tool', title: 'Hash Generator', icon: '/images/icons/web-programming.svg' }
+                    { id: 'json-tool', title: 'JSON Formatter', icon: './images/icons/json.svg' },
+                    { id: 'url-tool', title: 'URL Encoder/Decoder', icon: './images/icons/web-programming.svg' },
+                    { id: 'hash-tool', title: 'Hash Generator', icon: './images/icons/web-programming.svg' }
                 ]
             },
             {
                 title: 'Generators & Utilities',
                 icon: '🛠️',
                 items: [
-                    { id: 'password-generator', title: 'Password Generator', icon: '/images/icons/web-programming.svg' },
-                    { id: 'uuid-generator', title: 'UUID Generator', icon: '/images/icons/web-programming.svg' },
-                    { id: 'api-key-generator', title: 'API Key Generator', icon: '/images/icons/web-programming.svg' }
+                    { id: 'password-generator', title: 'Password Generator', icon: './images/icons/web-programming.svg' },
+                    { id: 'uuid-generator', title: 'UUID Generator', icon: './images/icons/web-programming.svg' },
+                    { id: 'api-key-generator', title: 'API Key Generator', icon: './images/icons/web-programming.svg' }
                 ]
             },
             {
                 title: 'Time & Conversion',
                 icon: '⏰',
                 items: [
-                    { id: 'unix-time-tool', title: 'Unix Time Converter', icon: '/images/icons/back-in-time.svg' }
+                    { id: 'unix-time-tool', title: 'Unix Time Converter', icon: './images/icons/back-in-time.svg' }
                 ]
             },
             {
                 title: 'Encryption & Security',
                 icon: '🔒',
                 items: [
-                    { id: 'symmetric-encryption', title: 'Symmetric Encryption', icon: '/images/icons/web-programming.svg' },
-                    { id: 'rsa-key-generator', title: 'RSA Key Generator', icon: '/images/icons/web-programming.svg' },
-                    { id: 'rsa-encrypt-decrypt', title: 'RSA Encrypt/Decrypt', icon: '/images/icons/web-programming.svg' },
-                    { id: 'encryption-key-generator', title: 'Encryption Key Generator', icon: '/images/icons/web-programming.svg' }
+                    { id: 'symmetric-encryption', title: 'Symmetric Encryption', icon: './images/icons/web-programming.svg' },
+                    { id: 'rsa-key-generator', title: 'RSA Key Generator', icon: './images/icons/web-programming.svg' },
+                    { id: 'rsa-encrypt-decrypt', title: 'RSA Encrypt/Decrypt', icon: './images/icons/web-programming.svg' },
+                    { id: 'encryption-key-generator', title: 'Encryption Key Generator', icon: './images/icons/web-programming.svg' }
                 ]
             }
         ];

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Build script for DevTools optimization
+# Build script for DevTools optimization (GitHub Pages compatible)
 set -e
 
-echo "🚀 Starting DevTools optimization build..."
+echo "🚀 Starting DevTools optimization build for GitHub Pages..."
 
 # Create build directory
 BUILD_DIR="dist"
@@ -71,40 +71,54 @@ cat > $BUILD_DIR/styles/components/json.css << 'EOF'
 .json-textarea { flex: 1; font-family: monospace; resize: none; }
 EOF
 
+# Create GitHub Pages specific files
+echo "Creating GitHub Pages files..."
+
+# Create .nojekyll file to prevent Jekyll processing
+touch $BUILD_DIR/.nojekyll
+
+# Create a simple README for the dist folder
+cat > $BUILD_DIR/README.md << 'EOF'
+# DevTools - Optimized Build
+
+This is the optimized production build for GitHub Pages.
+
+## Features:
+- ⚡ Lazy loading components
+- 🎯 Critical CSS inlined
+- 💾 Service Worker caching
+- 📱 Mobile-first responsive
+- 🚀 GitHub Pages optimized
+
+Original source: https://github.com/kildo162/tools
+EOF
+
 # Update service worker with new cache version
 echo "Updating service worker..."
-sed -i "s/devtools-v1/devtools-v$(date +%s)/g" $BUILD_DIR/sw.js
-
-# Generate file hashes for cache busting (basic implementation)
-echo "Adding cache busting..."
-for file in $BUILD_DIR/js/app.js $BUILD_DIR/css/main.css; do
-    if [ -f "$file" ]; then
-        HASH=$(md5sum "$file" | cut -d' ' -f1 | head -c 8)
-        NEW_NAME=$(echo "$file" | sed "s/\.\([^.]*\)$/.${HASH}.\1/")
-        mv "$file" "$NEW_NAME"
-        
-        # Update references in HTML
-        BASENAME=$(basename "$file")
-        NEWBASENAME=$(basename "$NEW_NAME")
-        sed -i "s|$BASENAME|$NEWBASENAME|g" $BUILD_DIR/index.html
-    fi
-done
+sed -i "s/devtools-v1/devtools-gh-$(date +%s)/g" $BUILD_DIR/sw.js
 
 echo "✅ Build completed successfully!"
 echo "📊 Build statistics:"
-echo "   Original HTML: $(wc -c < index.html) bytes"
+echo "   Original HTML: $(wc -c < index.html 2>/dev/null || echo 'N/A') bytes"
 echo "   Optimized HTML: $(wc -c < $BUILD_DIR/index.html) bytes"
 echo "   Components: $(find $BUILD_DIR/components -name '*.js' | wc -l) files"
 echo "   Images: $(find $BUILD_DIR/images -type f | wc -l) files"
 
 echo ""
-echo "🎯 Optimization recommendations applied:"
+echo "🎯 GitHub Pages optimizations applied:"
+echo "   ✅ Relative paths for all assets"
+echo "   ✅ .nojekyll file created"
 echo "   ✅ Critical CSS inlined"
-echo "   ✅ JavaScript modules for lazy loading"
-echo "   ✅ Service Worker for caching"
-echo "   ✅ Image lazy loading"
-echo "   ✅ Component-based CSS splitting"
-echo "   ✅ Cache busting for assets"
+echo "   ✅ Service Worker with GitHub Pages paths"
+echo "   ✅ Component lazy loading"
+echo "   ✅ Mobile responsive design"
 
 echo ""
-echo "🚀 Ready for deployment from '$BUILD_DIR' directory!"
+echo "🚀 GitHub Pages deployment steps:"
+echo "   1. cd dist && git init"
+echo "   2. git add . && git commit -m 'Optimized build'"
+echo "   3. git push -f origin master:gh-pages"
+echo "   4. Enable GitHub Pages in repo settings"
+
+echo ""
+echo "� Or use GitHub Actions for automated deployment!"

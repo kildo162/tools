@@ -43,11 +43,11 @@ class ModuleLoader {
     async _loadModule(componentName) {
         const promises = [];
         
-        // Load JavaScript
-        promises.push(this._loadScript(`/components/${componentName}.js`));
+        // Load JavaScript - Use relative paths for GitHub Pages
+        promises.push(this._loadScript(`./components/${componentName}.js`));
         
         // Load component-specific CSS if exists
-        promises.push(this._loadCSS(`/styles/components/${componentName.toLowerCase()}.css`));
+        promises.push(this._loadCSS(`./styles/components/${componentName.toLowerCase()}.css`));
 
         await Promise.all(promises);
     }

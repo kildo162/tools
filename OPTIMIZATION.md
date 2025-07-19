@@ -160,7 +160,7 @@ Theo dõi performance với:
 Có vấn đề với version tối ưu hóa? 
 - 🐛 [Report bugs](https://github.com/kildo162/tools/issues)
 - 💬 [Discussions](https://github.com/kildo162/tools/discussions)
-- 📧 Email: khanhnd35@example.com
+- 📧 Email: khanhnd162@gmail.com
 
 ---
 
