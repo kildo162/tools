@@ -1,0 +1,84 @@
+<!-- Affiliate Banner Component -->
+<div class="affiliate-banners">
+    <!-- Vultr Banner -->
+    <div class="affiliate-banner vultr-banner">
+        <h3>🚀 Deploy Your Apps</h3>
+        <p>High-performance cloud hosting for developers</p>
+        <a href="https://www.vultr.com/?ref=YOUR_REF" target="_blank" rel="noopener">
+            Get $100 Free Credit
+        </a>
+        <small>Earn: $20 per signup</small>
+    </div>
+
+    <!-- DigitalOcean Banner -->
+    <div class="affiliate-banner do-banner">
+        <h3>☁️ Cloud Made Simple</h3>
+        <p>Developer-friendly cloud platform</p>
+        <a href="https://www.digitalocean.com/?refcode=YOUR_REF" target="_blank" rel="noopener">
+            Get $200 Free Credit
+        </a>
+        <small>Earn: $25 per signup</small>
+    </div>
+
+    <!-- Namecheap Banner -->
+    <div class="affiliate-banner nc-banner">
+        <h3>🌐 Domain & Hosting Deals</h3>
+        <p>Affordable domains and reliable hosting</p>
+        <a href="https://www.namecheap.com/?aff=YOUR_REF" target="_blank" rel="noopener">
+            Get 50% Off Domains
+        </a>
+        <small>Earn: 25% commission</small>
+    </div>
+</div>
+
+<style>
+.affiliate-banners {
+    display: grid;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.affiliate-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.affiliate-banner:hover {
+    transform: translateY(-2px);
+}
+
+.affiliate-banner h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.affiliate-banner p {
+    margin: 0 0 1rem 0;
+    opacity: 0.9;
+}
+
+.affiliate-banner a {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.affiliate-banner a:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.affiliate-banner small {
+    display: block;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+}
+</style>
