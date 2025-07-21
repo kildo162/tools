@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FAQ - DevTools. Frequently asked questions about our free developer tools, privacy, security, and usage.">
+    <meta name="keywords" content="faq, frequently asked questions, developer tools, jwt, json, help, support, devtools">
+    <meta name="author" content="KhanhND">
+    <meta name="robots" content="index, follow">
+
+    <title>FAQ - DevTools | Frequently Asked Questions</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tools.khanhnd.com/faq.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="FAQ - DevTools | Frequently Asked Questions">
+    <meta property="og:description" content="Get answers to frequently asked questions about our free developer tools">
+    <meta property="og:image" content="https://tools.khanhnd.com/images/og-image.png">
+    <meta property="og:url" content="https://tools.khanhnd.com/faq.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DevTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAQ - DevTools">
+    <meta name="twitter:description" content="Frequently asked questions about DevTools">
+    <meta name="twitter:image" content="https://tools.khanhnd.com/images/og-image.png">
+
+    <!-- FAQ Schema Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is DevTools completely free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, DevTools is completely free to use. All our developer tools are available without any cost, registration, or premium tiers. We believe in keeping essential developer tools accessible to everyone."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "Is my data safe? Do you store any information?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Your data is 100% safe. All processing happens entirely in your browser (client-side). We never send your data to our servers, store any information, or track your usage. Your privacy is our top priority."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which tools are available on DevTools?",
+                "acceptedAnswer": {
+                    "@type": "Answer", 
+                    "text": "We offer 15+ developer tools including JWT Parser & Validator, JSON Formatter, Unix Time Converter, Base64 Encoder/Decoder, URL Encoder/Decoder, Hash Generator, Password Generator, UUID Generator, Curl Request Builder, RSA Key Generator, Symmetric Encryption tools, JSON Diff Tool, YAML Diff Tool, and more."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need to install anything?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No installation required! DevTools works entirely in your web browser. Just visit our website and start using any tool immediately. It works on desktop, tablet, and mobile devices."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use DevTools offline?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! DevTools has PWA (Progressive Web App) capabilities and service worker caching. After your first visit, many tools will work offline. You can also bookmark the page for quick access."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can I support DevTools?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can support DevTools by: 1) Making a donation via our donate page, 2) Starring our GitHub repository, 3) Sharing the tools with other developers, 4) Reporting bugs or suggesting features, 5) Contributing to the open-source project."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .faq-header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .faq-header .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            padding: 12px 24px;
+            background: #f7fafc;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+        
+        .back-home:hover {
+            background: #e2e8f0;
+            color: #2b6cb0;
+            transform: translateX(-2px);
+        }
+        
+        .faq-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: #2d3748;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .faq-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        
+        .faq-question:hover {
+            background: #edf2f7;
+        }
+        
+        .faq-question h3 {
+            color: #2d3748;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+        }
+        
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: transform 0.2s;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 25px 20px;
+        }
+        
+        .faq-answer p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .faq-answer ul {
+            color: #4a5568;
+            line-height: 1.6;
+            padding-left: 20px;
+        }
+        
+        .faq-answer ul li {
+            margin-bottom: 5px;
+        }
+        
+        .contact-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .contact-cta h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .contact-cta p {
+            margin: 0 0 20px 0;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        .search-faq {
+            margin-bottom: 30px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+            
+            .faq-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-link {
+                min-width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px 0;">
+    <div class="faq-container">
+        <a href="/" class="back-home">
+            ← Back to Home
+        </a>
+        
+        <div class="faq-header">
+            <h1>❓ Frequently Asked Questions</h1>
+            <div class="subtitle">
+                Get answers to common questions about DevTools, our developer utilities, privacy, and more.
+            </div>
+        </div>
+        
+        <div class="search-faq">
+            <input type="text" class="search-input" placeholder="🔍 Search FAQ..." id="faqSearch">
+        </div>
+        
+        <div class="faq-section">
+            <h2 class="section-title">General Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is DevTools completely free?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, DevTools is completely free to use. All our developer tools are available without any cost, registration, or premium tiers. We believe in keeping essential developer tools accessible to everyone in the developer community.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is my data safe? Do you store any information?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Your data is 100% safe. All processing happens entirely in your browser (client-side). We never send your data to our servers, store any information, or track your usage. Your privacy is our top priority.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Which tools are available on DevTools?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer 15+ developer tools including:</p>
+                    <ul>
+                        <li>JWT Parser & Validator</li>
+                        <li>JSON Formatter & Validator</li>
+                        <li>Unix Time Converter</li>
+                        <li>Base64 Encoder/Decoder</li>
+                        <li>URL Encoder/Decoder</li>
+                        <li>Hash Generator (MD5, SHA-1, SHA-256)</li>
+                        <li>Password Generator</li>
+                        <li>UUID Generator</li>
+                        <li>Curl Request Builder</li>
+                        <li>RSA Key Generator & Encryption</li>
+                        <li>Symmetric Encryption Tools</li>
+                        <li>JSON Diff Tool</li>
+                        <li>YAML Diff Tool</li>
+                        <li>IP Address Checker</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do I need to install anything?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>No installation required! DevTools works entirely in your web browser. Just visit our website and start using any tool immediately. It works on desktop, tablet, and mobile devices with modern browsers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2 class="section-title">Technical Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I use DevTools offline?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! DevTools has PWA (Progressive Web App) capabilities and service worker caching. After your first visit, many tools will work offline. You can also bookmark the page for quick access.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Which browsers are supported?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>DevTools works on all modern browsers including Chrome, Firefox, Safari, Edge, and mobile browsers. We recommend using the latest version for the best experience.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is the source code available?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! DevTools is open source. You can view, contribute, and fork the code on our <a href="https://github.com/kildo162/tools" target="_blank" style="color: #3182ce;">GitHub repository</a>. We welcome contributions from the community.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2 class="section-title">Support & Community</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How can I support DevTools?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can support DevTools by:</p>
+                    <ul>
+                        <li>Making a donation via our <a href="/donate.html" style="color: #3182ce;">donate page</a></li>
+                        <li>Starring our GitHub repository</li>
+                        <li>Sharing the tools with other developers</li>
+                        <li>Reporting bugs or suggesting features</li>
+                        <li>Contributing to the open-source project</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How can I report bugs or request features?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can report bugs or request features through:</p>
+                    <ul>
+                        <li>GitHub Issues on our repository</li>
+                        <li>Email us at <a href="mailto:support@tools.khanhnd.com" style="color: #3182ce;">support@tools.khanhnd.com</a></li>
+                        <li>Contact us via our <a href="/contact.html" style="color: #3182ce;">contact page</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-cta">
+            <h3>🤔 Still have questions?</h3>
+            <p>If you couldn't find the answer you're looking for, we're here to help!</p>
+            <div class="contact-links">
+                <a href="/contact.html" class="contact-link">
+                    📧 Contact Us
+                </a>
+                <a href="https://github.com/kildo162/tools" target="_blank" class="contact-link">
+                    💬 GitHub Issues
+                </a>
+                <a href="/support.html" class="contact-link">
+                    🛠️ Get Support
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('faqSearch');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('h3').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // If searching, show section titles only if they have visible items
+                const sections = document.querySelectorAll('.faq-section');
+                sections.forEach(section => {
+                    const visibleItems = section.querySelectorAll('.faq-item[style*="block"], .faq-item:not([style*="none"])');
+                    section.style.display = visibleItems.length > 0 ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

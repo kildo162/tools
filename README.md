@@ -24,8 +24,8 @@ todolist:
 - ✅ privacy policy page
 - ✅ terms of service page
 - ✅ cookie policy page
-- faq page
-- contact page/support page
+- ✅ faq page
+- ✅ contact page/support page
 - ✅ sitemap.xml
 - ✅ robots.txt
 - ✅ Domain mapping to tools.khanhnd.com

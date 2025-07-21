@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Us - DevTools. Get in touch with the DevTools team for support, feedback, or collaboration opportunities.">
+    <meta name="keywords" content="contact, support, devtools, developer tools, feedback, collaboration, email">
+    <meta name="author" content="KhanhND">
+    <meta name="robots" content="index, follow">
+
+    <title>Contact Us - DevTools | Get in Touch</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tools.khanhnd.com/contact.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Contact Us - DevTools">
+    <meta property="og:description" content="Get in touch with the DevTools team for support, feedback, or collaboration">
+    <meta property="og:image" content="https://tools.khanhnd.com/images/og-image.png">
+    <meta property="og:url" content="https://tools.khanhnd.com/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DevTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us - DevTools">
+    <meta name="twitter:description" content="Get in touch with the DevTools team">
+    <meta name="twitter:image" content="https://tools.khanhnd.com/images/og-image.png">
+
+    <!-- Contact Schema Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "DevTools",
+            "url": "https://tools.khanhnd.com",
+            "contactPoint": [
+                {
+                    "@type": "ContactPoint",
+                    "contactType": "customer support",
+                    "email": "support@tools.khanhnd.com",
+                    "availableLanguage": ["English"]
+                },
+                {
+                    "@type": "ContactPoint", 
+                    "contactType": "technical support",
+                    "url": "https://github.com/kildo162/tools/issues",
+                    "availableLanguage": ["English"]
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .contact-header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .contact-header .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+        
+        .back-home:hover {
+            background: white;
+            color: #2b6cb0;
+            transform: translateX(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .contact-card .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-card.email .icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .contact-card.github .icon {
+            background: linear-gradient(135deg, #24292e 0%, #0d1117 100%);
+            color: white;
+        }
+        
+        .contact-card.support .icon {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .contact-card h3 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .contact-card p {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .contact-card .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f7fafc;
+            color: #3182ce;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .contact-card .contact-link:hover {
+            background: #e2e8f0;
+            color: #2b6cb0;
+            transform: translateY(-1px);
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .form-title {
+            color: #2d3748;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #4a5568;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            font-family: Inter, sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .response-time {
+            background: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .response-time p {
+            margin: 0;
+            color: #276749;
+            font-size: 0.9rem;
+        }
+        
+        .quick-links {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .quick-links h3 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #4a5568;
+            transition: all 0.2s;
+        }
+        
+        .quick-link:hover {
+            background: #e2e8f0;
+            color: #2d3748;
+            transform: translateX(2px);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-container {
+                margin: 20px;
+                padding: 20px 0;
+            }
+            
+            .contact-header,
+            .contact-form,
+            .quick-links {
+                margin-left: 20px;
+                margin-right: 20px;
+                padding: 30px 20px;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px 0;">
+    <div class="contact-container">
+        <a href="/" class="back-home">
+            ← Back to Home
+        </a>
+        
+        <div class="contact-header">
+            <h1>📧 Contact Us</h1>
+            <div class="subtitle">
+                We'd love to hear from you! Whether you have questions, feedback, feature requests, or need support, we're here to help.
+            </div>
+        </div>
+        
+        <div class="contact-methods">
+            <div class="contact-card email">
+                <div class="icon">📧</div>
+                <h3>Email Support</h3>
+                <p>Get direct support from our team. We typically respond within 24 hours.</p>
+                <a href="mailto:support@tools.khanhnd.com" class="contact-link">
+                    📬 support@tools.khanhnd.com
+                </a>
+            </div>
+            
+            <div class="contact-card github">
+                <div class="icon">💬</div>
+                <h3>GitHub Issues</h3>
+                <p>Report bugs, request features, or contribute to our open-source project.</p>
+                <a href="https://github.com/kildo162/tools/issues" target="_blank" class="contact-link">
+                    🔧 Create Issue
+                </a>
+            </div>
+            
+            <div class="contact-card support">
+                <div class="icon">🛠️</div>
+                <h3>Community Support</h3>
+                <p>Get help from our community or browse existing discussions.</p>
+                <a href="https://github.com/kildo162/tools/discussions" target="_blank" class="contact-link">
+                    💭 Join Discussions
+                </a>
+            </div>
+        </div>
+        
+        <div class="contact-form">
+            <h2 class="form-title">✉️ Send us a Message</h2>
+            <form id="contactForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="bug-report">🐛 Bug Report</option>
+                        <option value="feature-request">✨ Feature Request</option>
+                        <option value="general-support">❓ General Support</option>
+                        <option value="feedback">💬 Feedback</option>
+                        <option value="collaboration">🤝 Collaboration</option>
+                        <option value="other">📝 Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" placeholder="Tell us how we can help you..." rows="6" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    🚀 Send Message
+                </button>
+                
+                <div class="response-time">
+                    <p>⏰ We typically respond within 24 hours during business days</p>
+                </div>
+            </form>
+        </div>
+        
+        <div class="quick-links">
+            <h3>🔗 Quick Links</h3>
+            <div class="links-grid">
+                <a href="/faq.html" class="quick-link">
+                    ❓ FAQ
+                </a>
+                <a href="/support.html" class="quick-link">
+                    🛠️ Support Center
+                </a>
+                <a href="/donate.html" class="quick-link">
+                    ☕ Donate
+                </a>
+                <a href="https://github.com/kildo162/tools" target="_blank" class="quick-link">
+                    ⭐ GitHub
+                </a>
+                <a href="/privacy-policy.html" class="quick-link">
+                    🔒 Privacy Policy
+                </a>
+                <a href="/terms-of-service.html" class="quick-link">
+                    📄 Terms of Service
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // Create mailto link
+                const mailtoLink = `mailto:support@tools.khanhnd.com?subject=${encodeURIComponent(subject + ' - ' + document.querySelector(`option[value="${subject}"]`).textContent)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show thank you message
+                const submitBtn = document.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '✅ Thank you! Opening your email client...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    contactForm.reset();
+                }, 3000);
+            });
+            
+            // Auto-resize textarea
+            const textarea = document.getElementById('message');
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+        });
+    </script>
+</body>
+</html>

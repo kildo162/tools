@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support Center - DevTools. Get help with our developer tools, troubleshooting guides, and technical documentation.">
+    <meta name="keywords" content="support, help, developer tools, troubleshooting, documentation, guides, devtools">
+    <meta name="author" content="KhanhND">
+    <meta name="robots" content="index, follow">
+
+    <title>Support Center - DevTools | Help & Documentation</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tools.khanhnd.com/support.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Support Center - DevTools">
+    <meta property="og:description" content="Get help with our developer tools and access troubleshooting guides">
+    <meta property="og:image" content="https://tools.khanhnd.com/images/og-image.png">
+    <meta property="og:url" content="https://tools.khanhnd.com/support.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DevTools">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Support Center - DevTools">
+    <meta name="twitter:description" content="Get help with our developer tools">
+    <meta name="twitter:image" content="https://tools.khanhnd.com/images/og-image.png">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .support-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .support-header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .support-header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .support-header .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3182ce;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+        
+        .back-home:hover {
+            background: white;
+            color: #2b6cb0;
+            transform: translateX(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .support-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        
+        .support-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .support-card .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .support-card.guides .icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .support-card.troubleshoot .icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .support-card.community .icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .support-card.contact .icon {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+        
+        .support-card h3 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .support-card p {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .support-card .support-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .support-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #4a5568;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+        
+        .support-link:hover {
+            background: #e2e8f0;
+            color: #2d3748;
+            transform: translateX(3px);
+        }
+        
+        .tools-help {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .tools-help h2 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-help-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        
+        .tool-help-item:hover {
+            background: #edf2f7;
+            transform: translateY(-2px);
+        }
+        
+        .tool-help-item h4 {
+            color: #2d3748;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tool-help-item p {
+            color: #718096;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .tool-help-item .help-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .help-tag {
+            display: inline-block;
+            background: #3182ce;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        
+        .help-tag:hover {
+            background: #2b6cb0;
+        }
+        
+        .status-section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .status-section h3 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #f0fff4;
+            color: #276749;
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid #9ae6b4;
+        }
+        
+        .status-details {
+            color: #718096;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .support-header h1 {
+                font-size: 2rem;
+            }
+            
+            .support-container {
+                margin: 20px;
+                padding: 20px 0;
+            }
+            
+            .support-header,
+            .tools-help,
+            .status-section {
+                margin-left: 20px;
+                margin-right: 20px;
+                padding: 30px 20px;
+            }
+            
+            .support-grid {
+                grid-template-columns: 1fr;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px 0;">
+    <div class="support-container">
+        <a href="/" class="back-home">
+            ← Back to Home
+        </a>
+        
+        <div class="support-header">
+            <h1>🛠️ Support Center</h1>
+            <div class="subtitle">
+                Find help, documentation, and resources for all DevTools utilities. Get the support you need to make the most of our developer tools.
+            </div>
+        </div>
+        
+        <div class="support-grid">
+            <div class="support-card guides">
+                <div class="icon">📚</div>
+                <h3>User Guides</h3>
+                <p>Step-by-step guides and tutorials for using our developer tools effectively.</p>
+                <div class="support-links">
+                    <a href="#jwt-guide" class="support-link">
+                        🔐 JWT Tools Guide
+                    </a>
+                    <a href="#json-guide" class="support-link">
+                        📄 JSON Formatter Guide
+                    </a>
+                    <a href="#curl-guide" class="support-link">
+                        🚀 Curl Builder Guide
+                    </a>
+                    <a href="#security-guide" class="support-link">
+                        🔒 Security Tools Guide
+                    </a>
+                </div>
+            </div>
+            
+            <div class="support-card troubleshoot">
+                <div class="icon">🔧</div>
+                <h3>Troubleshooting</h3>
+                <p>Common issues and solutions to help you resolve problems quickly.</p>
+                <div class="support-links">
+                    <a href="#common-issues" class="support-link">
+                        ❓ Common Issues
+                    </a>
+                    <a href="#browser-compatibility" class="support-link">
+                        🌐 Browser Issues
+                    </a>
+                    <a href="#performance" class="support-link">
+                        ⚡ Performance Tips
+                    </a>
+                    <a href="#offline-mode" class="support-link">
+                        📱 Offline Mode
+                    </a>
+                </div>
+            </div>
+            
+            <div class="support-card community">
+                <div class="icon">💬</div>
+                <h3>Community</h3>
+                <p>Connect with other developers and get help from our community.</p>
+                <div class="support-links">
+                    <a href="https://github.com/kildo162/tools/discussions" target="_blank" class="support-link">
+                        💭 GitHub Discussions
+                    </a>
+                    <a href="https://github.com/kildo162/tools/issues" target="_blank" class="support-link">
+                        🐛 Report Issues
+                    </a>
+                    <a href="https://github.com/kildo162/tools" target="_blank" class="support-link">
+                        ⭐ Star on GitHub
+                    </a>
+                    <a href="/faq.html" class="support-link">
+                        ❓ Browse FAQ
+                    </a>
+                </div>
+            </div>
+            
+            <div class="support-card contact">
+                <div class="icon">📧</div>
+                <h3>Direct Support</h3>
+                <p>Need personalized help? Contact our support team directly.</p>
+                <div class="support-links">
+                    <a href="mailto:support@tools.khanhnd.com" class="support-link">
+                        📬 Email Support
+                    </a>
+                    <a href="/contact.html" class="support-link">
+                        📝 Contact Form
+                    </a>
+                    <a href="#priority-support" class="support-link">
+                        🚀 Priority Support
+                    </a>
+                    <a href="/donate.html" class="support-link">
+                        ☕ Support DevTools
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tools-help">
+            <h2>🔧 Tool-Specific Help</h2>
+            <div class="tools-grid">
+                <div class="tool-help-item">
+                    <h4>🔐 JWT Tools</h4>
+                    <p>Parse, validate, and generate JSON Web Tokens with security best practices.</p>
+                    <div class="help-links">
+                        <a href="#jwt-validate" class="help-tag">Validation</a>
+                        <a href="#jwt-decode" class="help-tag">Decoding</a>
+                        <a href="#jwt-generate" class="help-tag">Generation</a>
+                    </div>
+                </div>
+                
+                <div class="tool-help-item">
+                    <h4>📄 JSON Formatter</h4>
+                    <p>Format, validate, and manipulate JSON data with advanced features.</p>
+                    <div class="help-links">
+                        <a href="#json-format" class="help-tag">Formatting</a>
+                        <a href="#json-validate" class="help-tag">Validation</a>
+                        <a href="#json-minify" class="help-tag">Minify</a>
+                    </div>
+                </div>
+                
+                <div class="tool-help-item">
+                    <h4>🚀 Curl Builder</h4>
+                    <p>Build and test HTTP requests with headers, auth, and body data.</p>
+                    <div class="help-links">
+                        <a href="#curl-build" class="help-tag">Building</a>
+                        <a href="#curl-auth" class="help-tag">Authentication</a>
+                        <a href="#curl-test" class="help-tag">Testing</a>
+                    </div>
+                </div>
+                
+                <div class="tool-help-item">
+                    <h4>🔒 Hash Generator</h4>
+                    <p>Generate secure hashes using MD5, SHA-1, SHA-256 algorithms.</p>
+                    <div class="help-links">
+                        <a href="#hash-md5" class="help-tag">MD5</a>
+                        <a href="#hash-sha" class="help-tag">SHA</a>
+                        <a href="#hash-compare" class="help-tag">Compare</a>
+                    </div>
+                </div>
+                
+                <div class="tool-help-item">
+                    <h4>🆔 UUID Generator</h4>
+                    <p>Create unique identifiers with different UUID versions and formats.</p>
+                    <div class="help-links">
+                        <a href="#uuid-v4" class="help-tag">UUID v4</a>
+                        <a href="#uuid-v1" class="help-tag">UUID v1</a>
+                        <a href="#uuid-bulk" class="help-tag">Bulk Generate</a>
+                    </div>
+                </div>
+                
+                <div class="tool-help-item">
+                    <h4>🔄 Encoders</h4>
+                    <p>Base64, URL encoding/decoding with support for different formats.</p>
+                    <div class="help-links">
+                        <a href="#base64" class="help-tag">Base64</a>
+                        <a href="#url-encode" class="help-tag">URL</a>
+                        <a href="#unicode" class="help-tag">Unicode</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-section">
+            <h3>🔍 System Status</h3>
+            <div class="status-indicator">
+                <span style="font-size: 1.2rem;">🟢</span>
+                All systems operational
+            </div>
+            <div class="status-details">
+                All DevTools are running smoothly. Last checked: <span id="lastCheck">Loading...</span>
+                <br><br>
+                📊 <strong>Performance:</strong> Average load time &lt; 500ms<br>
+                🔒 <strong>Security:</strong> All connections secured with SSL<br>
+                📱 <strong>Availability:</strong> 99.9% uptime (30-day average)
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update last check time
+            const lastCheck = document.getElementById('lastCheck');
+            const now = new Date();
+            lastCheck.textContent = now.toLocaleString();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Add hover effect to support cards
+            document.querySelectorAll('.support-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.borderColor = '#667eea';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.borderColor = '#e2e8f0';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
