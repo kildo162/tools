@@ -24,18 +24,24 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v5
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-
-    - name: Install dependencies (if needed)
+    - name: Check project setup
       run: |
+        echo "📋 Project information:"
+        echo "   Repository: kildo162/tools"
+        echo "   Domain: tools.khanhnd.com"
+        echo "   Type: Static site with build optimization"
+        echo ""
+        echo "� Project structure:"
+        ls -la | head -10
+        echo ""
+        echo "🔍 Dependencies check:"
         if [ -f package.json ]; then
-          npm ci
+          echo "   ✅ package.json found (scripts only)"
+        fi
+        if [ -f package-lock.json ]; then
+          echo "   📦 package-lock.json found"
         else
-          echo "No package.json found, skipping npm install"
+          echo "   ℹ️ No package-lock.json (no npm dependencies)"
         fi
 
     - name: Build optimized version

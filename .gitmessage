@@ -1,0 +1,24 @@
+# Commit message template cho DevTools
+
+# Type: feat|fix|docs|style|refactor|test|chore
+# 
+# Examples:
+# feat: add new hash generator tool
+# fix: resolve mobile responsive issues
+# docs: update deployment guide
+# style: improve CSS organization
+# refactor: optimize build pipeline
+# test: add unit tests for JWT parser
+# chore: update dependencies
+
+# Body: Explain what and why vs. how
+# 
+# Footer: Reference issues/PRs
+# Closes #123
+# Related to #456
+
+# Remember:
+# - Keep first line under 50 chars
+# - Use present tense ("add" not "added")
+# - Don't end with period
+# - Focus on WHY not HOW
