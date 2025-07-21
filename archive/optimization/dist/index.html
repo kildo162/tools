@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online developer tools including JWT Parser, JSON Formatter, Unix Time Calculator and IP Address Checker. Simple, fast and secure tools for developers.">
+    <meta name="keywords" content="developer tools, jwt decoder, json formatter, unix timestamp converter, ip checker, online tools">
+    <meta name="author" content="KhanhND">
+    <title>DevTools - JWT Parser, JSON Formatter & Developer Utilities</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Developer Tools - Essential Tools for Developers">
+    <meta property="og:description" content="Free online developer tools: JWT Parser, JSON Formatter, Unix Time Calculator and IP Checker">
+    <meta property="og:image" content="/images/og-image.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Developer Tools - Essential Tools for Developers">
+    <meta name="twitter:description" content="Free online developer tools for developers">
+    <meta name="twitter:image" content="/images/og-image.png">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Critical CSS - Inline for performance -->
+    <style>
+        :root {--primary-color:#2563eb;--secondary-color:#1e40af;--background-color:#f1f5f9;--sidebar-color:#ffffff;--text-color:#1e293b;--border-color:#e2e8f0;}* {margin:0;padding:0;box-sizing:border-box;}body {font-family:'Inter', sans-serif;line-height:1.5;color:var(--text-color);background-color:var(--background-color);font-display:swap;}.container {display:flex;min-height:100vh;}.sidebar {position:fixed;top:0;left:0;width:320px;height:100vh;background:var(--sidebar-color);border-right:1px solid var(--border-color);overflow-y:auto;z-index:1000;transition:transform 0.3s ease;}.logo {display:flex;align-items:center;gap:0.75rem;padding:1.5rem;border-bottom:1px solid var(--border-color);}.logo h1 {font-size:1.25rem;font-weight:600;color:var(--text-color);}.main-content {flex:1;margin-left:320px;padding:2rem;transition:margin-left 0.3s ease;}.tool {display:none;background:white;border-radius:1rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);overflow:hidden;animation:fadeIn 0.3s ease-in-out;}.tool.active {display:block;}@keyframes fadeIn {from {opacity:0;transform:translateY(10px);} to {opacity:1;transform:translateY(0);}}.tool h2 {padding:1.5rem;border-bottom:1px solid var(--border-color);font-size:1.5rem;font-weight:600;color:var(--text-color);}#page-loader {position:fixed;top:0;left:320px;right:0;bottom:0;background:rgba(255, 255, 255, 0.9);display:none;align-items:center;justify-content:center;z-index:9999;}.spinner {width:40px;height:40px;border:4px solid var(--border-color);border-top:4px solid var(--primary-color);border-radius:50%;animation:spin 1s linear infinite;}@keyframes spin {0% {transform:rotate(0deg);} 100% {transform:rotate(360deg);}}.error-state {text-align:center;padding:3rem;color:#ef4444;}.error-state h3 {margin-bottom:1rem;font-size:1.25rem;}.error-state button {margin-top:1rem;padding:0.75rem 1.5rem;background:var(--primary-color);color:white;border:none;border-radius:0.5rem;cursor:pointer;font-weight:500;transition:background-color 0.2s;}.error-state button:hover {background:var(--secondary-color);}.nav-item {display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1.5rem;text-decoration:none;color:var(--text-color);transition:all 0.2s ease;border-left:3px solid transparent;}.nav-item:hover {background:#f8fafc;color:var(--primary-color);}.nav-item.active {background:#eff6ff;color:var(--primary-color);border-left-color:var(--primary-color);font-weight:500;}@media (max-width:768px) {.sidebar {transform:translateX(-100%);width:280px;} .sidebar.open {transform:translateX(0);} .main-content {margin-left:0;padding:1rem;} .tool h2 {padding:1rem;font-size:1.25rem;}}
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="./js/core/ModuleLoader.js" as="script">
+    <link rel="preload" href="./js/core/Router.js" as="script">
+    <link rel="preload" href="./js/app.js" as="script">
+    
+    <!-- Preload fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"></noscript>
+    
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div id="page-loader">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar will be loaded dynamically -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <img src="./images/logo.png" alt="DevTools Logo" width="36" height="36" loading="lazy">
+                <h1>DevTools</h1>
+            </div>
+            <nav id="navigation">
+                <!-- Navigation will be populated by JavaScript -->
+                <div class="nav-loading">
+                    <div class="spinner"></div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main content area -->
+        <main class="main-content">
+            <!-- Tool sections will be loaded dynamically -->
+            <div id="tool-container">
+                <!-- JWT Validation Tool -->
+                <section class="tool" id="jwt-validation">
+                    <h2>🔐 JWT Validation & Decoder</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading JWT tools...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- JSON Formatter Tool -->
+                <section class="tool" id="json-tool">
+                    <h2>📄 JSON Formatter & Validator</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading JSON formatter...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Other tools will be loaded as needed -->
+                <section class="tool" id="url-tool">
+                    <h2>🔗 URL Encoder/Decoder</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading URL encoder...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Add placeholder sections for all other tools -->
+                <section class="tool" id="hash-tool">
+                    <h2>🔒 Hash Generator</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading hash generator...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tool" id="password-generator">
+                    <h2>🔑 Password Generator</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading password generator...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tool" id="uuid-generator">
+                    <h2>🆔 UUID Generator</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading UUID generator...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="tool" id="unix-time-tool">
+                    <h2>⏰ Unix Time Converter</h2>
+                    <div class="tool-content">
+                        <div class="loading-placeholder">
+                            <div class="spinner"></div>
+                            <p>Loading time converter...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Add other tool placeholders as needed -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Core JavaScript - Load in order -->
+    <script src="./js/core/ModuleLoader.js"></script>
+    <script src="./js/core/Router.js"></script>
+    <script src="./js/app.js"></script>
+
+    <!-- Service Worker for caching -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(error) {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Non-critical CSS loading -->
+    <script>
+        // Load non-critical CSS asynchronously
+        function loadCSS(href) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            link.media = 'print';
+            link.onload = function() { this.media = 'all'; };
+            document.head.appendChild(link);
+        }
+        
+        // Load remaining styles after page load
+        window.addEventListener('load', function() {
+            loadCSS('./styles/components.css');
+            loadCSS('./styles/utilities.css');
+        });
+    </script>
+</body>
+</html>

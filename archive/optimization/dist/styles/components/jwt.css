@@ -1,0 +1,7 @@
+.jwt-sections { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.jwt-section { flex: 1; }
+.token-info { background: #f8fafc; border-radius: 0.5rem; padding: 1rem; margin-top: 1rem; }
+.token-part { margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 0.25rem; font-family: monospace; }
+.header { background: #fee2e2; }
+.payload { background: #fef3c7; }
+.signature { background: #dbeafe; }
