@@ -27,6 +27,7 @@ todolist:
 - ✅ faq page
 - ✅ contact page/support page  
 - ✅ Navigation fix - Fixed CSS `!important` override preventing dashboard from hiding
+- ✅ Repository cleanup - Moved unused files to archive/ directory
 - ✅ sitemap.xml
 - ✅ robots.txt
 - ✅ Domain mapping to tools.khanhnd.com
@@ -67,3 +68,33 @@ todolist:
 - Implement hreflang for international SEO
 - Add performance monitoring
 - Submit sitemap to Google Search Console with new domain
+
+## Project Structure
+
+### Main Files
+- `index.html` - Main application page
+- `script.js` - Core JavaScript functionality
+- `styles.css` - Main stylesheet
+- `components/` - Individual tool components
+- `images/` - Static assets and icons
+
+### Support Pages
+- `contact.html` - Contact form and information
+- `faq.html` - Frequently asked questions
+- `support.html` - Help center and documentation
+- `privacy-policy.html`, `terms-of-service.html`, `cookie-policy.html` - Legal pages
+- `donate.html` - Support the project page
+
+### Configuration
+- `sitemap.xml` - SEO sitemap
+- `robots.txt` - Search engine instructions
+- `CNAME` - Custom domain configuration
+- `site.webmanifest` - PWA manifest
+- `sw.js` - Service worker for offline functionality
+
+### Archive
+- `archive/` - Contains unused files and documentation for reference
+  - `documentation/` - Old guides and documentation
+  - `optimization/` - Previous optimization attempts
+  - `og-image-templates/` - Open Graph image templates
+  - `testing/` - Test files
