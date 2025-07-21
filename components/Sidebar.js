@@ -37,17 +37,59 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Set active item based on current hash
   const setActiveItem = () => {
-    const currentHash = window.location.hash || '#jwt-validation';
+    const currentHash = window.location.hash || '#home';
+    
+    // Remove active from all nav items
     navItems.forEach(item => {
       item.classList.remove('active');
-      if (item.getAttribute('href') === currentHash) {
-        item.classList.add('active');
-      }
     });
+    
+    // Remove active from all tools
+    const allTools = document.querySelectorAll('.tool');
+    allTools.forEach(tool => tool.classList.remove('active'));
+    
+    // Set active nav item (only if not home)
+    if (currentHash !== '#home') {
+      const activeNavItem = document.querySelector(`[href="${currentHash}"]`);
+      if (activeNavItem) {
+        activeNavItem.classList.add('active');
+      }
+    }
+    
+    // Show corresponding tool
+    const targetId = currentHash.substring(1);
+    const targetTool = document.getElementById(targetId);
+    if (targetTool) {
+      targetTool.classList.add('active');
+    }
   };
 
   // Set initial active item
   setActiveItem();
+
+  // Add click handler for home/logo links
+  const homeLinks = document.querySelectorAll('a[href="#home"], .logo-link');
+  homeLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Remove active from all nav items
+      navItems.forEach(item => item.classList.remove('active'));
+      
+      // Remove active from all tools
+      const allTools = document.querySelectorAll('.tool');
+      allTools.forEach(tool => tool.classList.remove('active'));
+      
+      // Show home/dashboard
+      const homeTool = document.getElementById('home');
+      if (homeTool) {
+        homeTool.classList.add('active');
+      }
+      
+      // Update URL hash
+      window.location.hash = '#home';
+    });
+  });
 
   // Add click handlers to nav items
   navItems.forEach(item => {
@@ -56,6 +98,22 @@ document.addEventListener('DOMContentLoaded', () => {
       navItems.forEach(navItem => navItem.classList.remove('active'));
       // Add active class to clicked item
       item.classList.add('active');
+      
+      // Hide all tools first (including dashboard)
+      const allTools = document.querySelectorAll('.tool');
+      allTools.forEach(tool => {
+        tool.classList.remove('active');
+      });
+      
+      // Show the selected tool
+      const targetHref = item.getAttribute('href');
+      if (targetHref && targetHref.startsWith('#')) {
+        const targetId = targetHref.substring(1);
+        const targetTool = document.getElementById(targetId);
+        if (targetTool) {
+          targetTool.classList.add('active');
+        }
+      }
       
       // Close sidebar on mobile after clicking
       if (window.innerWidth <= 768) {

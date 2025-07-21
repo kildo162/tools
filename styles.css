@@ -4819,8 +4819,7 @@ body {
 }
 
 /* Welcome/Default Page Styles */
-.default-page {
-    display: block !important;
+.tool.default-page {
     max-width: 1200px;
     margin: 0 auto;
 }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .tool { display: none; padding: 20px; border: 1px solid #ccc; margin: 10px 0; }
+        .tool.active { display: block; }
+        .tool.default-page { max-width: 1200px; margin: 0 auto; }
+        .tool.default-page.active { display: block; }
+        .nav-item { display: block; padding: 10px; margin: 5px 0; background: #f0f0f0; text-decoration: none; color: #333; }
+        .nav-item.active { background: #007cba; color: white; }
+        .dashboard { background: #e8f4fd; }
+    </style>
+</head>
+<body>
+    <h1>Navigation Test</h1>
+    
+    <div>
+        <a href="#home" class="nav-item">Home</a>
+        <a href="#tool1" class="nav-item">Tool 1</a>
+        <a href="#tool2" class="nav-item">Tool 2</a>
+    </div>
+
+    <div id="home" class="tool default-page active dashboard">
+        <h2>Dashboard (Home)</h2>
+        <p>This is the dashboard content. It should be hidden when selecting a tool.</p>
+    </div>
+
+    <div id="tool1" class="tool">
+        <h2>Tool 1</h2>
+        <p>This is tool 1 content.</p>
+    </div>
+
+    <div id="tool2" class="tool">
+        <h2>Tool 2</h2>
+        <p>This is tool 2 content.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('Clicked:', item.getAttribute('href'));
+                    
+                    // Remove active from all nav items
+                    navItems.forEach(navItem => navItem.classList.remove('active'));
+                    
+                    // Remove active from all tools
+                    const allTools = document.querySelectorAll('.tool');
+                    allTools.forEach(tool => {
+                        tool.classList.remove('active');
+                        console.log('Removed active from:', tool.id, 'Display:', window.getComputedStyle(tool).display);
+                    });
+                    
+                    // Add active to clicked nav item
+                    if (item.getAttribute('href') !== '#home') {
+                        item.classList.add('active');
+                    }
+                    
+                    // Show target tool
+                    const targetId = item.getAttribute('href').substring(1);
+                    const targetTool = document.getElementById(targetId);
+                    if (targetTool) {
+                        targetTool.classList.add('active');
+                        console.log('Added active to:', targetId, 'Display:', window.getComputedStyle(targetTool).display);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

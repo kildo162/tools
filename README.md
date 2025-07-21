@@ -25,7 +25,8 @@ todolist:
 - ✅ terms of service page
 - ✅ cookie policy page
 - ✅ faq page
-- ✅ contact page/support page
+- ✅ contact page/support page  
+- ✅ Navigation fix - Fixed CSS `!important` override preventing dashboard from hiding
 - ✅ sitemap.xml
 - ✅ robots.txt
 - ✅ Domain mapping to tools.khanhnd.com
