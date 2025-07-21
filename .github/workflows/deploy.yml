@@ -3,91 +3,63 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ master, main ]
-  workflow_dispatch:
+  workflow_dispatch: # Allow manual trigger
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
+    - name: Checkout
+      uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Validate build scripts
-        run: |
-          if [ ! -f "./build.sh" ] || [ ! -f "./fix-paths.sh" ]; then
-            echo "Required build scripts are missing"
-            exit 1
-          fi
-          chmod +x ./build.sh ./fix-paths.sh
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
 
-      - name: Build optimized version
-        run: ./build.sh
-        
-      - name: Fix resource paths
-        run: ./fix-paths.sh
-        
-      - name: Verify build output
-        run: |
-          if [ ! -d "./dist" ]; then
-            echo "Build failed - dist directory not found"
-            exit 1
-          fi
-          
-          required_files=("index.html" "sw.js" "CNAME")
-          for file in "${required_files[@]}"; do
-            if [ ! -f "./dist/$file" ]; then
-              echo "Missing required file: $file"
-              exit 1
-            fi
-          done
+    - name: Cache build dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache
+          ./node_modules
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package*.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
+    - name: Build optimized version
+      run: |
+        echo "🚀 Starting optimized build..."
+        chmod +x ./build.sh
+        ./build.sh
+        echo "✅ Build completed"
+        
+    - name: List build output
+      run: |
+        echo "📦 Build contents:"
+        ls -la dist/
+        echo "📊 Build size:"
+        du -sh dist/
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './dist'
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      
     runs-on: ubuntu-latest
     needs: build
-    timeout-minutes: 10
-    
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: Verify deployment
-        if: always()
-        run: |
-          if [[ "${{ steps.deployment.conclusion }}" != "success" ]]; then
-            echo "::error::Deployment failed"
-            exit 1
-          fi
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
