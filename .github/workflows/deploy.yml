@@ -3,104 +3,91 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ master, main ]
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout
+      
+      - name: Setup Node.js
+        uses: actions/setup-node
+        with:
+          node-version: '20'
+          cache: 'npm'
 
-    - name: Setup Pages
-      uses: actions/configure-pages@v5
-
-    - name: Check project setup
-      run: |
-        echo "📋 Project information:"
-        echo "   Repository: kildo162/tools"
-        echo "   Domain: tools.khanhnd.com"
-        echo "   Type: Static site with build optimization"
-        echo ""
-        echo "� Project structure:"
-        ls -la | head -10
-        echo ""
-        echo "🔍 Dependencies check:"
-        if [ -f package.json ]; then
-          echo "   ✅ package.json found (scripts only)"
-        fi
-        if [ -f package-lock.json ]; then
-          echo "   📦 package-lock.json found"
-        else
-          echo "   ℹ️ No package-lock.json (no npm dependencies)"
-        fi
-
-    - name: Build optimized version
-      run: |
-        echo "🚀 Starting optimized build..."
-        chmod +x ./build.sh
-        ./build.sh
-        echo "✅ Build completed"
+      - name: Install dependencies
+        run: npm ci
         
-    - name: Fix resource paths
-      run: |
-        echo "🔧 Fixing resource paths for GitHub Pages..."
-        chmod +x ./fix-paths.sh
-        ./fix-paths.sh
-        echo "✅ Paths fixed for deployment"
+      - name: Setup Pages
+        uses: actions/configure-pages
         
-    - name: Verify build output
-      run: |
-        echo "📦 Build contents:"
-        ls -la dist/
-        echo "📊 Build size:"
-        du -sh dist/
-        echo "🔍 Checking critical files:"
-        [ -f dist/index.html ] && echo "✅ index.html found" || echo "❌ index.html missing"
-        [ -f dist/.nojekyll ] && echo "✅ .nojekyll found" || echo "❌ .nojekyll missing"
-        [ -f dist/CNAME ] && echo "✅ CNAME found" || echo "⚠️ CNAME not found"
+      - name: Validate build scripts
+        run: |
+          if [ ! -f "./build.sh" ] || [ ! -f "./fix-paths.sh" ]; then
+            echo "Required build scripts are missing"
+            exit 1
+          fi
+          chmod +x ./build.sh ./fix-paths.sh
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        name: github-pages
-        path: './dist'
-        retention-days: 1
+      - name: Build optimized version
+        run: ./build.sh
+        
+      - name: Fix resource paths
+        run: ./fix-paths.sh
+        
+      - name: Verify build output
+        run: |
+          if [ ! -d "./dist" ]; then
+            echo "Build failed - dist directory not found"
+            exit 1
+          fi
+          
+          required_files=("index.html" "sw.js" "CNAME")
+          for file in "${required_files[@]}"; do
+            if [ ! -f "./dist/$file" ]; then
+              echo "Missing required file: $file"
+              exit 1
+            fi
+          done
 
-    - name: Build failure notification
-      if: failure()
-      run: |
-        echo "❌ Build failed!"
-        echo "📝 Common issues:"
-        echo "   • Check if all required files exist"
-        echo "   • Verify build.sh has correct permissions"
-        echo "   • Check for missing dependencies"
-        echo "   • Ensure dist/ directory was created"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact
+        with:
+          path: './dist'
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      
     runs-on: ubuntu-latest
     needs: build
+    timeout-minutes: 10
+    
     steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-    - name: Deployment Summary
-      run: |
-        echo "🎉 Deployment completed successfully!"
-        echo "📍 Site URL: ${{ steps.deployment.outputs.page_url }}"
-        echo "🌐 Custom Domain: https://tools.khanhnd.com"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages
+
+      - name: Verify deployment
+        if: always()
+        run: |
+          if [[ "${{ steps.deployment.conclusion }}" != "success" ]]; then
+            echo "::error::Deployment failed"
+            exit 1
+          fi
