@@ -24,15 +24,19 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v5
 
-    - name: Cache build dependencies
-      uses: actions/cache@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        path: |
-          ~/.cache
-          ./node_modules
-        key: ${{ runner.os }}-build-${{ hashFiles('**/package*.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies (if needed)
+      run: |
+        if [ -f package.json ]; then
+          npm ci
+        else
+          echo "No package.json found, skipping npm install"
+        fi
 
     - name: Build optimized version
       run: |
@@ -41,17 +45,31 @@ jobs:
         ./build.sh
         echo "✅ Build completed"
         
-    - name: List build output
+    - name: Verify build output
       run: |
         echo "📦 Build contents:"
         ls -la dist/
         echo "📊 Build size:"
         du -sh dist/
+        echo "🔍 Checking critical files:"
+        [ -f dist/index.html ] && echo "✅ index.html found" || echo "❌ index.html missing"
+        [ -f dist/.nojekyll ] && echo "✅ .nojekyll found" || echo "❌ .nojekyll missing"
+        [ -f dist/CNAME ] && echo "✅ CNAME found" || echo "⚠️ CNAME not found"
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
         path: './dist'
+
+    - name: Build failure notification
+      if: failure()
+      run: |
+        echo "❌ Build failed!"
+        echo "📝 Common issues:"
+        echo "   • Check if all required files exist"
+        echo "   • Verify build.sh has correct permissions"
+        echo "   • Check for missing dependencies"
+        echo "   • Ensure dist/ directory was created"
 
   deploy:
     environment:
@@ -63,3 +81,9 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+      
+    - name: Deployment Summary
+      run: |
+        echo "🎉 Deployment completed successfully!"
+        echo "📍 Site URL: ${{ steps.deployment.outputs.page_url }}"
+        echo "🌐 Custom Domain: https://tools.khanhnd.com"

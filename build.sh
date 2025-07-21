@@ -14,7 +14,16 @@ echo "📦 Creating optimized build..."
 
 # Copy and optimize HTML
 echo "Processing HTML..."
-cp index-optimized.html $BUILD_DIR/index.html
+if [ -f "archive/optimization/index-optimized.html" ]; then
+    cp archive/optimization/index-optimized.html $BUILD_DIR/index.html
+    echo "✅ Using optimized HTML"
+elif [ -f "index.html" ]; then
+    cp index.html $BUILD_DIR/index.html
+    echo "⚠️ Using original HTML (optimized version not found)"
+else
+    echo "❌ No HTML file found!"
+    exit 1
+fi
 
 # Inline critical CSS
 echo "Inlining critical CSS..."
@@ -41,7 +50,17 @@ fi
 echo "Processing JavaScript files..."
 # Copy core files
 cp -r js/ $BUILD_DIR/js/
-cp components/SidebarOptimized.js $BUILD_DIR/components/Sidebar.js
+
+# Copy Sidebar component (check both locations)
+if [ -f "archive/optimization/SidebarOptimized.js" ]; then
+    cp archive/optimization/SidebarOptimized.js $BUILD_DIR/components/Sidebar.js
+    echo "✅ Using optimized Sidebar"
+elif [ -f "components/Sidebar.js" ]; then
+    cp components/Sidebar.js $BUILD_DIR/components/Sidebar.js
+    echo "⚠️ Using original Sidebar"
+else
+    echo "❌ Sidebar component not found!"
+fi
 
 # Copy essential components
 for component in JwtTools JSONFormatter URLEncoderDecoder HashGenerator PasswordGenerator UUIDGenerator UnixTimeConverter SymmetricEncryption EncryptionKeyGenerator APIKeyGenerator RSAKeyGenerator RSAEncryptDecrypt; do
@@ -130,11 +149,26 @@ echo "   ✅ Component lazy loading"
 echo "   ✅ Mobile responsive design"
 
 echo ""
-echo "🚀 GitHub Pages deployment steps:"
-echo "   1. cd dist && git init"
-echo "   2. git add . && git commit -m 'Optimized build'"
-echo "   3. git push -f origin master:gh-pages"
-echo "   4. Enable GitHub Pages in repo settings"
+echo "� Build validation:"
+if [ -f "$BUILD_DIR/index.html" ]; then
+    echo "   ✅ index.html: $(wc -c < $BUILD_DIR/index.html) bytes"
+else
+    echo "   ❌ index.html: MISSING"
+    exit 1
+fi
+
+if [ -f "$BUILD_DIR/.nojekyll" ]; then
+    echo "   ✅ .nojekyll: Present"
+else
+    echo "   ❌ .nojekyll: MISSING"
+    exit 1
+fi
+
+if [ -f "$BUILD_DIR/CNAME" ]; then
+    echo "   ✅ CNAME: $(cat $BUILD_DIR/CNAME)"
+else
+    echo "   ⚠️ CNAME: Not found (domain may not work)"
+fi
 
 echo ""
-echo "� Or use GitHub Actions for automated deployment!"
+echo "🚀 Ready for GitHub Pages deployment!"
