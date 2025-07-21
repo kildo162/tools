@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Prioritize important tools
+Crawl-delay: 1
+
+# Block sensitive areas if any
+Disallow: /admin/
+Disallow: /*.log$
+Disallow: /temp/
+Disallow: /cache/
+
+# Allow social media bots
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://tools.khanhnd.com/sitemap.xml
+
+# Additional instructions for SEO
+# Main categories for crawlers to understand site structure:
+# - JWT Tools: /tools/#jwt-validation, /tools/#jwt-generator
+# - JSON Tools: /tools/#json-tool, /tools/#json-diff-tool
+# - Security Tools: /tools/#hash-tool, /tools/#password-generator
+# - Utility Tools: /tools/#uuid-generator, /tools/#unix-time-tool
+# - Network Tools: /tools/#curl-builder-tool, /tools/#ip-tool
