@@ -93,11 +93,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Download artifact
-      uses: actions/deploy-pages@v4
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: github-pages
-        path: ./dist
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
     - name: Deployment Summary
       run: |
         echo "🎉 Deployment completed successfully!"
