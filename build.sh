@@ -31,6 +31,17 @@ echo "Fixing CSS paths in HTML files..."
 for html_file in $BUILD_DIR/*.html; do
     if [ -f "$html_file" ]; then
         sed -i 's|href="styles.css"|href="css/main.css"|g' "$html_file"
+        sed -i 's|href="styles/sidebar.css"|href="css/sidebar.css"|g' "$html_file"
+        
+        # Add sidebar.css to pages that don't have it (except index.html which already has it)
+        if [[ "$(basename "$html_file")" != "index.html" ]]; then
+            # Check if sidebar.css is already included
+            if ! grep -q "sidebar.css" "$html_file"; then
+                # Add sidebar.css link after main.css
+                sed -i 's|<link rel="stylesheet" href="css/main.css">|<link rel="stylesheet" href="css/main.css">\n    <link rel="stylesheet" href="css/sidebar.css">|g' "$html_file"
+            fi
+        fi
+        
         echo "  Fixed paths in $(basename "$html_file")"
     fi
 done
