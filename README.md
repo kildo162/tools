@@ -153,6 +153,17 @@ npm run deploy:manual
 - 🚀 GitHub Pages optimized paths
 - 📦 Component minification
 - 🔍 SEO optimization
+- 📄 All HTML pages included with proper paths
+
+### Pages Included in Build:
+- `index.html` - Main developer tools dashboard
+- `contact.html` - Contact form and information
+- `faq.html` - Frequently asked questions
+- `support.html` - Help center and documentation
+- `donate.html` - Support the project
+- `privacy-policy.html` - Privacy policy
+- `terms-of-service.html` - Terms of service
+- `cookie-policy.html` - Cookie policy
 
 ### Scripts
 - `npm run build` - Create optimized production build
