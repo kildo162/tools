@@ -9,6 +9,7 @@
     "build": "./build.sh",
     "build:prod": "./build.sh && cd dist && python -m http.server 8080",
     "preview": "cd dist && python -m http.server 8080",
+    "deploy": "./deploy.sh",
     "deploy:manual": "npm run build && cd dist && git init && git add . && git commit -m 'Deploy optimized build' && git push -f origin master:gh-pages",
     "deploy:github": "echo 'Deployment handled by GitHub Actions. Push to master branch to trigger.'",
     "analyze": "npm run analyze:bundle && npm run analyze:lighthouse",

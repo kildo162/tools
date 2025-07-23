@@ -99,3 +99,63 @@ todolist:
   - `optimization/` - Previous optimization attempts
   - `og-image-templates/` - Open Graph image templates
   - `testing/` - Test files
+
+## Development & Deployment
+
+### Local Development
+```bash
+# Start local development server
+npm run dev
+# or
+npm run serve
+```
+
+### Building for Production
+```bash
+# Build optimized version
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+### Deployment to GitHub Pages
+
+**Automated Deployment (Recommended):**
+```bash
+# Simple deployment - builds and pushes to GitHub for auto-deployment
+npm run deploy
+```
+
+**Manual Deployment:**
+```bash
+# Build and manually deploy to gh-pages branch
+npm run deploy:manual
+```
+
+**GitHub Actions Deployment:**
+- Push to `master` or `main` branch
+- GitHub Actions automatically builds and deploys
+- View status at: https://github.com/kildo162/tools/actions
+
+### First-time GitHub Pages Setup
+1. Go to repository **Settings > Pages**
+2. Select **"GitHub Actions"** as source
+3. Save the settings
+4. Push to master branch to trigger first deployment
+5. Your site will be available at: https://kildo162.github.io/tools
+
+### Build Optimizations
+- ⚡ Lazy loading components
+- 🎯 Critical CSS inlined
+- 💾 Service Worker caching
+- 📱 Mobile-first responsive design
+- 🚀 GitHub Pages optimized paths
+- 📦 Component minification
+- 🔍 SEO optimization
+
+### Scripts
+- `npm run build` - Create optimized production build
+- `npm run deploy` - Deploy to GitHub Pages via GitHub Actions
+- `npm run clean` - Remove build artifacts
+- `npm run analyze` - Analyze bundle size and performance

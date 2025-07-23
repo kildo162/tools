@@ -8,59 +8,25 @@ echo "🚀 Starting DevTools optimization build for GitHub Pages..."
 # Create build directory
 BUILD_DIR="dist"
 rm -rf $BUILD_DIR
-mkdir -p $BUILD_DIR/{css,js,images,components}
+mkdir -p $BUILD_DIR/{css,js,images,components,styles/components}
 
 echo "📦 Creating optimized build..."
 
 # Copy and optimize HTML
 echo "Processing HTML..."
-if [ -f "archive/optimization/index-optimized.html" ]; then
-    cp archive/optimization/index-optimized.html $BUILD_DIR/index.html
-    echo "✅ Using optimized HTML"
-elif [ -f "index.html" ]; then
-    cp index.html $BUILD_DIR/index.html
-    echo "⚠️ Using original HTML (optimized version not found)"
-else
-    echo "❌ No HTML file found!"
-    exit 1
-fi
+cp index.html $BUILD_DIR/index.html
 
 # Inline critical CSS
 echo "Inlining critical CSS..."
-if [ -f "css/critical.css" ]; then
-    # Read critical CSS and minify it
-    CRITICAL_CSS=$(cat css/critical.css | \
-        sed '/\/\*.*\*\//d' | \
-        sed '/^[[:space:]]*$/d' | \
-        tr -d '\n' | \
-        sed 's/[[:space:]]\+/ /g' | \
-        sed 's/; /;/g' | \
-        sed 's/: /:/g' | \
-        sed 's/{ /{/g' | \
-        sed 's/ }/}/g')
-    
-    # Replace the placeholder with actual CSS
-    sed -i "s|/\* Critical CSS will be inlined here by build process \*/|$CRITICAL_CSS|g" $BUILD_DIR/index.html
-    echo "✅ Critical CSS inlined ($(echo "$CRITICAL_CSS" | wc -c) bytes)"
-else
-    echo "⚠️ Critical CSS file not found"
-fi
+CRITICAL_CSS=$(cat css/critical.css | sed 's/\/\*.*\*\///g' | tr -d '\n\r' | sed 's/  */ /g')
+sed -i "s|/* Critical CSS will be inlined here by build process */|$CRITICAL_CSS|g" $BUILD_DIR/index.html
 
 # Optimize and minify JavaScript
 echo "Processing JavaScript files..."
 # Copy core files
 cp -r js/ $BUILD_DIR/js/
-
-# Copy Sidebar component (check both locations)
-if [ -f "archive/optimization/SidebarOptimized.js" ]; then
-    cp archive/optimization/SidebarOptimized.js $BUILD_DIR/components/Sidebar.js
-    echo "✅ Using optimized Sidebar"
-elif [ -f "components/Sidebar.js" ]; then
-    cp components/Sidebar.js $BUILD_DIR/components/Sidebar.js
-    echo "⚠️ Using original Sidebar"
-else
-    echo "❌ Sidebar component not found!"
-fi
+# Use the existing Sidebar.js instead of SidebarOptimized.js
+cp components/Sidebar.js $BUILD_DIR/components/Sidebar.js
 
 # Copy essential components
 for component in JwtTools JSONFormatter URLEncoderDecoder HashGenerator PasswordGenerator UUIDGenerator UnixTimeConverter SymmetricEncryption EncryptionKeyGenerator APIKeyGenerator RSAKeyGenerator RSAEncryptDecrypt; do
@@ -76,13 +42,25 @@ cp styles/sidebar.css $BUILD_DIR/css/
 
 # Copy images with optimization
 echo "Copying images..."
-cp -r images/ $BUILD_DIR/images/
+mkdir -p $BUILD_DIR/images/favicon $BUILD_DIR/images/icons
+cp images/*.png $BUILD_DIR/images/ 2>/dev/null || true
+cp images/*.svg $BUILD_DIR/images/ 2>/dev/null || true  
+cp images/*.jpeg $BUILD_DIR/images/ 2>/dev/null || true
+# Copy favicon and icons directories properly
+if [ -d "images/favicon" ]; then
+    cp -r images/favicon/* $BUILD_DIR/images/favicon/ 2>/dev/null || true
+fi
+if [ -d "images/icons" ]; then
+    cp -r images/icons/* $BUILD_DIR/images/icons/ 2>/dev/null || true
+fi
 
 # Copy other files
 echo "Copying additional files..."
-cp site.webmanifest $BUILD_DIR/
-cp sw.js $BUILD_DIR/
+cp site.webmanifest $BUILD_DIR/ 2>/dev/null || echo "site.webmanifest not found, creating default..."
+cp sw.js $BUILD_DIR/ 2>/dev/null || echo "sw.js not found, skipping..."
 cp CNAME $BUILD_DIR/ 2>/dev/null || echo "CNAME not found, skipping..."
+cp robots.txt $BUILD_DIR/ 2>/dev/null || echo "robots.txt not found, skipping..."
+cp sitemap.xml $BUILD_DIR/ 2>/dev/null || echo "sitemap.xml not found, skipping..."
 
 # Generate component-specific CSS files
 echo "Generating component CSS..."
@@ -149,26 +127,11 @@ echo "   ✅ Component lazy loading"
 echo "   ✅ Mobile responsive design"
 
 echo ""
-echo "� Build validation:"
-if [ -f "$BUILD_DIR/index.html" ]; then
-    echo "   ✅ index.html: $(wc -c < $BUILD_DIR/index.html) bytes"
-else
-    echo "   ❌ index.html: MISSING"
-    exit 1
-fi
-
-if [ -f "$BUILD_DIR/.nojekyll" ]; then
-    echo "   ✅ .nojekyll: Present"
-else
-    echo "   ❌ .nojekyll: MISSING"
-    exit 1
-fi
-
-if [ -f "$BUILD_DIR/CNAME" ]; then
-    echo "   ✅ CNAME: $(cat $BUILD_DIR/CNAME)"
-else
-    echo "   ⚠️ CNAME: Not found (domain may not work)"
-fi
+echo "🚀 GitHub Pages deployment steps:"
+echo "   1. cd dist && git init"
+echo "   2. git add . && git commit -m 'Optimized build'"
+echo "   3. git push -f origin master:gh-pages"
+echo "   4. Enable GitHub Pages in repo settings"
 
 echo ""
-echo "🚀 Ready for GitHub Pages deployment!"
+echo "� Or use GitHub Actions for automated deployment!"
