@@ -16,6 +16,25 @@ echo "📦 Creating optimized build..."
 echo "Processing HTML..."
 cp index.html $BUILD_DIR/index.html
 
+# Copy all other HTML pages
+echo "Copying additional HTML pages..."
+cp contact.html $BUILD_DIR/ 2>/dev/null || echo "contact.html not found, skipping..."
+cp cookie-policy.html $BUILD_DIR/ 2>/dev/null || echo "cookie-policy.html not found, skipping..."
+cp donate.html $BUILD_DIR/ 2>/dev/null || echo "donate.html not found, skipping..."
+cp faq.html $BUILD_DIR/ 2>/dev/null || echo "faq.html not found, skipping..."
+cp privacy-policy.html $BUILD_DIR/ 2>/dev/null || echo "privacy-policy.html not found, skipping..."
+cp support.html $BUILD_DIR/ 2>/dev/null || echo "support.html not found, skipping..."
+cp terms-of-service.html $BUILD_DIR/ 2>/dev/null || echo "terms-of-service.html not found, skipping..."
+
+# Fix CSS paths in HTML files (styles.css -> css/main.css)
+echo "Fixing CSS paths in HTML files..."
+for html_file in $BUILD_DIR/*.html; do
+    if [ -f "$html_file" ]; then
+        sed -i 's|href="styles.css"|href="css/main.css"|g' "$html_file"
+        echo "  Fixed paths in $(basename "$html_file")"
+    fi
+done
+
 # Inline critical CSS
 echo "Inlining critical CSS..."
 CRITICAL_CSS=$(cat css/critical.css | sed 's/\/\*.*\*\///g' | tr -d '\n\r' | sed 's/  */ /g')
@@ -114,6 +133,7 @@ echo "✅ Build completed successfully!"
 echo "📊 Build statistics:"
 echo "   Original HTML: $(wc -c < index.html 2>/dev/null || echo 'N/A') bytes"
 echo "   Optimized HTML: $(wc -c < $BUILD_DIR/index.html) bytes"
+echo "   HTML Pages: $(find $BUILD_DIR -name '*.html' | wc -l) files"
 echo "   Components: $(find $BUILD_DIR/components -name '*.js' | wc -l) files"
 echo "   Images: $(find $BUILD_DIR/images -type f | wc -l) files"
 
