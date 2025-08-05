@@ -1,4 +1,4 @@
-const CACHE_NAME = 'devtools-gh-1753239551';
+const CACHE_NAME = 'devtools-gh-1754365763';
 const STATIC_ASSETS = [
     './',
     './css/critical.css',

@@ -328,7 +328,7 @@
             
             <!-- Welcome/Default Page -->
             <section id="home" class="tool default-page active">
-                <div class="dashboard-hero">
+                <div class="dashboard-hero" style="padding-bottom:32px;">
                     <div class="hero-content">
                         <h1 class="hero-title">Free Developer Tools</h1>
                         <p class="hero-subtitle">Secure, client-side tools for modern developers. No data leaves your browser.</p>
@@ -352,6 +352,41 @@
                         </div>
                     </div>
                 </div>
+            <!-- Affiliate Banners -->
+            <div class="affiliate-banners-container">
+                <div class="affiliate-banners" style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;margin:2.5rem 0;">
+                  <a href="https://bunny.net?ref=h38kp1wonj" target="_blank" rel="noopener" class="affiliate-card bunny">
+                    <img src="https://bunny.net/images/logo.svg" alt="Bunny.net" class="affiliate-logo">
+                    <div class="affiliate-title bunny">Bunny.net CDN</div>
+                    <div class="affiliate-desc">Fast & affordable CDN</div>
+                  </a>
+                  <a href="https://m.do.co/c/b71f974d0254" target="_blank" rel="noopener" class="affiliate-card digitalocean">
+                    <img src="https://www.digitalocean.com/_next/static/media/Logo.2c8b7b7e.svg" alt="DigitalOcean" class="affiliate-logo">
+                    <div class="affiliate-title digitalocean">DigitalOcean</div>
+                    <div class="affiliate-desc">Cloud hosting for developers</div>
+                  </a>
+                  <a href="https://www.vultr.com/?ref=8824695" target="_blank" rel="noopener" class="affiliate-card vultr">
+                    <img src="https://www.vultr.com/media/logo.svg" alt="Vultr" class="affiliate-logo">
+                    <div class="affiliate-title vultr">Vultr</div>
+                    <div class="affiliate-desc">High performance cloud</div>
+                  </a>
+                </div>
+                <style>
+                  .affiliate-card {
+                    display:flex;flex-direction:column;align-items:center;justify-content:center;
+                    background:#fff;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,0.10);
+                    padding:1.5rem 2.5rem;text-align:center;min-width:200px;transition:transform 0.18s,box-shadow 0.18s;
+                    border:1px solid #e5e7eb;cursor:pointer;position:relative;
+                  }
+                  .affiliate-card:hover {transform:translateY(-4px) scale(1.04);box-shadow:0 8px 32px rgba(59,130,246,0.12);z-index:2;}
+                  .affiliate-logo {height:38px;margin-bottom:10px;filter:drop-shadow(0 2px 4px rgba(59,130,246,0.08));}
+                  .affiliate-title {font-weight:600;font-size:1.08rem;margin-bottom:2px;letter-spacing:0.01em;}
+                  .affiliate-title.bunny {color:#3b82f6;}
+                  .affiliate-title.digitalocean {color:#2563eb;}
+                  .affiliate-title.vultr {color:#0a6cff;}
+                  .affiliate-desc {font-size:13px;color:#555;margin-bottom:2px;}
+                </style>
+            </div>
 
                 <div class="dashboard-stats">
                     <div class="stats-grid">
