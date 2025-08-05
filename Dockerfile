@@ -4,11 +4,12 @@ FROM golang:1.24-alpine AS builder
 WORKDIR /app
 
 # Copy go mod files
-COPY go.mod go.sum ./
-RUN go mod download
+COPY go.mod ./
+RUN go mod tidy
 
 # Copy source code
-COPY . .
+COPY dist/ ./dist/
+COPY main.go ./
 
 # Build the application
 RUN CGO_ENABLED=0 GOOS=linux go build -o main .
