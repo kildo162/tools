@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// Serve static files from dist directory
-	distDir := "./dist"
+	distDir := "./ui"
 
 	// Create file server for dist directory
 	fs := http.FileServer(http.Dir(distDir))
