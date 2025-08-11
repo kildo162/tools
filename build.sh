@@ -166,3 +166,7 @@ echo "   4. Enable GitHub Pages in repo settings"
 
 echo ""
 echo "� Or use GitHub Actions for automated deployment!"
+
+docker buildx create --use --name multi || true
+docker buildx build --platform linux/arm64/v8 -t devtools:arm64 --load .
+docker run --rm -p 8083:8083 devtools:arm64
