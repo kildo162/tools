@@ -6,7 +6,7 @@ COPY go.mod ./
 RUN go mod tidy
 
 # Copy source code
-COPY dist/ ./dist/
+COPY ui/ ./ui/
 COPY main.go ./
 
 # Nhận platform từ buildx
@@ -22,7 +22,7 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /app/main .
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/ui ./ui
 EXPOSE 8083
 RUN ls -alh .
 CMD ["./main"]

@@ -1,0 +1,105 @@
+<!-- Affiliate Banner Component -->
+<div class="affiliate-banners">
+    <!-- Bunny.net Banner -->
+    <div class="affiliate-banner bunny-banner">
+        <img src="https://bunny.net/images/logo.svg" alt="Bunny.net" style="height:32px;margin-bottom:8px;">
+        <h3 style="color:#3b82f6;">Bunny.net CDN</h3>
+        <p>Fast & affordable CDN</p>
+        <a href="https://bunny.net?ref=h38kp1wonj" target="_blank" rel="noopener" style="color:#3b82f6;font-weight:bold;">Try Bunny.net</a>
+    </div>
+
+    <!-- DigitalOcean Banner -->
+    <div class="affiliate-banner do-banner">
+        <img src="https://www.digitalocean.com/_next/static/media/Logo.2c8b7b7e.svg" alt="DigitalOcean" style="height:32px;margin-bottom:8px;">
+        <h3 style="color:#2563eb;">DigitalOcean</h3>
+        <p>Cloud hosting for developers</p>
+        <a href="https://m.do.co/c/b71f974d0254" target="_blank" rel="noopener" style="color:#2563eb;font-weight:bold;">Get $200 Free Credit</a>
+    </div>
+
+    <!-- Vultr Banner -->
+    <div class="affiliate-banner vultr-banner">
+        <img src="https://www.vultr.com/media/logo.svg" alt="Vultr" style="height:32px;margin-bottom:8px;">
+        <h3 style="color:#0a6cff;">Vultr</h3>
+        <p>High performance cloud</p>
+        <a href="https://www.vultr.com/?ref=8824695" target="_blank" rel="noopener" style="color:#0a6cff;font-weight:bold;">Get $100 Free Credit</a>
+    </div>
+</div>
+
+<style>
+/* Affiliate Banner Styles */
+.affiliate-banners {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.affiliate-banner {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 1rem 2rem;
+    text-align: center;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.affiliate-banner h3 {
+    margin: 0.5rem 0 0.25rem 0;
+    font-size: 1.1rem;
+}
+.affiliate-banner p {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+.affiliate-banner a {
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.affiliate-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.affiliate-banner:hover {
+    transform: translateY(-2px);
+}
+
+.affiliate-banner h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.affiliate-banner p {
+    margin: 0 0 1rem 0;
+    opacity: 0.9;
+}
+
+.affiliate-banner a {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.affiliate-banner a:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.affiliate-banner small {
+    display: block;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+}
+</style>
